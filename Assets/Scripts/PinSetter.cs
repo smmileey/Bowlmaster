@@ -1,22 +1,35 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour
 {
     public GameObject BowlingPinLayout;
-    public Text PinCountDisplayer;
+    public Text StandingPinCountDisplayer;
 
+    private Ball _ball;
     private bool _isBallWithinBounds;
+    private bool _isPinSettleDownInProgress;
+    private const int PinSettleDownTimeInSeconds = 5;
 
     void Start()
     {
+        _ball = FindObjectOfType<Ball>();
         if (BowlingPinLayout == null) Debug.LogError("BowlingPinLayout not provided to PinSetter.");
-        if (PinCountDisplayer == null) Debug.LogWarning("PinCountDisplayer not set.");
+        if (StandingPinCountDisplayer == null) Debug.LogWarning("StandingPinCountDisplayer not set.");
+        if (_ball == null) Debug.LogError("Ball not found on the scene.");
     }
 
     void Update()
     {
-        if (_isBallWithinBounds) PinCountDisplayer.text = GetStadingPinsCount().ToString();
+        if (_isBallWithinBounds)
+        {
+            StandingPinCountDisplayer.text = GetStadingPinsCount().ToString();
+            if (_isPinSettleDownInProgress) return;
+
+            _isPinSettleDownInProgress = true;
+            StartCoroutine(WaitForPinsToSettleDown());
+        }
     }
 
     void OnTriggerEnter(Collider collider)
@@ -24,7 +37,7 @@ public class PinSetter : MonoBehaviour
         if (collider.GetComponent<Ball>() != null)
         {
             _isBallWithinBounds = true;
-            PinCountDisplayer.color = Color.red;
+            StandingPinCountDisplayer.color = Color.red;
         }
     }
 
@@ -47,5 +60,20 @@ public class PinSetter : MonoBehaviour
             if (pinComponent.IsStanding()) standingPinsCount++;
         }
         return standingPinsCount;
+    }
+
+    private IEnumerator WaitForPinsToSettleDown()
+    {
+        yield return new WaitForSeconds(PinSettleDownTimeInSeconds);
+        EstablishScore();
+    }
+
+    private void EstablishScore()
+    {
+        //stabilize pins = calibrate physics
+        StandingPinCountDisplayer.color = Color.green;
+        _isBallWithinBounds = false;
+        _isPinSettleDownInProgress = false;
+        _ball.Reset();
     }
 }

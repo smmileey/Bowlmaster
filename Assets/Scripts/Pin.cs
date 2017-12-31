@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Pin : MonoBehaviour
 {
-    public float StandingThreshold = 10f;
+    public float StandingThreshold = 30f;
 
 
     /// <summary>

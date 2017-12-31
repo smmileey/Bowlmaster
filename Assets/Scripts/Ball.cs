@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     public Vector3 Velocity = new Vector3(0, 0, 0);
 
+    private Vector3 _startPosition;
     private Rigidbody _rigidbody;
     private AudioSource _audioSource;
     private MeshRenderer _meshRenderer;
@@ -23,7 +24,7 @@ public class Ball : MonoBehaviour
 
     public void Move(float shift)
     {
-        if(IsLaunched) return;
+        if (IsLaunched) return;
 
         float allowedWidthShift = Specification.FloorWidth / 2 - _meshRenderer.bounds.size.x / 2;
         float constrainedPositionX = Mathf.Clamp(transform.position.x + shift, -allowedWidthShift, allowedWidthShift);
@@ -40,8 +41,18 @@ public class Ball : MonoBehaviour
         IsLaunched = true;
     }
 
+    public void Reset()
+    {
+        IsLaunched = false;
+        _rigidbody.useGravity = false;
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
+        transform.position = _startPosition;
+    }
+
     private void SetInitialValues()
     {
+        _startPosition = transform.position;
         _rigidbody.useGravity = false;
     }
 }
