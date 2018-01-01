@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class Pin : MonoBehaviour
 {
-    public float StandingThreshold = 30f;
+    public float StandingThreshold = 80f;
 
+    void Awake()
+    {
+        this.GetComponent<Rigidbody>().solverVelocityIterations = 20;
+    }
 
     /// <summary>
     /// Here, we need to addjust eulerAngles.x, because the pin renderer is by default in horizontal position.
