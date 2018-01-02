@@ -105,40 +105,40 @@
             </summary>
             <param name="exception">The exception to propagate.</param><param name="targetContext">The target context on which to propagate the exception.  Null to use the ThreadPool.</param>
         </member>
-        <member name="T:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveNextRunner">
+        <member name="T:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveHorizontallyNextRunner">
             <summary>
-            Provides the ability to invoke a state machine's MoveNext method under a supplied ExecutionContext.
+            Provides the ability to invoke a state machine's MoveHorizontallyNext method under a supplied ExecutionContext.
             </summary>
         </member>
-        <member name="F:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveNextRunner.m_context">
+        <member name="F:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveHorizontallyNextRunner.m_context">
             <summary>
-            The context with which to run MoveNext.
+            The context with which to run MoveHorizontallyNext.
             </summary>
         </member>
-        <member name="F:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveNextRunner.m_stateMachine">
+        <member name="F:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveHorizontallyNextRunner.m_stateMachine">
             <summary>
-            The state machine whose MoveNext method should be invoked.
+            The state machine whose MoveHorizontallyNext method should be invoked.
             </summary>
         </member>
-        <member name="F:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveNextRunner.s_invokeMoveNext">
+        <member name="F:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveHorizontallyNextRunner.s_invokeMoveHorizontallyNext">
             <summary>
             Cached delegate used with ExecutionContext.Run.
             </summary>
         </member>
-        <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveNextRunner.#ctor(System.Threading.ExecutionContext)">
+        <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveHorizontallyNextRunner.#ctor(System.Threading.ExecutionContext)">
             <summary>
             Initializes the runner.
             </summary>
-            <param name="context">The context with which to run MoveNext.</param>
+            <param name="context">The context with which to run MoveHorizontallyNext.</param>
         </member>
-        <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveNextRunner.Run">
+        <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveHorizontallyNextRunner.Run">
             <summary>
-            Invokes MoveNext under the provided context.
+            Invokes MoveHorizontallyNext under the provided context.
             </summary>
         </member>
-        <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveNextRunner.InvokeMoveNext(System.Object)">
+        <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderCore.MoveHorizontallyNextRunner.InvokeMoveHorizontallyNext(System.Object)">
             <summary>
-            Invokes the MoveNext method on the supplied IAsyncStateMachine.
+            Invokes the MoveHorizontallyNext method on the supplied IAsyncStateMachine.
             </summary>
             <param name="stateMachine">The IAsyncStateMachine machine instance.</param>
         </member>
@@ -901,9 +901,9 @@
               Represents state machines generated for asynchronous methods. This type is intended for compiler use only.
             </summary>
         </member>
-        <member name="M:System.Runtime.CompilerServices.IAsyncStateMachine.MoveNext">
+        <member name="M:System.Runtime.CompilerServices.IAsyncStateMachine.MoveHorizontallyNext">
             <summary>
-              Moves the state machine to its next state.
+              MoveHorizontallys the state machine to its next state.
             </summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.IAsyncStateMachine.SetStateMachine(System.Runtime.CompilerServices.IAsyncStateMachine)">

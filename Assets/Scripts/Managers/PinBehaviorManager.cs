@@ -9,15 +9,15 @@ namespace Assets.Scripts.Managers
     {
         public void HandlePinBehavior(Pin[] pins, PinBehavior pinBehavior, float offsetMultiplier)
         {
-            if(pins == null) throw new ArgumentNullException(nameof(pins));
+            if (pins == null) throw new ArgumentNullException(nameof(pins));
 
             foreach (var pin in pins)
             {
-                MovePin(pin, offsetMultiplier, pinBehavior);
+                MovePin(pin, pinBehavior, offsetMultiplier);
             }
         }
 
-        private void MovePin(Pin pin, float offsetMultiplier, PinBehavior pinBehavior)
+        private void MovePin(Pin pin, PinBehavior pinBehavior, float offsetMultiplier)
         {
             switch (pinBehavior)
             {
@@ -33,7 +33,7 @@ namespace Assets.Scripts.Managers
                     }
                     break;
                 default:
-                    Debug.LogError($"Behavior {pinBehavior} not specified in PinBehaviorManager.");
+                    Debug.LogError($"Behavior {pinBehavior} not handled in PinBehaviorManager.");
                     break;
             }
         }

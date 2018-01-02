@@ -14,10 +14,10 @@ public class PinSetter : MonoBehaviour
     private const int PinSettleDownTimeInSeconds = 5;
 
     private Ball _ball;
-    private bool _isBallWithinBounds;
-    private bool _isPinSettleDownInProgress;
     private PinBehaviorManager _pinBehaviorManager;
     private GameObject _pinSetCopy;
+    private bool _isBallWithinBounds;
+    private bool _isPinSettleDownInProgress;
 
     void Start()
     {
@@ -51,12 +51,17 @@ public class PinSetter : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider collider)
+    public int GetStadingPinsCount()
     {
-        if (collider.GetComponent<Pin>() != null)
+        int standingPinsCount = 0;
+        foreach (Transform pinTransform in _pinSetCopy.transform)
         {
-            Destroy(collider.gameObject);
+            Pin pinComponent = pinTransform.GetComponent<Pin>();
+            if (pinComponent == null) continue;
+
+            if (pinComponent.IsStanding()) standingPinsCount++;
         }
+        return standingPinsCount;
     }
 
     public void LowerPins()
@@ -75,19 +80,6 @@ public class PinSetter : MonoBehaviour
         _pinSetCopy = Instantiate(BowlingPinLayout, BowlingPinLayout.transform.position, Quaternion.identity);
         StandingPinCountDisplayer.text = GetStadingPinsCount().ToString();
         StandingPinCountDisplayer.color = Color.red;
-    }
-
-    public int GetStadingPinsCount()
-    {
-        int standingPinsCount = 0;
-        foreach (Transform pinTransform in _pinSetCopy.transform)
-        {
-            Pin pinComponent = pinTransform.GetComponent<Pin>();
-            if (pinComponent == null) continue;
-
-            if (pinComponent.IsStanding()) standingPinsCount++;
-        }
-        return standingPinsCount;
     }
 
     private IEnumerator WaitForPinsToSettleDown()

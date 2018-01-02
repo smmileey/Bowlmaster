@@ -10,8 +10,9 @@ public class Pin : MonoBehaviour
     }
 
     /// <summary>
-    /// Here, we need to addjust eulerAngles.x, because the pin renderer is by default in horizontal position.
-    /// Thus, in it's design it has it's rotation against X set to value of 270. Now, all the deviation oscilates against that number, not the 270.
+    /// Here, we need to adjust eulerAngles.x, because the pin renderer (provided by modeller) is by default in horizontal position.
+    /// Thus, it's design rotation against X axis is set to value of 270. 
+    /// Now, all the deviation oscilates against that number, not the 270.
     /// </summary>
     /// <param name="angleInDegrees"></param>
     /// <returns></returns>

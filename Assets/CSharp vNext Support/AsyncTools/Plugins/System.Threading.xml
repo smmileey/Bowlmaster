@@ -1805,7 +1805,7 @@
               The implementation for GrabNextChunk() method has two versions: one for data source of IndexRange 
               types (IList and the array), one for data source of IEnumerable.
             - The method "Reset" is not supported for any partitioning algorithm.
-            - The implementation for MoveNext() method is same for all dynanmic partitioners, so we provide it
+            - The implementation for MoveHorizontallyNext() method is same for all dynanmic partitioners, so we provide it
               in this abstract class.
             </summary>
             <typeparam name="TSource">Type of the elements in the data source</typeparam>
@@ -1836,9 +1836,9 @@
             Reset on partitions is not supported
             </summary>
         </member>
-        <member name="M:System.Collections.Concurrent.Partitioner.DynamicPartitionEnumerator_Abstract`2.MoveNext">
+        <member name="M:System.Collections.Concurrent.Partitioner.DynamicPartitionEnumerator_Abstract`2.MoveHorizontallyNext">
             <summary>
-            Moves to the next element if any.
+            MoveHorizontallys to the next element if any.
             Try current chunk first, if the current chunk do not have any elements left, then we 
             attempt to grab a chunk from the source collection.
             </summary>
@@ -1930,8 +1930,8 @@
             element of the source data 
             </summary>
             <remarks>
-            We cannot call m_sharedReader.MoveNext(), to see if it hits the last element
-            or not, because we can't undo MoveNext(). Thus we need to maintain a shared 
+            We cannot call m_sharedReader.MoveHorizontallyNext(), to see if it hits the last element
+            or not, because we can't undo MoveHorizontallyNext(). Thus we need to maintain a shared 
             boolean value m_hasNoElementsLeft across all partitions
             </remarks>
         </member>
@@ -2126,10 +2126,10 @@
             We don't dispose the source for IList and array
             </summary>
         </member>
-        <member name="M:System.Collections.Concurrent.Partitioner.StaticIndexRangePartition`1.MoveNext">
+        <member name="M:System.Collections.Concurrent.Partitioner.StaticIndexRangePartition`1.MoveHorizontallyNext">
             <summary>
-            Moves to the next item
-            Before the first MoveNext is called: m_offset == m_startIndex-1;
+            MoveHorizontallys to the next item
+            Before the first MoveHorizontallyNext is called: m_offset == m_startIndex-1;
             </summary>
             <returns>true if successful, false if there is no item left</returns>
         </member>
@@ -13709,7 +13709,7 @@
         </member>
         <member name="M:System.Collections.Concurrent.BlockingCollection`1.GetConsumingEnumerable(System.Threading.CancellationToken)">
             <summary>Provides a consuming <see cref="T:System.Collections.Generics.IEnumerable{T}"/> for items in the collection.
-            Calling MoveNext on the returned enumerable will block if there is no data available, or will
+            Calling MoveHorizontallyNext on the returned enumerable will block if there is no data available, or will
             throw an <see cref="T:System.OperationCanceledException"/> if the <see cref="T:System.Threading.CancellationToken"/> is canceled.
             </summary>
             <param name="cancellationToken">A cancellation token to observe.</param>
@@ -18519,7 +18519,7 @@
         </member>
         <member name="F:System.Linq.Parallel.OrderPreservingPipeliningMergeHelper`1.OrderedPipeliningMergeEnumerator.m_initialized">
             <summary>
-            Tracks whether MoveNext() has already been called previously.
+            Tracks whether MoveHorizontallyNext() has already been called previously.
             </summary>
         </member>
         <member name="M:System.Linq.Parallel.OrderPreservingPipeliningMergeHelper`1.OrderedPipeliningMergeEnumerator.#ctor(System.Linq.Parallel.OrderPreservingPipeliningMergeHelper{`0})">
@@ -18527,9 +18527,9 @@
             Constructor
             </summary>
         </member>
-        <member name="M:System.Linq.Parallel.OrderPreservingPipeliningMergeHelper`1.OrderedPipeliningMergeEnumerator.MoveNext">
+        <member name="M:System.Linq.Parallel.OrderPreservingPipeliningMergeHelper`1.OrderedPipeliningMergeEnumerator.MoveHorizontallyNext">
             <summary>
-            Moves the enumerator to the next result, or returns false if there are no more results to yield.
+            MoveHorizontallys the enumerator to the next result, or returns false if there are no more results to yield.
             </summary>
         </member>
         <member name="M:System.Linq.Parallel.OrderPreservingPipeliningMergeHelper`1.OrderedPipeliningMergeEnumerator.ThrowIfInTearDown">
@@ -18888,7 +18888,7 @@
         </member>
         <member name="T:System.Linq.Parallel.QueryOpeningEnumerator`1">
             <summary>
-            A wrapper enumerator that just opens the query operator when MoveNext() is called for the
+            A wrapper enumerator that just opens the query operator when MoveHorizontallyNext() is called for the
             first time. We use QueryOpeningEnumerator to call QueryOperator.GetOpenedEnumerator()
             lazily because once GetOpenedEnumerator() is called, PLINQ starts precomputing the
             results of the query.
@@ -18897,7 +18897,7 @@
         <member name="M:System.Linq.Parallel.QueryOpeningEnumerator`1.OpenQuery">
             <summary>
             Opens the query and initializes m_openedQueryEnumerator and m_querySettings.
-            Called from the first MoveNext call.
+            Called from the first MoveHorizontallyNext call.
             </summary>
         </member>
         <member name="T:System.Linq.Parallel.CountAggregationOperator`1">
@@ -19556,7 +19556,7 @@
             <summary>
             Wraps an enumerable with a cancellation checker. The enumerator handed out by the source enumerable
             will be wrapped by an object that periodically checks whether a particular cancellation token has
-            been cancelled. If so, the next call to MoveNext() will throw an OperationCancelledException.
+            been cancelled. If so, the next call to MoveHorizontallyNext() will throw an OperationCancelledException.
             </summary>
         </member>
         <member name="M:System.Linq.Parallel.ExceptionAggregator.WrapEnumerable``1(System.Collections.Generic.IEnumerable{``0},System.Linq.Parallel.CancellationState)">

@@ -1,10 +1,11 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(AudioSource), typeof(MeshRenderer))]
 public class Ball : MonoBehaviour
 {
     public Vector3 Velocity = new Vector3(0, 0, 0);
+
+    public float MaxBallSpeed = 800f;
 
     private Vector3 _startPosition;
     private Rigidbody _rigidbody;
@@ -22,7 +23,7 @@ public class Ball : MonoBehaviour
         SetInitialValues();
     }
 
-    public void Move(float shift)
+    public void MoveHorizontally(float shift)
     {
         if (IsLaunched) return;
 
