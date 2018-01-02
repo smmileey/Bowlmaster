@@ -101,11 +101,13 @@
     <Compile Include="Assets\CSharp vNext Support\TupleBridge\ValueTuple.cs" />
     <Compile Include="Assets\START Pack\Scripts\ActionMaster2.cs" />
     <Compile Include="Assets\START Pack\Scripts\OurScoreDisplayTest1.cs" />
+    <Compile Include="Assets\Scripts\ActionMaster.cs" />
     <Compile Include="Assets\Scripts\Ball.cs" />
     <Compile Include="Assets\Scripts\BallControl.cs" />
     <Compile Include="Assets\Scripts\BallDragLaunch.cs" />
     <Compile Include="Assets\Scripts\Consts\Sounds.cs" />
     <Compile Include="Assets\Scripts\Consts\Specification.cs" />
+    <Compile Include="Assets\Scripts\Enums\AfterStrikeAction.cs" />
     <Compile Include="Assets\Scripts\Enums\PinBehavior.cs" />
     <Compile Include="Assets\Scripts\Floor.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IPinBehavior.cs" />
