@@ -4,51 +4,54 @@ namespace Assets.Scripts
 {
     public class ActionMaster
     {
-        private readonly int[] _scores = new int[22];
-        private int _throwNumber = 1;
+        private const int LastFrameFirstThrow = 19;
+        private const int LastFrameSecondThrow = 20;
+        private const int MaxThrowCount = 21;
+        private const int MaxPinsCount = 10;
 
-        public AfterStrikeAction Bowl(int pins)
+        private readonly int[] _scores = new int[MaxThrowCount];
+        private int _currentThrowNumber = 1;
+
+        public AfterStrikeAction Bowl(int pinsHitCount)
         {
-            if (pins < 0 || pins > 10) throw new ArgumentOutOfRangeException(nameof(pins));
-            _scores[_throwNumber] = pins;
+            if (pinsHitCount < 0 || pinsHitCount > 10) throw new ArgumentOutOfRangeException(nameof(pinsHitCount));
 
-            if (_throwNumber == 21)
+            _scores[_currentThrowNumber - 1] = pinsHitCount;
+
+            if (_currentThrowNumber == MaxThrowCount) return AfterStrikeAction.EndGame;
+
+            if (_currentThrowNumber >= LastFrameFirstThrow && IsAdditionalThrowAwarded())
             {
-                return AfterStrikeAction.EndGame;
+                _currentThrowNumber++;
+                return AfterStrikeAction.Reset;
             }
 
-            if (_throwNumber == 20)
-            {
-                _throwNumber++;
-                return _scores[19] + pins >= 10
-                    ? AfterStrikeAction.Reset
-                    : AfterStrikeAction.EndGame;
-            }
+            if (_currentThrowNumber == LastFrameSecondThrow) return AfterStrikeAction.EndGame;
 
-            if (pins == 10)
+            if (pinsHitCount == MaxPinsCount)
             {
-                if (_throwNumber == 19)
-                {
-                    _throwNumber++;
-                    return AfterStrikeAction.Reset;
-                }
-
-                _throwNumber += 2;
-                return _throwNumber == 21
-                    ? AfterStrikeAction.Reset 
-                    : AfterStrikeAction.EndTurn;
-            }
-
-            if (_throwNumber % 2 != 0)
-            {
-                _throwNumber++;
-                return AfterStrikeAction.Tidy;
-            }
-            else
-            {
-                _throwNumber++;
+                _currentThrowNumber += 2;
                 return AfterStrikeAction.EndTurn;
             }
+
+            if (IsFirstThrowInFrame())
+            {
+                _currentThrowNumber++;
+                return AfterStrikeAction.Tidy;
+            }
+
+            _currentThrowNumber++;
+            return AfterStrikeAction.EndTurn;
+        }
+
+        private bool IsAdditionalThrowAwarded()
+        {
+            return _scores[LastFrameFirstThrow - 1] + _scores[LastFrameFirstThrow] >= MaxPinsCount;
+        }
+
+        private bool IsFirstThrowInFrame()
+        {
+            return _currentThrowNumber % 2 != 0;
         }
     }
 }

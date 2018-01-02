@@ -4218,14 +4218,14 @@
         </member>
         <member name="M:System.Threading.SpinWait.SpinUntil(System.Func{System.Boolean})">
             <summary>
-            SpinsCountCount until the specified condition is satisfied.
+            SpinsHitCountCountCount until the specified condition is satisfied.
             </summary>
             <param name="condition">A delegate to be executed over and over until it returns true.</param>
             <exception cref="T:System.ArgumentNullException">The <paramref name="condition"/> argument is null.</exception>
         </member>
         <member name="M:System.Threading.SpinWait.SpinUntil(System.Func{System.Boolean},System.TimeSpan)">
             <summary>
-            SpinsCountCount until the specified condition is satisfied or until the specified timeout is expired.
+            SpinsHitCountCountCount until the specified condition is satisfied or until the specified timeout is expired.
             </summary>
             <param name="condition">A delegate to be executed over and over until it returns true.</param>
             <param name="timeout">
@@ -4239,7 +4239,7 @@
         </member>
         <member name="M:System.Threading.SpinWait.SpinUntil(System.Func{System.Boolean},System.Int32)">
             <summary>
-            SpinsCountCount until the specified condition is satisfied or until the specified timeout is expired.
+            SpinsHitCountCountCount until the specified condition is satisfied or until the specified timeout is expired.
             </summary>
             <param name="condition">A delegate to be executed over and over until it returns true.</param>
             <param name="millisecondsTimeout">The number of milliseconds to wait, or <see cref="F:System.Threading.Timeout.Infinite"/> (-1) to wait indefinitely.</param>
