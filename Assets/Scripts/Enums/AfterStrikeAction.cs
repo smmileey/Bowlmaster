@@ -1,7 +1,10 @@
-public enum AfterStrikeAction
+namespace Assets.Scripts.Enums
 {
-    Tidy = 0,
-    EndTurn = 1,
-    Reset = 2,
-    EndGame = 3
+    public enum AfterStrikeAction
+    {
+        Tidy = 0,
+        EndTurn = 1,
+        Reset = 2,
+        EndGame = 3
+    }
 }

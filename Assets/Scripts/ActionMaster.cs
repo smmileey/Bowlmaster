@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts.Enums;
 
 namespace Assets.Scripts
 {
@@ -18,16 +19,21 @@ namespace Assets.Scripts
 
             _scores[_currentThrowNumber - 1] = pinsHitCount;
 
-            if (_currentThrowNumber == MaxThrowCount) return AfterStrikeAction.EndGame;
-
-            int lastFrameScore;
-            if (_currentThrowNumber == LastFrameSecondThrow && IsAdditionalThrowAwarded(out lastFrameScore))
+            switch (_currentThrowNumber)
             {
-                _currentThrowNumber++;
-                return pinsHitCount == MaxPinsCount || lastFrameScore == MaxPinsCount ? AfterStrikeAction.Reset : AfterStrikeAction.Tidy;
-            }
+                case MaxThrowCount:
+                    Reset();
+                    return AfterStrikeAction.EndGame;
+                case LastFrameSecondThrow:
+                    if (!IsAdditionalThrowAwarded())
+                    {
+                        Reset();
+                        return AfterStrikeAction.EndGame;
+                    }
 
-            if (_currentThrowNumber == LastFrameSecondThrow) return AfterStrikeAction.EndGame;
+                    _currentThrowNumber++;
+                    return ArePinsBroken(pinsHitCount) ? AfterStrikeAction.Reset : AfterStrikeAction.Tidy;
+            }
 
             if (pinsHitCount == MaxPinsCount)
             {
@@ -46,10 +52,24 @@ namespace Assets.Scripts
             return AfterStrikeAction.EndTurn;
         }
 
-        private bool IsAdditionalThrowAwarded(out int lastFrameScore)
+        private void Reset()
         {
-            lastFrameScore = _scores[LastFrameFirstThrow - 1] + _scores[LastFrameFirstThrow];
-            return  lastFrameScore >= MaxPinsCount;
+            _currentThrowNumber = 1;
+        }
+
+        private bool IsAdditionalThrowAwarded()
+        {
+            return GetLastFrameScore() >= MaxPinsCount;
+        }
+
+        private bool ArePinsBroken(int pinsHitCount)
+        {
+            return pinsHitCount == MaxPinsCount || GetLastFrameScore() == MaxPinsCount;
+        }
+
+        private int GetLastFrameScore()
+        {
+            return _scores[LastFrameFirstThrow - 1] + _scores[LastFrameFirstThrow];
         }
 
         private bool IsFirstThrowInFrame()

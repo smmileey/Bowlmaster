@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts;
+using Assets.Scripts.Enums;
 using NUnit.Framework;
 
 namespace Assets.Editor
@@ -95,6 +96,27 @@ namespace Assets.Editor
             sut.Bowl(10);
             sut.Bowl(10);
             Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(5));
+        }
+
+        [Test]
+        public void T12_WhenEndGame_WithNoAwardThrow_ThenNextThrowBelowTenReturnsTidy()
+        {
+            var sut = GetSystemUnderTest();
+            ProceedToTheLastFrame(sut);
+            sut.Bowl(0);
+            sut.Bowl(2);
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(1));
+        }
+
+        [Test]
+        public void T13_WhenEndGame_WithAwardThrow_ThenNextThrowBelowTenReturnsTidy()
+        {
+            var sut = GetSystemUnderTest();
+            ProceedToTheLastFrame(sut);
+            sut.Bowl(0);
+            sut.Bowl(10);
+            sut.Bowl(3);
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(1));
         }
 
         private ActionMaster GetSystemUnderTest()
