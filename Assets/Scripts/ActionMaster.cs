@@ -32,7 +32,7 @@ namespace Assets.Scripts
                     }
 
                     _currentThrowNumber++;
-                    return ArePinsBroken(pinsHitCount) ? AfterStrikeAction.Reset : AfterStrikeAction.Tidy;
+                    return ArePinsKnockedDown(pinsHitCount) ? AfterStrikeAction.Reset : AfterStrikeAction.Tidy;
             }
 
             if (pinsHitCount == MaxPinsCount)
@@ -62,9 +62,11 @@ namespace Assets.Scripts
             return GetLastFrameScore() >= MaxPinsCount;
         }
 
-        private bool ArePinsBroken(int pinsHitCount)
+        private bool ArePinsKnockedDown(int pinsHitCount)
         {
-            return pinsHitCount == MaxPinsCount || GetLastFrameScore() == MaxPinsCount;
+            bool strikeThisTurn = pinsHitCount == MaxPinsCount;
+            bool spareAndNotGutterBallThisTurn = GetLastFrameScore() == MaxPinsCount && pinsHitCount != 0;
+            return strikeThisTurn || spareAndNotGutterBallThisTurn;
         }
 
         private int GetLastFrameScore()

@@ -119,6 +119,15 @@ namespace Assets.Editor
             Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(1));
         }
 
+        [Test]
+        public void T14_WhenStrikeOn19thAndZeroOn20th_ReturnTidy()
+        {
+            var sut = GetSystemUnderTest();
+            ProceedToTheLastFrame(sut);
+            sut.Bowl(10);
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(0));
+        }
+
         private ActionMaster GetSystemUnderTest()
         {
             return new ActionMaster();
