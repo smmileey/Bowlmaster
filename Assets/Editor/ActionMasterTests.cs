@@ -128,6 +128,17 @@ namespace Assets.Editor
             Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(0));
         }
 
+        [Test]
+        public void T15_WhenNothingHitsInTwentyThrows_ReturnEndGame()
+        {
+            var sut = GetSystemUnderTest();
+            for (int i = 0; i < 19; i++)
+            {
+                sut.Bowl(0);
+            }
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(0));
+        }
+
         private ActionMaster GetSystemUnderTest()
         {
             return new ActionMaster();

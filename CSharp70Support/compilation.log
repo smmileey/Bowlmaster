@@ -1,15 +1,30 @@
 ********************************************************************************
-*                    Wednesday, January 03, 2018 8:35:57 PM                    *
+*                    Wednesday, January 03, 2018 8:43:01 PM                    *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.3.30
 Platform: Windows
-Target assembly: Assembly-CSharp.dll
+Target assembly: Assembly-CSharp-Editor.dll
 Project directory: E:\UnityRepos\Bowlmaster
-Target profile directory: E:\Unity\Editor\Data\Mono\lib\mono\unity
+Target profile directory: E:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api
 Unity 'Data' or 'Frameworks' directory: E:/Unity/Editor/Data
 Compiler: Microsoft C# 7.0
 
 - Compilation -----------------------------------------------
 
 Process: E:\UnityRepos\Bowlmaster\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"E:\Unity\Editor\Data\Mono\lib\mono\unity\mscorlib.dll" -r:"E:\Unity\Editor\Data\Mono\lib\mono\unity\System.dll" -r:"E:\Unity\Editor\Data\Mono\lib\mono\unity\System.Core.dll" -r:"E:\Unity\Editor\Data\Mono\lib\mono\unity\System.Xml.dll" @Temp/UnityTempFile-d2c02168a69a78949b4252e926fb0d21 
+Arguments: -nostdlib+ -noconfig -nologo -r:"E:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\mscorlib.dll" -r:"E:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.dll" -r:"E:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.Core.dll" -r:"E:\Unity\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\System.Xml.dll" @Temp/UnityTempFile-0048fabb6df73d446b4c5a357f42aa21 
+Exit code: 0
+Elapsed time: 4.90 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: E:\UnityRepos\Bowlmaster\CSharp70Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 0.12 sec
+
+- pdb2mdb.exe output (0 lines):
