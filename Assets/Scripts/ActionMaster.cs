@@ -20,18 +20,20 @@ namespace Assets.Scripts
 
             if (_currentThrowNumber == MaxThrowCount) return AfterStrikeAction.EndGame;
 
-            if (_currentThrowNumber >= LastFrameFirstThrow && IsAdditionalThrowAwarded())
+            int lastFrameScore;
+            if (_currentThrowNumber == LastFrameSecondThrow && IsAdditionalThrowAwarded(out lastFrameScore))
             {
                 _currentThrowNumber++;
-                return AfterStrikeAction.Reset;
+                return pinsHitCount == MaxPinsCount || lastFrameScore == MaxPinsCount ? AfterStrikeAction.Reset : AfterStrikeAction.Tidy;
             }
 
             if (_currentThrowNumber == LastFrameSecondThrow) return AfterStrikeAction.EndGame;
 
             if (pinsHitCount == MaxPinsCount)
             {
-                _currentThrowNumber += 2;
-                return AfterStrikeAction.EndTurn;
+                bool isLastFrameFirstThrow = _currentThrowNumber == LastFrameFirstThrow;
+                _currentThrowNumber += isLastFrameFirstThrow ? 1 : 2;
+                return isLastFrameFirstThrow ? AfterStrikeAction.Reset : AfterStrikeAction.EndTurn;
             }
 
             if (IsFirstThrowInFrame())
@@ -44,9 +46,10 @@ namespace Assets.Scripts
             return AfterStrikeAction.EndTurn;
         }
 
-        private bool IsAdditionalThrowAwarded()
+        private bool IsAdditionalThrowAwarded(out int lastFrameScore)
         {
-            return _scores[LastFrameFirstThrow - 1] + _scores[LastFrameFirstThrow] >= MaxPinsCount;
+            lastFrameScore = _scores[LastFrameFirstThrow - 1] + _scores[LastFrameFirstThrow];
+            return  lastFrameScore >= MaxPinsCount;
         }
 
         private bool IsFirstThrowInFrame()

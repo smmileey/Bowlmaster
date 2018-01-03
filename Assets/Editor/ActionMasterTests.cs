@@ -61,7 +61,7 @@ namespace Assets.Editor
         }
 
         [Test]
-        public void T08_WhenLastFrameStrike_ThenReturnReset()
+        public void T08_WhenLastFrameFirstHitStrike_ThenReturnReset()
         {
             var sut = GetSystemUnderTest();
             ProceedToTheLastFrame(sut);
@@ -69,13 +69,12 @@ namespace Assets.Editor
         }
 
         [Test]
-        public void T09_WhenLastFrameStrike_AwardThrow_AndReturnEndGame()
+        public void T09_WhenLastFrameFirstHitStrikeThenLessThanTen_ReturnTidy()
         {
             var sut = GetSystemUnderTest();
             ProceedToTheLastFrame(sut);
             sut.Bowl(10);
-            sut.Bowl(0);
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(5));
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(2));
         }
 
         [Test]
@@ -86,6 +85,16 @@ namespace Assets.Editor
             sut.Bowl(4);
             sut.Bowl(6);
             Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(10));
+        }
+
+        [Test]
+        public void T11_WheLastFrameTwoStrikes_AwardThrow_AndReturnEndGame()
+        {
+            var sut = GetSystemUnderTest();
+            ProceedToTheLastFrame(sut);
+            sut.Bowl(10);
+            sut.Bowl(10);
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(5));
         }
 
         private ActionMaster GetSystemUnderTest()
