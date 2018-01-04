@@ -4,7 +4,7 @@ using UnityEngine;
 public class BallDragLaunch : MonoBehaviour
 {
     [Range(0f, 1f)]
-    public float XDragFactor = 0.01f;
+    public float XDragFactor = 0.1f;
 
     private Ball _ball;
     private Vector3 _dragStartPosition;

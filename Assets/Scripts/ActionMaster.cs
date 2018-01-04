@@ -9,11 +9,12 @@ namespace Assets.Scripts
         private const int LastFrameFirstThrow = 19;
         private const int LastFrameSecondThrow = 20;
         private const int MaxThrowCount = 21;
-        private const int MaxPinsCount = 10;
         private readonly int[] _scores = new int[MaxThrowCount];
 
         private bool IsAdditionalThrowAwarded => GetLastFrameScore() >= MaxPinsCount;
         private bool IsFirstThrowInFrame => CurrentThrowNumber % 2 != 0;
+
+        public const int MaxPinsCount = 10;
 
         public ActionMaster()
         {

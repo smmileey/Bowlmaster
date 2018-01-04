@@ -1,98 +1,132 @@
 using System.Collections;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
+using Assets.Scripts.Mappers;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PinSetter : MonoBehaviour
+namespace Assets.Scripts
 {
-    [Range(0f, 100f)]
-    public float PinRaiseOffset = 0.5f;
-    public GameObject BowlingPinLayout;
-    public Text StandingPinCountDisplayer;
-
-    private const int PinSettleDownTimeInSeconds = 5;
-
-    private Ball _ball;
-    private PinBehaviorManager _pinBehaviorManager;
-    private GameObject _pinSetCopy;
-    private bool _isBallWithinBounds;
-    private bool _isPinSettleDownInProgress;
-
-    void Start()
+    [RequireComponent(typeof(Animator))]
+    public class PinSetter : MonoBehaviour
     {
-        _ball = FindObjectOfType<Ball>();
-        _pinBehaviorManager = new PinBehaviorManager();
-        _pinSetCopy = Instantiate(BowlingPinLayout, BowlingPinLayout.transform.position, Quaternion.identity);
+        [Range(0f, 100f)]
+        public float PinRaiseOffset = 0.5f;
+        public GameObject BowlingPinLayout;
+        public Text StandingPinCountDisplayer;
 
-        if (BowlingPinLayout == null) Debug.LogError("BowlingPinLayout not provided to PinSetter.");
-        if (StandingPinCountDisplayer == null) Debug.LogWarning("StandingPinCountDisplayer not set.");
-        if (_ball == null) Debug.LogError("Ball not found on the scene.");
-    }
+        private const int PinSettleDownTimeInSeconds = 10;
 
-    void Update()
-    {
-        if (_isBallWithinBounds)
+        private readonly ActionMaster _actionMaster = new ActionMaster();
+        private readonly PinBehaviorManager _pinBehaviorManager = new PinBehaviorManager();
+        private Ball _ball;
+        private Animator _animator;
+        private GameObject _pinSetCopy;
+        private bool _isBallWithinBounds;
+        private bool _isPinSettleDownInProgress;
+        private int _lastSettledPinsCount = ActionMaster.MaxPinsCount;
+
+        void Start()
         {
-            StandingPinCountDisplayer.text = GetStadingPinsCount().ToString();
-            if (_isPinSettleDownInProgress) return;
+            _ball = FindObjectOfType<Ball>();
+            _animator = GetComponent<Animator>();
+            _pinSetCopy = Instantiate(BowlingPinLayout, BowlingPinLayout.transform.position, Quaternion.identity);
 
-            _isPinSettleDownInProgress = true;
-            StartCoroutine(WaitForPinsToSettleDown());
+            if (BowlingPinLayout == null) Debug.LogError("BowlingPinLayout not provided to PinSetter.");
+            if (StandingPinCountDisplayer == null) Debug.LogWarning("StandingPinCountDisplayer not set.");
+            if (_ball == null) Debug.LogError("Ball not found on the scene.");
         }
-    }
 
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.GetComponent<Ball>() != null)
+        void Update()
         {
-            _isBallWithinBounds = true;
-            StandingPinCountDisplayer.color = Color.red;
-        }
-    }
+            if (_isBallWithinBounds)
+            {
+                StandingPinCountDisplayer.text = GetStadingPinsCount().ToString();
+                if (_isPinSettleDownInProgress) return;
 
-    public int GetStadingPinsCount()
-    {
-        int standingPinsCount = 0;
-        foreach (Transform pinTransform in _pinSetCopy.transform)
+                _isPinSettleDownInProgress = true;
+                StartCoroutine(WaitForPinsToSettleDown());
+            }
+        }
+
+        void OnTriggerEnter(Collider collider)
         {
-            Pin pinComponent = pinTransform.GetComponent<Pin>();
-            if (pinComponent == null) continue;
-
-            if (pinComponent.IsStanding()) standingPinsCount++;
+            if (collider.GetComponent<Ball>() != null)
+            {
+                _isBallWithinBounds = true;
+                StandingPinCountDisplayer.color = Color.red;
+            }
         }
-        return standingPinsCount;
-    }
 
-    public void LowerPins()
-    {
-        _pinBehaviorManager.HandlePinBehavior(_pinSetCopy.GetComponentsInChildren<Pin>(), PinBehavior.Lower, PinRaiseOffset);
-    }
+        public int GetStadingPinsCount()
+        {
+            int standingPinsCount = 0;
+            foreach (Transform pinTransform in _pinSetCopy.transform)
+            {
+                Pin pinComponent = pinTransform.GetComponent<Pin>();
+                if (pinComponent == null) continue;
 
-    public void RaisePins()
-    {
-        _pinBehaviorManager.HandlePinBehavior(_pinSetCopy.GetComponentsInChildren<Pin>(), PinBehavior.Raise, PinRaiseOffset);
-    }
+                if (pinComponent.IsStanding()) standingPinsCount++;
+            }
+            return standingPinsCount;
+        }
 
-    public void RenewPins()
-    {
-        Destroy(_pinSetCopy);
-        _pinSetCopy = Instantiate(BowlingPinLayout, BowlingPinLayout.transform.position, Quaternion.identity);
-        StandingPinCountDisplayer.text = GetStadingPinsCount().ToString();
-        StandingPinCountDisplayer.color = Color.red;
-    }
+        public void LowerPins()
+        {
+            _pinBehaviorManager.HandlePinBehavior(_pinSetCopy.GetComponentsInChildren<Pin>(), PinBehavior.Lower, PinRaiseOffset);
+        }
 
-    private IEnumerator WaitForPinsToSettleDown()
-    {
-        yield return new WaitForSeconds(PinSettleDownTimeInSeconds);
-        EstablishScore();
-    }
+        public void RaisePins()
+        {
+            _pinBehaviorManager.HandlePinBehavior(_pinSetCopy.GetComponentsInChildren<Pin>(), PinBehavior.Raise, PinRaiseOffset);
+        }
 
-    private void EstablishScore()
-    {
-        StandingPinCountDisplayer.color = Color.green;
-        _isBallWithinBounds = false;
-        _isPinSettleDownInProgress = false;
-        _ball.Reset();
+        public void RenewPins()
+        {
+            UpdatePinDisplayer(GetStadingPinsCount(), Color.red);
+            RecreatePinSet();
+        }
+
+        private IEnumerator WaitForPinsToSettleDown()
+        {
+            yield return new WaitForSeconds(PinSettleDownTimeInSeconds);
+
+            int standingPinsCount = GetStadingPinsCount();
+            UpdatePinDisplayer(standingPinsCount, Color.green);
+            PerformAfterStrikeAction(standingPinsCount);
+            yield return null;
+
+            PrepareForTheNextScore();
+        }
+
+
+        private void UpdatePinDisplayer(int standingPinsCount, Color color)
+        {
+            StandingPinCountDisplayer.color = color;
+            StandingPinCountDisplayer.text = standingPinsCount.ToString();
+        }
+
+        private void RecreatePinSet()
+        {
+            Destroy(_pinSetCopy);
+            _pinSetCopy = Instantiate(BowlingPinLayout, BowlingPinLayout.transform.position, Quaternion.identity);
+        }
+
+        private void PerformAfterStrikeAction(int standingPinsCount)
+        {
+            AfterStrikeAction afterStrikeAction = _actionMaster.Bowl(_lastSettledPinsCount - standingPinsCount);
+            _lastSettledPinsCount = standingPinsCount;
+
+            _animator.SetTrigger(AfterStrikeActionToAnimationMapper.Map(afterStrikeAction).TriggerName);
+            bool lastSettledPinsCountShouldBeChanged = afterStrikeAction == AfterStrikeAction.EndTurn || afterStrikeAction == AfterStrikeAction.Reset || afterStrikeAction == AfterStrikeAction.EndGame;
+            if (lastSettledPinsCountShouldBeChanged) _lastSettledPinsCount = ActionMaster.MaxPinsCount;
+        }
+
+        private void PrepareForTheNextScore()
+        {
+            _isBallWithinBounds = false;
+            _isPinSettleDownInProgress = false;
+            _ball.Reset();
+        }
     }
 }
