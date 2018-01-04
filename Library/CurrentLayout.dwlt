@@ -108,7 +108,7 @@ MonoBehaviour:
   m_MinSize: {x: 508, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
-  controlID: 50
+  controlID: 124
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_MinSize: {x: 508, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 51
+  controlID: 125
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 52
+  controlID: 13
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 53
+  controlID: 14
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -381,7 +381,7 @@ MonoBehaviour:
       name: Assembly-CSharp-Editor.dll
       fullName: E:/UnityRepos/Bowlmaster/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
       resultStatus: 1
-      duration: 0.5703261
+      duration: 0.4946365
       messages: 
       output: 
       stacktrace: 
@@ -392,7 +392,7 @@ MonoBehaviour:
       name: Assets
       fullName: Assets
       resultStatus: 1
-      duration: 0.5564486
+      duration: 0.4839672
       messages: 
       output: 
       stacktrace: 
@@ -403,7 +403,7 @@ MonoBehaviour:
       name: Editor
       fullName: Assets.Editor
       resultStatus: 1
-      duration: 0.5359645
+      duration: 0.4731128
       messages: 
       output: 
       stacktrace: 
@@ -414,7 +414,7 @@ MonoBehaviour:
       name: ActionMasterTests
       fullName: Assets.Editor.ActionMasterTests
       resultStatus: 1
-      duration: 0.5136505
+      duration: 0.4625774
       messages: 
       output: 
       stacktrace: 
@@ -425,7 +425,7 @@ MonoBehaviour:
       name: T01_WhenArgumentIsBelow0OrAbove10_OutOfRangeExceptionIsThrown
       fullName: Assets.Editor.ActionMasterTests.T01_WhenArgumentIsBelow0OrAbove10_OutOfRangeExceptionIsThrown
       resultStatus: 1
-      duration: 0.0444143
+      duration: 0.0441163
       messages: 
       output: 
       stacktrace: 
@@ -436,7 +436,7 @@ MonoBehaviour:
       name: T01_WhenArgumentIsBelow0OrAbove10_OutOfRangeExceptionIsThrown(-1)
       fullName: Assets.Editor.ActionMasterTests.T01_WhenArgumentIsBelow0OrAbove10_OutOfRangeExceptionIsThrown(-1)
       resultStatus: 1
-      duration: 0.0010382
+      duration: 0.0123812
       messages: 
       output: 
       stacktrace: 
@@ -447,7 +447,7 @@ MonoBehaviour:
       name: T01_WhenArgumentIsBelow0OrAbove10_OutOfRangeExceptionIsThrown(11)
       fullName: Assets.Editor.ActionMasterTests.T01_WhenArgumentIsBelow0OrAbove10_OutOfRangeExceptionIsThrown(11)
       resultStatus: 1
-      duration: 0.0007887
+      duration: 0.0038582
       messages: 
       output: 
       stacktrace: 
@@ -458,7 +458,7 @@ MonoBehaviour:
       name: T02_WhenStrike_ReturnEndTurn
       fullName: Assets.Editor.ActionMasterTests.T02_WhenStrike_ReturnEndTurn
       resultStatus: 1
-      duration: 0.0005616
+      duration: 0.0134731
       messages: 
       output: 
       stacktrace: 
@@ -469,7 +469,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy
       resultStatus: 1
-      duration: 0.2382227
+      duration: 0.15507
       messages: 
       output: 
       stacktrace: 
@@ -480,7 +480,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(1)
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(1)
       resultStatus: 1
-      duration: 0.0035404
+      duration: 0.0042203
       messages: 
       output: 
       stacktrace: 
@@ -491,7 +491,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(2)
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(2)
       resultStatus: 1
-      duration: 0.0038741
+      duration: 0.0036045
       messages: 
       output: 
       stacktrace: 
@@ -502,7 +502,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(3)
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(3)
       resultStatus: 1
-      duration: 0.0149519
+      duration: 0.0041156
       messages: 
       output: 
       stacktrace: 
@@ -513,7 +513,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(4)
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(4)
       resultStatus: 1
-      duration: 0.0083974
+      duration: 0.0045922
       messages: 
       output: 
       stacktrace: 
@@ -524,7 +524,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(5)
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(5)
       resultStatus: 1
-      duration: 0.0080496
+      duration: 0.003767
       messages: 
       output: 
       stacktrace: 
@@ -535,7 +535,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(6)
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(6)
       resultStatus: 1
-      duration: 0.008601
+      duration: 0.0035937
       messages: 
       output: 
       stacktrace: 
@@ -546,7 +546,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(7)
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(7)
       resultStatus: 1
-      duration: 0.0083379
+      duration: 0.0036394
       messages: 
       output: 
       stacktrace: 
@@ -557,7 +557,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(8)
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(8)
       resultStatus: 1
-      duration: 0.0080706
+      duration: 0.0035585
       messages: 
       output: 
       stacktrace: 
@@ -568,7 +568,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(9)
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(9)
       resultStatus: 1
-      duration: 0.0048286
+      duration: 0.003765
       messages: 
       output: 
       stacktrace: 
@@ -579,7 +579,7 @@ MonoBehaviour:
       name: T04_WhenSpare_ReturnEndTurn
       fullName: Assets.Editor.ActionMasterTests.T04_WhenSpare_ReturnEndTurn
       resultStatus: 1
-      duration: 0.0040999
+      duration: 0.004022
       messages: 
       output: 
       stacktrace: 
@@ -590,7 +590,7 @@ MonoBehaviour:
       name: T05_WhenLastFrameFirstHitUnderTen_ThenReturnTidy
       fullName: Assets.Editor.ActionMasterTests.T05_WhenLastFrameFirstHitUnderTen_ThenReturnTidy
       resultStatus: 1
-      duration: 0.0174064
+      duration: 0.003551
       messages: 
       output: 
       stacktrace: 
@@ -601,7 +601,7 @@ MonoBehaviour:
       name: T06_WhenLastFrameTwoHitsUnderTen_ThenReturnEndGame
       fullName: Assets.Editor.ActionMasterTests.T06_WhenLastFrameTwoHitsUnderTen_ThenReturnEndGame
       resultStatus: 1
-      duration: 0.0006059
+      duration: 0.0041411
       messages: 
       output: 
       stacktrace: 
@@ -612,29 +612,29 @@ MonoBehaviour:
       name: T07_WhenLastFrameSpare_ThenReturnReset
       fullName: Assets.Editor.ActionMasterTests.T07_WhenLastFrameSpare_ThenReturnReset
       resultStatus: 1
-      duration: 0.0005948
+      duration: 0.0038782
       messages: 
       output: 
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
-    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ActionMasterTests][T08_WhenLastFrameStrike_ThenReturnReset]'
-      name: T08_WhenLastFrameStrike_ThenReturnReset
-      fullName: Assets.Editor.ActionMasterTests.T08_WhenLastFrameStrike_ThenReturnReset
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ActionMasterTests][T08_WhenLastFrameFirstHitStrike_ThenReturnReset]'
+      name: T08_WhenLastFrameFirstHitStrike_ThenReturnReset
+      fullName: Assets.Editor.ActionMasterTests.T08_WhenLastFrameFirstHitStrike_ThenReturnReset
       resultStatus: 1
-      duration: 0.000594
+      duration: 0.0037284
       messages: 
       output: 
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
-    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ActionMasterTests][T09_WhenLastFrameStrike_AwardThrow_AndReturnEndGame]'
-      name: T09_WhenLastFrameStrike_AwardThrow_AndReturnEndGame
-      fullName: Assets.Editor.ActionMasterTests.T09_WhenLastFrameStrike_AwardThrow_AndReturnEndGame
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ActionMasterTests][T09_WhenLastFrameFirstHitStrikeThenLessThanTen_ReturnTidy]'
+      name: T09_WhenLastFrameFirstHitStrikeThenLessThanTen_ReturnTidy
+      fullName: Assets.Editor.ActionMasterTests.T09_WhenLastFrameFirstHitStrikeThenLessThanTen_ReturnTidy
       resultStatus: 1
-      duration: 0.0075673
+      duration: 0.0039415
       messages: 
       output: 
       stacktrace: 
@@ -645,19 +645,74 @@ MonoBehaviour:
       name: T10_WheLastFrameSpare_AwardThrow_AndReturnEndGame
       fullName: Assets.Editor.ActionMasterTests.T10_WheLastFrameSpare_AwardThrow_AndReturnEndGame
       resultStatus: 1
-      duration: 0.0005978
+      duration: 0.0040056
       messages: 
       output: 
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
-    m_ResultText: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(1) (0.004s)
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ActionMasterTests][T11_WheLastFrameTwoStrikes_AwardThrow_AndReturnEndGame]'
+      name: T11_WheLastFrameTwoStrikes_AwardThrow_AndReturnEndGame
+      fullName: Assets.Editor.ActionMasterTests.T11_WheLastFrameTwoStrikes_AwardThrow_AndReturnEndGame
+      resultStatus: 1
+      duration: 0.0046041
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ActionMasterTests][T12_WhenEndGame_WithNoAwardThrow_ThenNextThrowBelowTenReturnsTidy]'
+      name: T12_WhenEndGame_WithNoAwardThrow_ThenNextThrowBelowTenReturnsTidy
+      fullName: Assets.Editor.ActionMasterTests.T12_WhenEndGame_WithNoAwardThrow_ThenNextThrowBelowTenReturnsTidy
+      resultStatus: 1
+      duration: 0.004019
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ActionMasterTests][T13_WhenEndGame_WithAwardThrow_ThenNextThrowBelowTenReturnsTidy]'
+      name: T13_WhenEndGame_WithAwardThrow_ThenNextThrowBelowTenReturnsTidy
+      fullName: Assets.Editor.ActionMasterTests.T13_WhenEndGame_WithAwardThrow_ThenNextThrowBelowTenReturnsTidy
+      resultStatus: 1
+      duration: 0.0035523
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ActionMasterTests][T14_WhenStrikeOn19thAndZeroOn20th_ReturnTidy]'
+      name: T14_WhenStrikeOn19thAndZeroOn20th_ReturnTidy
+      fullName: Assets.Editor.ActionMasterTests.T14_WhenStrikeOn19thAndZeroOn20th_ReturnTidy
+      resultStatus: 1
+      duration: 0.0043853
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ActionMasterTests][T15_WhenNothingHitsInTwentyThrows_ReturnEndGame]'
+      name: T15_WhenNothingHitsInTwentyThrows_ReturnEndGame
+      fullName: Assets.Editor.ActionMasterTests.T15_WhenNothingHitsInTwentyThrows_ReturnEndGame
+      resultStatus: 1
+      duration: 0.0036168
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    m_ResultText: ActionMasterTests (0.463s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3dc2f553
-      m_LastClickedID: 1408614973
+      m_SelectedIDs: 1d74cceb
+      m_LastClickedID: -338922467
       m_ExpandedIDs: 5dbc5b9dbb5124cd1d74ccebbe94dafb12a777104f692c12fe11d5744b0cf976ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -857,9 +912,9 @@ MonoBehaviour:
     height: 376
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 68060000
+    m_SelectedIDs: 58250000
     m_LastClickedID: 0
-    m_ExpandedIDs: 4690feff3e94feffa29bfeff6ea0feffe4a6feff8ea9feffccabfeff98aefeff54b3feffb8b5feffacb7feffd4b9feff3ebcfeffeabefeff64c2feffcec4feffc2c7feff2acafeffb2ccfeff26d1feff80d4feff30dcfefff2defeff7ee6fefff8e8feffa6ecfeff40f0feffbaf3feff3ef6feff2afafeff10fdfeff6202ffff1406fffff00cffffe818ffff5e1cffff6a24ffffd028ffff9832ffff5838ffff2c40fffff443ffffb046ffffd44affff5654ffff845fffff5467ffff3c6effff0e74ffff6479ffff3a7dffff0882ffffa893ffff5c98ffffc09fffff8aa8ffff8eadffff1cb2ffffeeb4ffff0eb9ffff6abbffffa6bdffffcac0ffff24c3ffff74c6ffff4eccffff26d5ffff84dbffffa4e0fffff4e7ffffe2fbffff00000000
+    m_ExpandedIDs: 9265fffffe70fffff674ffffc07affff6485ffff4a8affff3091ffff7a93fffff497ffffa89cffff68a2ffffcca9ffff52adffffb8afffff50b4ffffeeb7ffff5cbaffffe4bdffff4acbffff26d0ffff88d8ffff00deffffb8e2ffff7ae5fffface8ffff38ecffffe2eeffffd4f4ffffe2fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1018,18 +1073,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/START Pack/Scripts
+    - Assets/CSharp vNext Support
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/START Pack/Scripts
+  - Assets/CSharp vNext Support
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\UnityRepos\Bowlmaster
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 228}
-    m_SelectedIDs: 36260000
-    m_LastClickedID: 9782
+    scrollPos: {x: 0, y: 108}
+    m_SelectedIDs: 2e260000
+    m_LastClickedID: 9774
     m_ExpandedIDs: 00000000fe2400005c2500008025000098250000ca2500003626000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0

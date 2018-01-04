@@ -4,6 +4,7 @@ using System.Linq;
 using Assets.Scripts;
 using Assets.Scripts.Enums;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace Assets.Editor
 {
@@ -137,6 +138,66 @@ namespace Assets.Editor
                 sut.Bowl(0);
             }
             Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(0));
+        }
+
+        [Test]
+        public void T16_WhenKnockZeroPinsAndTenPins_ShouldBeInFirstFrameSecondThrow()
+        {
+            var sut = GetSystemUnderTest();
+            sut.Bowl(0);
+            sut.Bowl(10);
+            Assert.AreEqual(3, sut.CurrentThrowNumber);
+        }
+
+        [Test]
+        public void T17_WhenKnockZeroPinsAndTenPins_NextThrowBelowTenShouldReturnTidy()
+        {
+            var sut = GetSystemUnderTest();
+            sut.Bowl(0);
+            sut.Bowl(10);
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(5));
+        }
+
+        [Test]
+        public void T18_WhenKnockZeroPinsAndTenPins_NextTwoThrowWithSumBelowTenReturnEndTurn()
+        {
+            var sut = GetSystemUnderTest();
+            sut.Bowl(0);
+            sut.Bowl(10);
+            sut.Bowl(2);
+            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.Bowl(7));
+        }
+
+        [Test]
+        public void T19_WhenKnockZeroPinsAndTenPins_ThreeTimes_ShouldBeInFirstFrameFourthThrow()
+        {
+            var sut = GetSystemUnderTest();
+            for (int i = 0; i <= 2; i++)
+            {
+                sut.Bowl(0);
+                sut.Bowl(10);
+            }
+            Assert.AreEqual(7, sut.CurrentThrowNumber);
+        }
+
+        [Test]
+        public void T20_WhenThreeStrikesInTenthFrame_ReturnTwoResetsAndEndGame()
+        {
+            var sut = GetSystemUnderTest();
+            ProceedToTheLastFrame(sut);
+
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(10));
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(10));
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(10));
+        }
+
+        [Test]
+        public void T21_WhenTwoHitsUnderTen_ThatExceedsSumOfTen_ThrowsException()
+        {
+            var sut = GetSystemUnderTest();
+            sut.Bowl(3);           
+
+            Assert.Throws<UnityException>(() => sut.Bowl(8));
         }
 
         private ActionMaster GetSystemUnderTest()

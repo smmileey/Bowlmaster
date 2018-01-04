@@ -1,5 +1,6 @@
 using System;
 using Assets.Scripts.Enums;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -9,74 +10,82 @@ namespace Assets.Scripts
         private const int LastFrameSecondThrow = 20;
         private const int MaxThrowCount = 21;
         private const int MaxPinsCount = 10;
-
         private readonly int[] _scores = new int[MaxThrowCount];
-        private int _currentThrowNumber = 1;
+
+        private bool IsAdditionalThrowAwarded => GetLastFrameScore() >= MaxPinsCount;
+        private bool IsFirstThrowInFrame => CurrentThrowNumber % 2 != 0;
+
+        public ActionMaster()
+        {
+            CurrentThrowNumber = 1;
+        }
+
+        public int CurrentThrowNumber { get; set; }
 
         public AfterStrikeAction Bowl(int pinsHitCount)
         {
             if (pinsHitCount < 0 || pinsHitCount > 10) throw new ArgumentOutOfRangeException(nameof(pinsHitCount));
+            ValidateScoreInTurn(pinsHitCount);
 
-            _scores[_currentThrowNumber - 1] = pinsHitCount;
+            _scores[CurrentThrowNumber - 1] = pinsHitCount;
 
-            switch (_currentThrowNumber)
+            switch (CurrentThrowNumber)
             {
                 case MaxThrowCount:
-                    Reset();
+                    ResetActionMaster();
                     return AfterStrikeAction.EndGame;
                 case LastFrameSecondThrow:
-                    if (!IsAdditionalThrowAwarded())
+                    if (!IsAdditionalThrowAwarded)
                     {
-                        Reset();
+                        ResetActionMaster();
                         return AfterStrikeAction.EndGame;
                     }
 
-                    _currentThrowNumber++;
+                    CurrentThrowNumber++;
                     return ArePinsKnockedDown(pinsHitCount) ? AfterStrikeAction.Reset : AfterStrikeAction.Tidy;
             }
 
             if (pinsHitCount == MaxPinsCount)
             {
-                bool isLastFrameFirstThrow = _currentThrowNumber == LastFrameFirstThrow;
-                _currentThrowNumber += isLastFrameFirstThrow ? 1 : 2;
+                bool isLastFrameFirstThrow = CurrentThrowNumber == LastFrameFirstThrow;
+                CurrentThrowNumber += isLastFrameFirstThrow || !IsFirstThrowInFrame ? 1 : 2;
                 return isLastFrameFirstThrow ? AfterStrikeAction.Reset : AfterStrikeAction.EndTurn;
             }
 
-            if (IsFirstThrowInFrame())
+            if (IsFirstThrowInFrame)
             {
-                _currentThrowNumber++;
+                CurrentThrowNumber++;
                 return AfterStrikeAction.Tidy;
             }
 
-            _currentThrowNumber++;
+            CurrentThrowNumber++;
             return AfterStrikeAction.EndTurn;
         }
 
-        private void Reset()
+        private void ValidateScoreInTurn(int pinsHitCount)
         {
-            _currentThrowNumber = 1;
+            bool strikeLastTurn = CurrentThrowNumber - 2 >= 0 && _scores[CurrentThrowNumber - 2] == MaxPinsCount;
+            if (IsFirstThrowInFrame || strikeLastTurn) return;
+
+            bool maxPinCountExceededThisTurn = _scores[CurrentThrowNumber - 2] + pinsHitCount > MaxPinsCount;
+            if (maxPinCountExceededThisTurn) throw new UnityException("Sum of last two throws exceeded 10!");
         }
 
-        private bool IsAdditionalThrowAwarded()
+        private void ResetActionMaster()
         {
-            return GetLastFrameScore() >= MaxPinsCount;
+            CurrentThrowNumber = 1;
         }
 
         private bool ArePinsKnockedDown(int pinsHitCount)
         {
             bool strikeThisTurn = pinsHitCount == MaxPinsCount;
-            bool spareAndNotGutterBallThisTurn = GetLastFrameScore() == MaxPinsCount && pinsHitCount != 0;
-            return strikeThisTurn || spareAndNotGutterBallThisTurn;
+            bool spareThisTurn = GetLastFrameScore() == MaxPinsCount && pinsHitCount != 0;
+            return strikeThisTurn || spareThisTurn;
         }
 
         private int GetLastFrameScore()
         {
             return _scores[LastFrameFirstThrow - 1] + _scores[LastFrameFirstThrow];
-        }
-
-        private bool IsFirstThrowInFrame()
-        {
-            return _currentThrowNumber % 2 != 0;
         }
     }
 }
