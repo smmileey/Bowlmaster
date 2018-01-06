@@ -10,11 +10,6 @@ namespace Assets.Scripts
     [RequireComponent(typeof(Animator))]
     public class PinSetter : MonoBehaviour
     {
-        [Range(0f, 100f)]
-        public float PinRaiseOffset = 0.5f;
-        public GameObject BowlingPinLayout;
-        public Text StandingPinCountDisplayer;
-
         private const int PinSettleDownTimeInSeconds = 10;
 
         private readonly ActionMaster _actionMaster = new ActionMaster();
@@ -22,9 +17,15 @@ namespace Assets.Scripts
         private Ball _ball;
         private Animator _animator;
         private GameObject _pinSetCopy;
-        private bool _isBallWithinBounds;
         private bool _isPinSettleDownInProgress;
         private int _lastSettledPinsCount = ActionMaster.MaxPinsCount;
+
+        [Range(0f, 100f)]
+        public float PinRaiseOffset = 0.5f;
+        public GameObject BowlingPinLayout;
+        public Text StandingPinCountDisplayer;
+
+        public bool ShouldBallBeReset { get; set; }
 
         void Start()
         {
@@ -39,22 +40,13 @@ namespace Assets.Scripts
 
         void Update()
         {
-            if (_isBallWithinBounds)
+            if (ShouldBallBeReset)
             {
                 StandingPinCountDisplayer.text = GetStadingPinsCount().ToString();
                 if (_isPinSettleDownInProgress) return;
 
                 _isPinSettleDownInProgress = true;
                 StartCoroutine(WaitForPinsToSettleDown());
-            }
-        }
-
-        void OnTriggerEnter(Collider collider)
-        {
-            if (collider.GetComponent<Ball>() != null)
-            {
-                _isBallWithinBounds = true;
-                StandingPinCountDisplayer.color = Color.red;
             }
         }
 
@@ -83,7 +75,7 @@ namespace Assets.Scripts
 
         public void RenewPins()
         {
-            UpdatePinDisplayer(GetStadingPinsCount(), Color.red);
+            UpdatePinDisplayer(ActionMaster.MaxPinsCount, Color.red);
             RecreatePinSet();
         }
 
@@ -96,9 +88,8 @@ namespace Assets.Scripts
             PerformAfterStrikeAction(standingPinsCount);
             yield return null;
 
-            PrepareForTheNextScore();
+            PrepareForTheNextThrow();
         }
-
 
         private void UpdatePinDisplayer(int standingPinsCount, Color color)
         {
@@ -122,9 +113,9 @@ namespace Assets.Scripts
             if (lastSettledPinsCountShouldBeChanged) _lastSettledPinsCount = ActionMaster.MaxPinsCount;
         }
 
-        private void PrepareForTheNextScore()
+        private void PrepareForTheNextThrow()
         {
-            _isBallWithinBounds = false;
+            ShouldBallBeReset = false;
             _isPinSettleDownInProgress = false;
             _ball.Reset();
         }
