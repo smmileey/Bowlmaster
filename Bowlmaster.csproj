@@ -112,13 +112,16 @@
     <Compile Include="Assets\Scripts\Enums\Animations.cs" />
     <Compile Include="Assets\Scripts\Enums\PinBehavior.cs" />
     <Compile Include="Assets\Scripts\Floor.cs" />
-    <Compile Include="Assets\Scripts\LaneBox.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IPinBehavior.cs" />
+    <Compile Include="Assets\Scripts\LaneBox.cs" />
     <Compile Include="Assets\Scripts\Managers\PinBehaviorManager.cs" />
     <Compile Include="Assets\Scripts\Mappers\AfterStrikeActionToAnimationMapper.cs" />
     <Compile Include="Assets\Scripts\Pin.cs" />
+    <Compile Include="Assets\Scripts\PinCounter.cs" />
     <Compile Include="Assets\Scripts\PinSetter.cs" />
     <Compile Include="Assets\Scripts\PinSetterShredder.cs" />
+    <Compile Include="Assets\Scripts\ScoreMaster.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\CSharp vNext Support\AsyncTools\Plugins\AsyncBridge.Net35.xml" />

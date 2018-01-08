@@ -1,29 +1,20 @@
-using System;
-using Assets.Scripts;
 using UnityEngine;
 
-public class LaneBox : MonoBehaviour
+namespace Assets.Scripts
 {
-    private PinSetter _pinSetter;
-
-    void Start()
+    [RequireComponent(typeof(PinCounter))]
+    public class LaneBox : MonoBehaviour
     {
-        _pinSetter = FindObjectOfType<PinSetter>();
+        private PinCounter _pinCounter;
 
-        ValidateData();
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.GetComponent<Ball>() != null)
+        void Start()
         {
-            _pinSetter.ShouldBallBeReset = true;
-            _pinSetter.StandingPinCountDisplayer.color = Color.red;
-        }        
-    }
+            _pinCounter = FindObjectOfType<PinCounter>();
+        }
 
-    private void ValidateData()
-    {
-        if (_pinSetter == null) throw new ArgumentNullException(nameof(_pinSetter));
+        void OnTriggerExit(Collider collider)
+        {
+            if (collider.GetComponent<Ball>() != null) _pinCounter.UpdateScore = true;      
+        }
     }
 }
