@@ -10,194 +10,170 @@ namespace Assets.Editor
 {
     public class ActionMasterTests
     {
-        [TestCaseSource(nameof(InvalidPinCountCases))]
-        public void T01_WhenArgumentIsBelow0OrAbove10_OutOfRangeExceptionIsThrown(int pinsCount)
+        [Test]
+        public void T01_WhenArgumentIsNull_NullReferenceExceptionIsThrown()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => GetSystemUnderTest().Bowl(pinsCount));
+            Assert.Throws<ArgumentNullException>(() => GetSystemUnderTest().Bowl(null));
         }
 
         [Test]
         public void T02_WhenStrike_ReturnEndTurn()
         {
-            Assert.AreEqual(AfterStrikeAction.EndTurn, GetSystemUnderTest().Bowl(10));
+            Assert.AreEqual(AfterStrikeAction.EndTurn, GetSystemUnderTest().Bowl(new List<int> { 10 }));
         }
 
         [TestCaseSource(nameof(OneToNinePinsCases))]
-        public void T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(int pinsCount)
+        public void T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(List<int> throws)
         {
-            Assert.AreEqual(AfterStrikeAction.Tidy, GetSystemUnderTest().Bowl(pinsCount));
+            Assert.AreEqual(AfterStrikeAction.Tidy, GetSystemUnderTest().Bowl(throws));
         }
 
         [Test]
         public void T04_WhenSpare_ReturnEndTurn()
         {
             var sut = GetSystemUnderTest();
-            sut.Bowl(2);
-            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.Bowl(8));
+            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.Bowl(new List<int> { 2, 8 }));
         }
 
         [Test]
         public void T05_WhenLastFrameFirstHitUnderTen_ThenReturnTidy()
         {
             var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(2));
+            List<int> lastFrameStartList = ProceedToTheLastFrame();
+            lastFrameStartList.Add(2);
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(lastFrameStartList));
         }
 
         [Test]
         public void T06_WhenLastFrameTwoHitsUnderTen_ThenReturnEndGame()
         {
             var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-            sut.Bowl(2);
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(3));
+            List<int> lastFrameStartList = ProceedToTheLastFrame();
+            lastFrameStartList.AddRange(new[] { 2, 3 });
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFrameStartList));
         }
 
         [Test]
         public void T07_WhenLastFrameSpare_ThenReturnReset()
         {
             var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-            sut.Bowl(2);
-            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(8));
+            List<int> lastFrameStartList = ProceedToTheLastFrame();
+            lastFrameStartList.AddRange(new[] { 2, 8 });
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(lastFrameStartList));
         }
 
         [Test]
         public void T08_WhenLastFrameFirstHitStrike_ThenReturnReset()
         {
             var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(10));
+            List<int> lastFrameStartList = ProceedToTheLastFrame();
+            lastFrameStartList.Add(10);
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(lastFrameStartList));
         }
 
         [Test]
         public void T09_WhenLastFrameFirstHitStrikeThenLessThanTen_ReturnTidy()
         {
             var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-            sut.Bowl(10);
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(2));
+            List<int> lastFrameStartList = ProceedToTheLastFrame();
+            lastFrameStartList.AddRange(new[] { 10, 2 });
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(lastFrameStartList));
         }
 
         [Test]
         public void T10_WheLastFrameSpare_AwardThrow_AndReturnEndGame()
         {
             var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-            sut.Bowl(4);
-            sut.Bowl(6);
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(10));
+            List<int> lastFrameStartList = ProceedToTheLastFrame();
+            lastFrameStartList.AddRange(new[] { 4, 6, 10 });
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFrameStartList));
         }
 
         [Test]
         public void T11_WheLastFrameTwoStrikes_AwardThrow_AndReturnEndGame()
         {
             var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-            sut.Bowl(10);
-            sut.Bowl(10);
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(5));
+            List<int> lastFrameStartList = ProceedToTheLastFrame();
+            lastFrameStartList.AddRange(new[] { 10, 10, 5 });
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFrameStartList));
         }
 
         [Test]
-        public void T12_WhenEndGame_WithNoAwardThrow_ThenNextThrowBelowTenReturnsTidy()
+        public void T12_GameHasFinished_WithNoAwardThrow_ThenEndGameReturned()
         {
             var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-            sut.Bowl(0);
-            sut.Bowl(2);
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(1));
+            List<int> lastFrameStartList = ProceedToTheLastFrame();
+            lastFrameStartList.AddRange(new[] { 0, 2 });
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFrameStartList));
         }
 
         [Test]
-        public void T13_WhenEndGame_WithAwardThrow_ThenNextThrowBelowTenReturnsTidy()
+        public void T13_WhenStrikeOn19thAndZeroOn20th_ReturnTidy()
         {
             var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-            sut.Bowl(0);
-            sut.Bowl(10);
-            sut.Bowl(3);
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(1));
+            List<int> lastFrameStartList = ProceedToTheLastFrame();
+            lastFrameStartList.AddRange(new[] { 10, 0 });
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(lastFrameStartList));
         }
 
         [Test]
-        public void T14_WhenStrikeOn19thAndZeroOn20th_ReturnTidy()
+        public void T14_WhenNothingHitsInTwentyThrows_ReturnEndGame()
         {
             var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-            sut.Bowl(10);
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(0));
+            var lastFramewStartList = new List<int>(Enumerable.Repeat(0, 20));
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFramewStartList));
         }
 
         [Test]
-        public void T15_WhenNothingHitsInTwentyThrows_ReturnEndGame()
+        public void T15_WhenKnockZeroPinsAndTenPins_ShouldBeInFirstFrameSecondThrow()
         {
             var sut = GetSystemUnderTest();
-            for (int i = 0; i < 19; i++)
-            {
-                sut.Bowl(0);
-            }
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(0));
+            var lastFramewStartList = new List<int> { 0, 10, 3 };
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(lastFramewStartList));
         }
 
         [Test]
-        public void T16_WhenKnockZeroPinsAndTenPins_ShouldBeInFirstFrameSecondThrow()
+        public void T16_WhenKnockZeroPinsAndTenPins_NextTwoThrowWithSumBelowTenReturnEndTurn()
         {
             var sut = GetSystemUnderTest();
-            sut.Bowl(0);
-            sut.Bowl(10);
-            Assert.AreEqual(3, sut.CurrentThrowNumber);
+            var lastFramewStartList = new List<int> { 0, 10, 2, 7 };
+            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.Bowl(lastFramewStartList));
         }
 
         [Test]
-        public void T17_WhenKnockZeroPinsAndTenPins_NextThrowBelowTenShouldReturnTidy()
+        public void T17_WhenKnockZeroPinsAndTenPins_ThreeTimes_ShouldBeInFirstFrameFourthThrow()
         {
             var sut = GetSystemUnderTest();
-            sut.Bowl(0);
-            sut.Bowl(10);
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(5));
+            var lastFramewStartList = new List<int> { 0, 10, 0, 10, 0, 10, 2 };
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(lastFramewStartList));
         }
 
         [Test]
-        public void T18_WhenKnockZeroPinsAndTenPins_NextTwoThrowWithSumBelowTenReturnEndTurn()
+        public void T18_WhenThreeStrikesInTenthFrame_ReturnTwoResetsAndEndGame()
         {
             var sut = GetSystemUnderTest();
-            sut.Bowl(0);
-            sut.Bowl(10);
-            sut.Bowl(2);
-            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.Bowl(7));
+            List<int> lastFrameStartList = ProceedToTheLastFrame();
+
+            lastFrameStartList.Add(10);
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(lastFrameStartList));
+            lastFrameStartList.Add(10);
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(lastFrameStartList));
+            lastFrameStartList.Add(10);
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFrameStartList));
         }
 
         [Test]
-        public void T19_WhenKnockZeroPinsAndTenPins_ThreeTimes_ShouldBeInFirstFrameFourthThrow()
+        public void T19_WhenTwoHitsUnderTen_ThatExceedsSumOfTen_ThrowsException()
         {
             var sut = GetSystemUnderTest();
-            for (int i = 0; i <= 2; i++)
-            {
-                sut.Bowl(0);
-                sut.Bowl(10);
-            }
-            Assert.AreEqual(7, sut.CurrentThrowNumber);
+            var lastFramewStartList = new List<int> { 3, 8 };
+            Assert.Throws<UnityException>(() => sut.Bowl(lastFramewStartList));
         }
 
-        [Test]
-        public void T20_WhenThreeStrikesInTenthFrame_ReturnTwoResetsAndEndGame()
+        [TestCaseSource(nameof(InvalidThrowsCases))]
+        public void T20_WhenIncorrectArgument_ArgumentOutOfRangeIsThrown(List<int> throws)
         {
-            var sut = GetSystemUnderTest();
-            ProceedToTheLastFrame(sut);
-
-            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(10));
-            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(10));
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(10));
-        }
-
-        [Test]
-        public void T21_WhenTwoHitsUnderTen_ThatExceedsSumOfTen_ThrowsException()
-        {
-            var sut = GetSystemUnderTest();
-            sut.Bowl(3);           
-
-            Assert.Throws<UnityException>(() => sut.Bowl(8));
+            Assert.Throws<ArgumentOutOfRangeException>(() => GetSystemUnderTest().Bowl(throws));
         }
 
         private ActionMaster GetSystemUnderTest()
@@ -205,23 +181,23 @@ namespace Assets.Editor
             return new ActionMaster();
         }
 
-        private void ProceedToTheLastFrame(ActionMaster actionMaster)
+        private List<int> ProceedToTheLastFrame()
         {
-            for (int i = 0; i <= 8; i++)
+            return Enumerable.Repeat(1, 18).ToList();
+        }
+
+        private static IEnumerable<List<int>> InvalidThrowsCases()
+        {
+            yield return new List<int>();
+            yield return new List<int>(Enumerable.Repeat(1, 22));
+        }
+
+        private static IEnumerable<List<int>> OneToNinePinsCases()
+        {
+            for (int i = 1; i <= 9; i++)
             {
-                actionMaster.Bowl(10);
+                yield return new List<int> { i };
             }
-        }
-
-        private static IEnumerable<int> InvalidPinCountCases()
-        {
-            yield return -1;
-            yield return 11;
-        }
-
-        private static IEnumerable<int> OneToNinePinsCases()
-        {
-            return Enumerable.Range(1, 9);
         }
     }
 }

@@ -28,15 +28,15 @@ namespace Assets.Scripts
         public void Score(int score)
         {
             _currentThrows.Add(score);
-            PerformAfterStrikeAction(score);
+            PerformAfterStrikeAction();
             //talk to ScoreMaster
             _ball.Reset();
             //update game score
         }
 
-        private void PerformAfterStrikeAction(int score)
+        private void PerformAfterStrikeAction()
         {
-            AfterStrikeAction afterStrikeAction = _actionMaster.Bowl(score);
+            AfterStrikeAction afterStrikeAction = _actionMaster.Bowl(_currentThrows);
             var pinSetterAnimator = _pinSetter.GetComponent<Animator>();
             if (pinSetterAnimator == null) throw new ArgumentNullException(nameof(pinSetterAnimator));
 
