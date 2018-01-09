@@ -108,7 +108,7 @@ MonoBehaviour:
   m_MinSize: {x: 508, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
-  controlID: 50
+  controlID: 121
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_MinSize: {x: 508, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 51
+  controlID: 122
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -151,12 +151,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1082
+    width: 742
     height: 675
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 52
+  controlID: 13
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -175,12 +175,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1082
+    width: 742
     height: 397
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 53
+  controlID: 14
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,10 +197,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 246
+    width: 200
     height: 397
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -220,12 +220,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 246
+    x: 200
     y: 0
-    width: 836
+    width: 542
     height: 397
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 19}
@@ -249,7 +249,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 397
-    width: 1082
+    width: 742
     height: 278
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
@@ -274,12 +274,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1082
+    x: 742
     y: 0
-    width: 284
+    width: 624
     height: 675
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 21}
@@ -308,9 +308,9 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1084
+    x: 744
     y: 92
-    width: 282
+    width: 622
     height: 654
   m_IsSceneBased: 0
   m_TestTypeToolbarIndex: 1
@@ -381,7 +381,7 @@ MonoBehaviour:
       name: Assembly-CSharp-Editor.dll
       fullName: E:/UnityRepos/Bowlmaster/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
       resultStatus: 1
-      duration: 0.590119
+      duration: 2.8924415
       messages: 
       output: 
       stacktrace: 
@@ -392,7 +392,7 @@ MonoBehaviour:
       name: Assets
       fullName: Assets
       resultStatus: 1
-      duration: 0.5797391
+      duration: 2.8705654
       messages: 
       output: 
       stacktrace: 
@@ -403,7 +403,7 @@ MonoBehaviour:
       name: Editor
       fullName: Assets.Editor
       resultStatus: 1
-      duration: 0.5682468
+      duration: 2.8513932
       messages: 
       output: 
       stacktrace: 
@@ -414,7 +414,7 @@ MonoBehaviour:
       name: ActionMasterTests
       fullName: Assets.Editor.ActionMasterTests
       resultStatus: 1
-      duration: 0.5572787
+      duration: 1.1895047
       messages: 
       output: 
       stacktrace: 
@@ -425,7 +425,7 @@ MonoBehaviour:
       name: T01_WhenArgumentIsNull_NullReferenceExceptionIsThrown
       fullName: Assets.Editor.ActionMasterTests.T01_WhenArgumentIsNull_NullReferenceExceptionIsThrown
       resultStatus: 1
-      duration: 0.0106643
+      duration: 0.0146013
       messages: 
       output: 
       stacktrace: 
@@ -436,7 +436,7 @@ MonoBehaviour:
       name: T02_WhenStrike_ReturnEndTurn
       fullName: Assets.Editor.ActionMasterTests.T02_WhenStrike_ReturnEndTurn
       resultStatus: 1
-      duration: 0.0145997
+      duration: 0.0074245
       messages: 
       output: 
       stacktrace: 
@@ -447,7 +447,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy
       resultStatus: 1
-      duration: 0.1698417
+      duration: 0.3622905
       messages: 
       output: 
       stacktrace: 
@@ -458,7 +458,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.0037354
+      duration: 0.0135027
       messages: 
       output: 
       stacktrace: 
@@ -469,7 +469,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.003352
+      duration: 0.0037617
       messages: 
       output: 
       stacktrace: 
@@ -480,7 +480,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.0033651
+      duration: 0.0035133
       messages: 
       output: 
       stacktrace: 
@@ -491,7 +491,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.004281
+      duration: 0.0140976
       messages: 
       output: 
       stacktrace: 
@@ -502,7 +502,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.0037075
+      duration: 0.0141678
       messages: 
       output: 
       stacktrace: 
@@ -513,7 +513,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.0036648
+      duration: 0.0140385
       messages: 
       output: 
       stacktrace: 
@@ -524,7 +524,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.0037091
+      duration: 0.0140192
       messages: 
       output: 
       stacktrace: 
@@ -535,7 +535,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.0037867
+      duration: 0.0035958
       messages: 
       output: 
       stacktrace: 
@@ -546,7 +546,7 @@ MonoBehaviour:
       name: T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.0034743
+      duration: 0.0143464
       messages: 
       output: 
       stacktrace: 
@@ -557,7 +557,7 @@ MonoBehaviour:
       name: T04_WhenSpare_ReturnEndTurn
       fullName: Assets.Editor.ActionMasterTests.T04_WhenSpare_ReturnEndTurn
       resultStatus: 1
-      duration: 0.0040835
+      duration: 0.0040565
       messages: 
       output: 
       stacktrace: 
@@ -568,7 +568,7 @@ MonoBehaviour:
       name: T05_WhenLastFrameFirstHitUnderTen_ThenReturnTidy
       fullName: Assets.Editor.ActionMasterTests.T05_WhenLastFrameFirstHitUnderTen_ThenReturnTidy
       resultStatus: 1
-      duration: 0.0046489
+      duration: 0.0033926
       messages: 
       output: 
       stacktrace: 
@@ -579,7 +579,7 @@ MonoBehaviour:
       name: T06_WhenLastFrameTwoHitsUnderTen_ThenReturnEndGame
       fullName: Assets.Editor.ActionMasterTests.T06_WhenLastFrameTwoHitsUnderTen_ThenReturnEndGame
       resultStatus: 1
-      duration: 0.0041024
+      duration: 0.0125483
       messages: 
       output: 
       stacktrace: 
@@ -590,7 +590,7 @@ MonoBehaviour:
       name: T07_WhenLastFrameSpare_ThenReturnReset
       fullName: Assets.Editor.ActionMasterTests.T07_WhenLastFrameSpare_ThenReturnReset
       resultStatus: 1
-      duration: 0.0038277
+      duration: 0.0139084
       messages: 
       output: 
       stacktrace: 
@@ -601,7 +601,7 @@ MonoBehaviour:
       name: T08_WhenLastFrameFirstHitStrike_ThenReturnReset
       fullName: Assets.Editor.ActionMasterTests.T08_WhenLastFrameFirstHitStrike_ThenReturnReset
       resultStatus: 1
-      duration: 0.0036595
+      duration: 0.0132268
       messages: 
       output: 
       stacktrace: 
@@ -612,7 +612,7 @@ MonoBehaviour:
       name: T09_WhenLastFrameFirstHitStrikeThenLessThanTen_ReturnTidy
       fullName: Assets.Editor.ActionMasterTests.T09_WhenLastFrameFirstHitStrikeThenLessThanTen_ReturnTidy
       resultStatus: 1
-      duration: 0.0173247
+      duration: 0.0132375
       messages: 
       output: 
       stacktrace: 
@@ -623,7 +623,7 @@ MonoBehaviour:
       name: T10_WheLastFrameSpare_AwardThrow_AndReturnEndGame
       fullName: Assets.Editor.ActionMasterTests.T10_WheLastFrameSpare_AwardThrow_AndReturnEndGame
       resultStatus: 1
-      duration: 0.0044871
+      duration: 0.0133627
       messages: 
       output: 
       stacktrace: 
@@ -634,7 +634,7 @@ MonoBehaviour:
       name: T11_WheLastFrameTwoStrikes_AwardThrow_AndReturnEndGame
       fullName: Assets.Editor.ActionMasterTests.T11_WheLastFrameTwoStrikes_AwardThrow_AndReturnEndGame
       resultStatus: 1
-      duration: 0.0035827
+      duration: 0.0128956
       messages: 
       output: 
       stacktrace: 
@@ -645,7 +645,7 @@ MonoBehaviour:
       name: T12_GameHasFinished_WithNoAwardThrow_ThenEndGameReturned
       fullName: Assets.Editor.ActionMasterTests.T12_GameHasFinished_WithNoAwardThrow_ThenEndGameReturned
       resultStatus: 1
-      duration: 0.0035827
+      duration: 0.0131632
       messages: 
       output: 
       stacktrace: 
@@ -656,7 +656,7 @@ MonoBehaviour:
       name: T13_WhenStrikeOn19thAndZeroOn20th_ReturnTidy
       fullName: Assets.Editor.ActionMasterTests.T13_WhenStrikeOn19thAndZeroOn20th_ReturnTidy
       resultStatus: 1
-      duration: 0.0036779
+      duration: 0.0036344
       messages: 
       output: 
       stacktrace: 
@@ -667,7 +667,7 @@ MonoBehaviour:
       name: T14_WhenNothingHitsInTwentyThrows_ReturnEndGame
       fullName: Assets.Editor.ActionMasterTests.T14_WhenNothingHitsInTwentyThrows_ReturnEndGame
       resultStatus: 1
-      duration: 0.0046809
+      duration: 0.0140894
       messages: 
       output: 
       stacktrace: 
@@ -678,7 +678,7 @@ MonoBehaviour:
       name: T15_WhenKnockZeroPinsAndTenPins_ShouldBeInFirstFrameSecondThrow
       fullName: Assets.Editor.ActionMasterTests.T15_WhenKnockZeroPinsAndTenPins_ShouldBeInFirstFrameSecondThrow
       resultStatus: 1
-      duration: 0.0035748
+      duration: 0.0088169
       messages: 
       output: 
       stacktrace: 
@@ -689,7 +689,7 @@ MonoBehaviour:
       name: T16_WhenKnockZeroPinsAndTenPins_NextTwoThrowWithSumBelowTenReturnEndTurn
       fullName: Assets.Editor.ActionMasterTests.T16_WhenKnockZeroPinsAndTenPins_NextTwoThrowWithSumBelowTenReturnEndTurn
       resultStatus: 1
-      duration: 0.0042814
+      duration: 0.0129456
       messages: 
       output: 
       stacktrace: 
@@ -700,7 +700,7 @@ MonoBehaviour:
       name: T17_WhenKnockZeroPinsAndTenPins_ThreeTimes_ShouldBeInFirstFrameFourthThrow
       fullName: Assets.Editor.ActionMasterTests.T17_WhenKnockZeroPinsAndTenPins_ThreeTimes_ShouldBeInFirstFrameFourthThrow
       resultStatus: 1
-      duration: 0.0038697
+      duration: 0.0130544
       messages: 
       output: 
       stacktrace: 
@@ -711,7 +711,7 @@ MonoBehaviour:
       name: T18_WhenThreeStrikesInTenthFrame_ReturnTwoResetsAndEndGame
       fullName: Assets.Editor.ActionMasterTests.T18_WhenThreeStrikesInTenthFrame_ReturnTwoResetsAndEndGame
       resultStatus: 1
-      duration: 0.0041299
+      duration: 0.0134055
       messages: 
       output: 
       stacktrace: 
@@ -722,7 +722,7 @@ MonoBehaviour:
       name: T19_WhenTwoHitsUnderTen_ThatExceedsSumOfTen_ThrowsException
       fullName: Assets.Editor.ActionMasterTests.T19_WhenTwoHitsUnderTen_ThatExceedsSumOfTen_ThrowsException
       resultStatus: 1
-      duration: 0.0037703
+      duration: 0.0136735
       messages: 
       output: 
       stacktrace: 
@@ -733,7 +733,7 @@ MonoBehaviour:
       name: T20_WhenIncorrectArgument_ArgumentOutOfRangeIsThrown
       fullName: Assets.Editor.ActionMasterTests.T20_WhenIncorrectArgument_ArgumentOutOfRangeIsThrown
       resultStatus: 1
-      duration: 0.0345136
+      duration: 0.0709776
       messages: 
       output: 
       stacktrace: 
@@ -744,7 +744,7 @@ MonoBehaviour:
       name: T20_WhenIncorrectArgument_ArgumentOutOfRangeIsThrown(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T20_WhenIncorrectArgument_ArgumentOutOfRangeIsThrown(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.0047321
+      duration: 0.013976
       messages: 
       output: 
       stacktrace: 
@@ -755,20 +755,560 @@ MonoBehaviour:
       name: T20_WhenIncorrectArgument_ArgumentOutOfRangeIsThrown(System.Collections.Generic.List`1[System.Int32])
       fullName: Assets.Editor.ActionMasterTests.T20_WhenIncorrectArgument_ArgumentOutOfRangeIsThrown(System.Collections.Generic.List`1[System.Int32])
       resultStatus: 1
-      duration: 0.0039271
+      duration: 0.0041431
       messages: 
       output: 
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
-    m_ResultText: T13_WhenStrikeOn19thAndZeroOn20th_ReturnTidy (0.004s)
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests]'
+      name: ScoreMasterTests
+      fullName: Assets.Editor.ScoreMasterTests
+      resultStatus: 1
+      duration: 1.6045297
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T01_WhenArgumentNull_ThenArgumentNullExceptionIsThrown]'
+      name: T01_WhenArgumentNull_ThenArgumentNullExceptionIsThrown
+      fullName: Assets.Editor.ScoreMasterTests.T01_WhenArgumentNull_ThenArgumentNullExceptionIsThrown
+      resultStatus: 1
+      duration: 0.0140512
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown]'
+      name: T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown
+      fullName: Assets.Editor.ScoreMasterTests.T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown
+      resultStatus: 1
+      duration: 0.0921531
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown][T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])]0'
+      name: T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.0132437
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown][T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])]1'
+      name: T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T02_WhenThrowsListCountIsIncorrect_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.0135331
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown]'
+      name: T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown
+      fullName: Assets.Editor.ScoreMasterTests.T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown
+      resultStatus: 1
+      duration: 0.0935765
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown][T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])]0'
+      name: T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.0131492
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown][T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])]1'
+      name: T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T03_WhenThrowsListContainIncorrectValue_ThenArgumentOutOfRangeExceptionIsThrown(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.0135906
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T04_WhenOneThrow_ThenEmptyListReturned]'
+      name: T04_WhenOneThrow_ThenEmptyListReturned
+      fullName: Assets.Editor.ScoreMasterTests.T04_WhenOneThrow_ThenEmptyListReturned
+      resultStatus: 1
+      duration: 0.068053
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T04_WhenOneThrow_ThenEmptyListReturned][T04_WhenOneThrow_ThenEmptyListReturned(System.Collections.Generic.List`1[System.Int32])]0'
+      name: T04_WhenOneThrow_ThenEmptyListReturned(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T04_WhenOneThrow_ThenEmptyListReturned(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.0037129
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T04_WhenOneThrow_ThenEmptyListReturned][T04_WhenOneThrow_ThenEmptyListReturned(System.Collections.Generic.List`1[System.Int32])]1'
+      name: T04_WhenOneThrow_ThenEmptyListReturned(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T04_WhenOneThrow_ThenEmptyListReturned(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.0035933
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T04_WhenOneThrow_ThenEmptyListReturned][T04_WhenOneThrow_ThenEmptyListReturned(System.Collections.Generic.List`1[System.Int32])]2'
+      name: T04_WhenOneThrow_ThenEmptyListReturned(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T04_WhenOneThrow_ThenEmptyListReturned(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.0112297
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T05_WhenSumOfTwoThrowsExceedsTen_ReturnArgumentOutOfRangeException]'
+      name: T05_WhenSumOfTwoThrowsExceedsTen_ReturnArgumentOutOfRangeException
+      fullName: Assets.Editor.ScoreMasterTests.T05_WhenSumOfTwoThrowsExceedsTen_ReturnArgumentOutOfRangeException
+      resultStatus: 1
+      duration: 0.0047038
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T06_WhenTwoThrowsWithSumBelowTen_ThenOneElementIsReturned]'
+      name: T06_WhenTwoThrowsWithSumBelowTen_ThenOneElementIsReturned
+      fullName: Assets.Editor.ScoreMasterTests.T06_WhenTwoThrowsWithSumBelowTen_ThenOneElementIsReturned
+      resultStatus: 1
+      duration: 0.0133734
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T07_WhenTwoThrowsWithSumBelowTen_ThenScoreIsCalculatedCorrectly]'
+      name: T07_WhenTwoThrowsWithSumBelowTen_ThenScoreIsCalculatedCorrectly
+      fullName: Assets.Editor.ScoreMasterTests.T07_WhenTwoThrowsWithSumBelowTen_ThenScoreIsCalculatedCorrectly
+      resultStatus: 1
+      duration: 0.0133249
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T08_WhenStrike_ThenScoreIsNotCalculatedImmediately]'
+      name: T08_WhenStrike_ThenScoreIsNotCalculatedImmediately
+      fullName: Assets.Editor.ScoreMasterTests.T08_WhenStrike_ThenScoreIsNotCalculatedImmediately
+      resultStatus: 1
+      duration: 0.0909962
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T08_WhenStrike_ThenScoreIsNotCalculatedImmediately][T08_WhenStrike_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])]0'
+      name: T08_WhenStrike_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T08_WhenStrike_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.0133
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T08_WhenStrike_ThenScoreIsNotCalculatedImmediately][T08_WhenStrike_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])]1'
+      name: T08_WhenStrike_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T08_WhenStrike_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.0130528
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T09_WhenSpare_ThenScoreIsNotCalculatedImmediately]'
+      name: T09_WhenSpare_ThenScoreIsNotCalculatedImmediately
+      fullName: Assets.Editor.ScoreMasterTests.T09_WhenSpare_ThenScoreIsNotCalculatedImmediately
+      resultStatus: 1
+      duration: 0.0603835
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T09_WhenSpare_ThenScoreIsNotCalculatedImmediately][T09_WhenSpare_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])]0'
+      name: T09_WhenSpare_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T09_WhenSpare_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.0133036
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T09_WhenSpare_ThenScoreIsNotCalculatedImmediately][T09_WhenSpare_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])]1'
+      name: T09_WhenSpare_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])
+      fullName: Assets.Editor.ScoreMasterTests.T09_WhenSpare_ThenScoreIsNotCalculatedImmediately(System.Collections.Generic.List`1[System.Int32])
+      resultStatus: 1
+      duration: 0.003875
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T10_WhenStrike_ThenScoreIsCorrectlyReturned]'
+      name: T10_WhenStrike_ThenScoreIsCorrectlyReturned
+      fullName: Assets.Editor.ScoreMasterTests.T10_WhenStrike_ThenScoreIsCorrectlyReturned
+      resultStatus: 1
+      duration: 0.2880322
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T10_WhenStrike_ThenScoreIsCorrectlyReturned][T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]0'
+      name: T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0178091
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T10_WhenStrike_ThenScoreIsCorrectlyReturned][T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]1'
+      name: T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0074626
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T10_WhenStrike_ThenScoreIsCorrectlyReturned][T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]2'
+      name: T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0080727
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T10_WhenStrike_ThenScoreIsCorrectlyReturned][T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]3'
+      name: T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0085907
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T10_WhenStrike_ThenScoreIsCorrectlyReturned][T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]4'
+      name: T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0133283
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T10_WhenStrike_ThenScoreIsCorrectlyReturned][T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]5'
+      name: T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0131841
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T10_WhenStrike_ThenScoreIsCorrectlyReturned][T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]6'
+      name: T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.008367
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T10_WhenStrike_ThenScoreIsCorrectlyReturned][T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]7'
+      name: T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0084146
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T11_WhenSpare_ThenScoreIsCorrectlyReturned]'
+      name: T11_WhenSpare_ThenScoreIsCorrectlyReturned
+      fullName: Assets.Editor.ScoreMasterTests.T11_WhenSpare_ThenScoreIsCorrectlyReturned
+      resultStatus: 1
+      duration: 0.2591573
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T11_WhenSpare_ThenScoreIsCorrectlyReturned][T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]0'
+      name: T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0041903
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T11_WhenSpare_ThenScoreIsCorrectlyReturned][T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]1'
+      name: T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0043459
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T11_WhenSpare_ThenScoreIsCorrectlyReturned][T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]2'
+      name: T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0038524
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T11_WhenSpare_ThenScoreIsCorrectlyReturned][T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]3'
+      name: T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0142166
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T11_WhenSpare_ThenScoreIsCorrectlyReturned][T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]4'
+      name: T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0086023
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T11_WhenSpare_ThenScoreIsCorrectlyReturned][T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]5'
+      name: T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0133463
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T11_WhenSpare_ThenScoreIsCorrectlyReturned][T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]6'
+      name: T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.013343
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T11_WhenSpare_ThenScoreIsCorrectlyReturned][T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]7'
+      name: T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T11_WhenSpare_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0091376
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned]'
+      name: T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned
+      fullName: Assets.Editor.ScoreMasterTests.T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned
+      resultStatus: 1
+      duration: 0.0877987
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned][T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]0'
+      name: T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0130458
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned][T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]1'
+      name: T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0126874
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned][T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]2'
+      name: T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T12_WhenRoundTenthWithNoAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0006392
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned]'
+      name: T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned
+      fullName: Assets.Editor.ScoreMasterTests.T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned
+      resultStatus: 1
+      duration: 0.211847
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]0'
+      name: T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0191848
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]1'
+      name: T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0128024
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]2'
+      name: T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0137014
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]3'
+      name: T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0131271
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreMasterTests][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned][T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)]4'
+      name: T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      fullName: Assets.Editor.ScoreMasterTests.T13_WhenRoundTenthWithAwardThrow_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      resultStatus: 1
+      duration: 0.0084569
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    m_ResultText: T10_WhenStrike_ThenScoreIsCorrectlyReturned(Assets.Editor.ScoreMasterTests+TestData)
+      (0.018s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 86435584
-      m_LastClickedID: -2074786938
-      m_ExpandedIDs: 5dbc5b9dbb5124cd1d74ccebbe94dafb12a777104f692c12fe11d5744b0cf976ffffff7f
+      m_SelectedIDs: 2a3032d2
+      m_LastClickedID: -768462806
+      m_ExpandedIDs: 5dbc5b9dbb5124cdbe94dafb12a777104f692c12fe11d5744b0cf976ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -963,13 +1503,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 92
-    width: 244
+    width: 198
     height: 376
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e4330000
-    m_LastClickedID: 13284
-    m_ExpandedIDs: 7e40feffc045feff9c4afeff9455feffda59feff465efeff5e61feffc064feff4668feff7a6bfeff5a6ffeff2076feff187cfeff8e7efeff4287feff7092feffce94feffd699fefffec8feff1cc9feff46cafeff981effff6afbffffa8fbffffc2fbffffe0fbffff00000000a2260000e4330000
+    m_SelectedIDs: 62060000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 12bbffff6cbdffffc2c2ffff8ec9ffff9ecdffffacd4ffffbad8ffff46dcfffff0e0fffface3ffff3ce8ffff8eedffffe2fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1013,9 +1553,9 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 248
+    x: 202
     y: 92
-    width: 832
+    width: 538
     height: 376
   m_SceneLighting: 1
   lastFramingTime: 317.66052803028714
@@ -1115,7 +1655,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 489
-    width: 1080
+    width: 740
     height: 257
   m_SearchFilter:
     m_NameFilter: 
@@ -1128,19 +1668,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\UnityRepos\Bowlmaster
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 32}
-    m_SelectedIDs: 06250000
-    m_LastClickedID: 9478
-    m_ExpandedIDs: 00000000062500008c25000000ca9a3bffffff7f
+    m_SelectedIDs: 94250000
+    m_LastClickedID: 9620
+    m_ExpandedIDs: 000000000e2500009425000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1168,7 +1708,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000062500008c250000
+    m_ExpandedIDs: 000000000e25000094250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

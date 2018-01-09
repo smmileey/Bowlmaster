@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Assets.Editor
 {
     internal class ScoreMasterTests
-    {
+    {   
         [Test]
         public void T01_WhenArgumentNull_ThenArgumentNullExceptionIsThrown()
         {
