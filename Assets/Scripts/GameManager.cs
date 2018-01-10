@@ -8,7 +8,7 @@ namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        private List<int> _currentThrows = new List<int>();
+        private readonly List<int> _currentThrows = new List<int>();
         private PinSetter _pinSetter;
         private Ball _ball;
         private readonly ActionMaster _actionMaster = new ActionMaster();

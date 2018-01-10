@@ -22,6 +22,13 @@ namespace Assets.Editor
             Assert.AreEqual(AfterStrikeAction.EndTurn, GetSystemUnderTest().Bowl(new List<int> { 10 }));
         }
 
+        [Test]
+        public void T02a_WhenStrikeAndHitBelowTen_ReturnTidy()
+        {
+            ActionMaster systemUnderTest = GetSystemUnderTest();
+            Assert.AreEqual(AfterStrikeAction.Tidy, systemUnderTest.Bowl(new List<int> { 10, 2 }));
+        }
+
         [TestCaseSource(nameof(OneToNinePinsCases))]
         public void T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(List<int> throws)
         {

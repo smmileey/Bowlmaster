@@ -67,7 +67,7 @@ namespace Assets.Scripts
 
         private bool IsFirstThrowInFrame(List<int> throws)
         {
-            return throws.Count % 2 != 0;
+            return throws.Count % 2 != 0 || throws[CurrentThrowNumber - 2] == MaxPinsCount;
         }
 
         private int GetLastFrameScore(List<int> throws)

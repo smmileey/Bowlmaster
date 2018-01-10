@@ -138,6 +138,7 @@
   <ItemGroup>
     <Compile Include="Assets\CSharp vNext Support\Editor\UnitySchedulerEditor.cs" />
     <Compile Include="Assets\Editor\ActionMasterTests.cs" />
+    <Compile Include="Assets\Editor\PinSettlementManagerTests.cs" />
     <Compile Include="Assets\Editor\ScoreMasterTests.cs" />
   </ItemGroup>
   <ItemGroup>

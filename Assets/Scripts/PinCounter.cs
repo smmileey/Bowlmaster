@@ -9,9 +9,11 @@ namespace Assets.Scripts
     {
         public Text StandingPinCountDisplayer;
 
-        private const int PinSettleDownTimeInSeconds = 10;
+        private const float PinsFloatingThresholdInSeconds = 3;
+        private const float TimeBeforeSetlementProcessIsOnInSeconds = 2;
         private int _lastSettledPinsCount = ActionMaster.MaxPinsCount;
         private GameManager _gameManager;
+        private readonly PinSettlementManager _pinSettlementManager = new PinSettlementManager(PinsFloatingThresholdInSeconds);
 
         private bool IsSettlementInProgress { get; set; }
 
@@ -68,10 +70,11 @@ namespace Assets.Scripts
 
         private IEnumerator WaitForPinsToSettleDown()
         {
-            yield return new WaitForSeconds(PinSettleDownTimeInSeconds);
+            yield return new WaitForSeconds(TimeBeforeSetlementProcessIsOnInSeconds);
+            yield return new WaitUntil(ArePinsSettled());
 
             int standingPinsCount = GetStadingPinsCount();
-            EstablishScore();
+            StabilizePins();
             UpdatePinDisplayer(standingPinsCount, Color.green);
             yield return null;
 
@@ -80,16 +83,30 @@ namespace Assets.Scripts
             _gameManager.Score(score);
         }
 
-        private void EstablishScore()
+        private Func<bool> ArePinsSettled()
+        {
+            return () => _pinSettlementManager.ArePinsSettled(GetStadingPinsCount());
+        }
+
+        private void StabilizePins()
         {
             UpdateScore = false;
             IsSettlementInProgress = false;
+            EstablishRotation();
         }
 
         private void ResetPinDisplay()
         {
             _lastSettledPinsCount = ActionMaster.MaxPinsCount;
             UpdatePinDisplayer(ActionMaster.MaxPinsCount, Color.black);
+        }
+
+        private void EstablishRotation()
+        {
+            foreach (Transform pinTransform in PinSetter.PinSetCopy.transform)
+            {
+                if (pinTransform.GetComponent<Pin>().IsStanding()) pinTransform.rotation = Quaternion.Euler(270, 0, 0);
+            }
         }
     }
 }
