@@ -13,33 +13,33 @@ namespace Assets.Editor
         [Test]
         public void T01_WhenArgumentIsNull_NullReferenceExceptionIsThrown()
         {
-            Assert.Throws<ArgumentNullException>(() => GetSystemUnderTest().Bowl(null));
+            Assert.Throws<ArgumentNullException>(() => GetSystemUnderTest().NextAction(null));
         }
 
         [Test]
         public void T02_WhenStrike_ReturnEndTurn()
         {
-            Assert.AreEqual(AfterStrikeAction.EndTurn, GetSystemUnderTest().Bowl(new List<int> { 10 }));
+            Assert.AreEqual(AfterStrikeAction.EndTurn, GetSystemUnderTest().NextAction(new List<int> { 10 }));
         }
 
         [Test]
         public void T02a_WhenStrikeAndHitBelowTen_ReturnTidy()
         {
             ActionMaster systemUnderTest = GetSystemUnderTest();
-            Assert.AreEqual(AfterStrikeAction.Tidy, systemUnderTest.Bowl(new List<int> { 10, 2 }));
+            Assert.AreEqual(AfterStrikeAction.Tidy, systemUnderTest.NextAction(new List<int> { 10, 2 }));
         }
 
         [TestCaseSource(nameof(OneToNinePinsCases))]
         public void T03_WhenNotAllPinsHitOnSingleThrow_ReturnTidy(List<int> throws)
         {
-            Assert.AreEqual(AfterStrikeAction.Tidy, GetSystemUnderTest().Bowl(throws));
+            Assert.AreEqual(AfterStrikeAction.Tidy, GetSystemUnderTest().NextAction(throws));
         }
 
         [Test]
         public void T04_WhenSpare_ReturnEndTurn()
         {
             var sut = GetSystemUnderTest();
-            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.Bowl(new List<int> { 2, 8 }));
+            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.NextAction(new List<int> { 2, 8 }));
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace Assets.Editor
             var sut = GetSystemUnderTest();
             List<int> lastFrameStartList = ProceedToTheLastFrame();
             lastFrameStartList.Add(2);
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace Assets.Editor
             var sut = GetSystemUnderTest();
             List<int> lastFrameStartList = ProceedToTheLastFrame();
             lastFrameStartList.AddRange(new[] { 2, 3 });
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace Assets.Editor
             var sut = GetSystemUnderTest();
             List<int> lastFrameStartList = ProceedToTheLastFrame();
             lastFrameStartList.AddRange(new[] { 2, 8 });
-            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -75,7 +75,7 @@ namespace Assets.Editor
             var sut = GetSystemUnderTest();
             List<int> lastFrameStartList = ProceedToTheLastFrame();
             lastFrameStartList.Add(10);
-            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -84,7 +84,7 @@ namespace Assets.Editor
             var sut = GetSystemUnderTest();
             List<int> lastFrameStartList = ProceedToTheLastFrame();
             lastFrameStartList.AddRange(new[] { 10, 2 });
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -93,7 +93,7 @@ namespace Assets.Editor
             var sut = GetSystemUnderTest();
             List<int> lastFrameStartList = ProceedToTheLastFrame();
             lastFrameStartList.AddRange(new[] { 4, 6, 10 });
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -102,7 +102,7 @@ namespace Assets.Editor
             var sut = GetSystemUnderTest();
             List<int> lastFrameStartList = ProceedToTheLastFrame();
             lastFrameStartList.AddRange(new[] { 10, 10, 5 });
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -111,7 +111,7 @@ namespace Assets.Editor
             var sut = GetSystemUnderTest();
             List<int> lastFrameStartList = ProceedToTheLastFrame();
             lastFrameStartList.AddRange(new[] { 0, 2 });
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -120,7 +120,7 @@ namespace Assets.Editor
             var sut = GetSystemUnderTest();
             List<int> lastFrameStartList = ProceedToTheLastFrame();
             lastFrameStartList.AddRange(new[] { 10, 0 });
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -128,7 +128,7 @@ namespace Assets.Editor
         {
             var sut = GetSystemUnderTest();
             var lastFramewStartList = new List<int>(Enumerable.Repeat(0, 20));
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFramewStartList));
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.NextAction(lastFramewStartList));
         }
 
         [Test]
@@ -136,7 +136,7 @@ namespace Assets.Editor
         {
             var sut = GetSystemUnderTest();
             var lastFramewStartList = new List<int> { 0, 10, 3 };
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(lastFramewStartList));
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.NextAction(lastFramewStartList));
         }
 
         [Test]
@@ -144,7 +144,7 @@ namespace Assets.Editor
         {
             var sut = GetSystemUnderTest();
             var lastFramewStartList = new List<int> { 0, 10, 2, 7 };
-            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.Bowl(lastFramewStartList));
+            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.NextAction(lastFramewStartList));
         }
 
         [Test]
@@ -152,7 +152,7 @@ namespace Assets.Editor
         {
             var sut = GetSystemUnderTest();
             var lastFramewStartList = new List<int> { 0, 10, 0, 10, 0, 10, 2 };
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.Bowl(lastFramewStartList));
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.NextAction(lastFramewStartList));
         }
 
         [Test]
@@ -162,11 +162,11 @@ namespace Assets.Editor
             List<int> lastFrameStartList = ProceedToTheLastFrame();
 
             lastFrameStartList.Add(10);
-            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.NextAction(lastFrameStartList));
             lastFrameStartList.Add(10);
-            Assert.AreEqual(AfterStrikeAction.Reset, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.NextAction(lastFrameStartList));
             lastFrameStartList.Add(10);
-            Assert.AreEqual(AfterStrikeAction.EndGame, sut.Bowl(lastFrameStartList));
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -174,13 +174,13 @@ namespace Assets.Editor
         {
             var sut = GetSystemUnderTest();
             var lastFramewStartList = new List<int> { 3, 8 };
-            Assert.Throws<UnityException>(() => sut.Bowl(lastFramewStartList));
+            Assert.Throws<UnityException>(() => sut.NextAction(lastFramewStartList));
         }
 
         [TestCaseSource(nameof(InvalidThrowsCases))]
         public void T20_WhenIncorrectArgument_ArgumentOutOfRangeIsThrown(List<int> throws)
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => GetSystemUnderTest().Bowl(throws));
+            Assert.Throws<ArgumentOutOfRangeException>(() => GetSystemUnderTest().NextAction(throws));
         }
 
         private ActionMaster GetSystemUnderTest()

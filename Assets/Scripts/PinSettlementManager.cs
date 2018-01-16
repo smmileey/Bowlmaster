@@ -8,7 +8,7 @@ namespace Assets.Scripts
         private float _wobblingThreshold;
 
         private float _lastWobblingTime;
-        private int _lastStandingPinsCount;
+        private int _lastStandingPinsCount = -1;
 
         /// <summary>
         /// Returns true if pins are wobbling
@@ -38,7 +38,7 @@ namespace Assets.Scripts
             bool pinsSettled = Mathf.Abs(currentTime - _lastWobblingTime) >= _wobblingThreshold;
             if (pinsSettled)
             {
-                _lastStandingPinsCount = 0;
+                _lastStandingPinsCount = -1;
                 _lastWobblingTime = float.MaxValue;
             }
 

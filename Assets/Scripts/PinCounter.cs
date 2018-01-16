@@ -9,21 +9,22 @@ namespace Assets.Scripts
     {
         public Text StandingPinCountDisplayer;
 
-        private const float PinsFloatingThresholdInSeconds = 3;
-        private const float TimeBeforeSetlementProcessIsOnInSeconds = 2;
+        private const float TimeBeforeSetlementProcessIsOn = 2;
+        private const float PinsFloatingMaxTimeThreshold = 3;
+        private const float ResetPinDisplayAfterTime = 3;
         private int _lastSettledPinsCount = ActionMaster.MaxPinsCount;
         private GameManager _gameManager;
-        private readonly PinSettlementManager _pinSettlementManager = new PinSettlementManager(PinsFloatingThresholdInSeconds);
+        private readonly PinSettlementManager _pinSettlementManager = new PinSettlementManager(PinsFloatingMaxTimeThreshold);
 
         private bool IsSettlementInProgress { get; set; }
-
         public bool UpdateScore { get; set; }
 
         void Start()
         {
             _gameManager = FindObjectOfType<GameManager>();
 
-            Validate();
+            ValidateData();
+            SetupTriggers();
         }
 
         void Update()
@@ -54,12 +55,16 @@ namespace Assets.Scripts
             return standingPinsCount;
         }
 
-        private void Validate()
+        private void ValidateData()
         {
             if (_gameManager == null) throw new ArgumentNullException(nameof(_gameManager));
             if (StandingPinCountDisplayer == null) throw new ArgumentNullException(nameof(StandingPinCountDisplayer));
 
-            _gameManager.PinDisplayReset += () => Invoke(nameof(ResetPinDisplay), 3);
+
+        }
+        private void SetupTriggers()
+        {
+            _gameManager.PinDisplayReset += () => Invoke(nameof(ResetPinDisplay), ResetPinDisplayAfterTime);
         }
 
         private void UpdatePinDisplayer(int standingPinsCount, Color color)
@@ -70,7 +75,7 @@ namespace Assets.Scripts
 
         private IEnumerator WaitForPinsToSettleDown()
         {
-            yield return new WaitForSeconds(TimeBeforeSetlementProcessIsOnInSeconds);
+            yield return new WaitForSeconds(TimeBeforeSetlementProcessIsOn);
             yield return new WaitUntil(ArePinsSettled());
 
             int standingPinsCount = GetStadingPinsCount();

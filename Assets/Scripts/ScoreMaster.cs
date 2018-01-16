@@ -25,13 +25,16 @@ namespace Assets.Scripts
                 int secondThrow = throws[_throwNumber];
 
                 bool strikeOrSpare = IsStrike(firstThrow) || IsSpare(firstThrow, secondThrow);
-                if (strikeOrSpare && !IsStrikeOrSpareCalculable(frameScores, throws)) return frameScores;
+                if (strikeOrSpare)
+                {
+                    if (!IsStrikeOrSpareCalculable(frameScores, throws)) return frameScores;
+                    frameScores.Add(ResolveStrikeOrSpare(throws, _throwNumber));
+                }
+                else frameScores.Add(ValidateAndResolveScore(firstThrow, secondThrow));
 
+                _throwNumber += 2;
                 bool isNextThrowAvailable = throws.Count >= _throwNumber + 1;
                 if (!isNextThrowAvailable) return frameScores;
-
-                frameScores.Add(ValidateAndResolveScore(firstThrow, secondThrow));
-                _throwNumber += 2;
             }
             return frameScores;
         }
@@ -48,21 +51,12 @@ namespace Assets.Scripts
 
         private bool IsStrikeOrSpareCalculable(List<int> frameScores, List<int> throws)
         {
-            if (!CanScoreBeCalculated(throws, _throwNumber)) return false;
-
-            frameScores.Add(ResolveStrikeOrSpare(throws, _throwNumber));
-            _throwNumber += 2;
-            return true;
+            return throws.Count >= _throwNumber + 2;
         }
 
         private int ResolveStrikeOrSpare(List<int> throws, int throwNumber)
         {
             return throws[throwNumber - 1] + throws[throwNumber] + throws[throwNumber + 1];
-        }
-
-        private bool CanScoreBeCalculated(List<int> throws, int throwNumber)
-        {
-            return throws.Count >= throwNumber + 2;
         }
 
         private int ValidateAndResolveScore(int firstThrow, int secondThrow)

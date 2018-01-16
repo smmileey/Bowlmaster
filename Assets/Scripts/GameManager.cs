@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Mappers;
 using UnityEngine;
@@ -28,23 +29,16 @@ namespace Assets.Scripts
         public void Score(int score)
         {
             _currentThrows.Add(score);
-            PerformAfterStrikeAction();
+            AfterStrikeAction afterStrikeAction = _actionMaster.NextAction(_currentThrows);
+
+            TriggerAnimation(afterStrikeAction);
+            TriggerPinsResetIfNeccessary(afterStrikeAction);
             //talk to ScoreMaster
             _ball.Reset();
-            //update game score
+            string s = string.Join(",", _scoreMaster.GetFrameScores(_currentThrows).Select(n => n.ToString()).ToArray());
+            Debug.Log(s);
         }
 
-        private void PerformAfterStrikeAction()
-        {
-            AfterStrikeAction afterStrikeAction = _actionMaster.Bowl(_currentThrows);
-            var pinSetterAnimator = _pinSetter.GetComponent<Animator>();
-            if (pinSetterAnimator == null) throw new ArgumentNullException(nameof(pinSetterAnimator));
-
-            pinSetterAnimator.SetTrigger(AfterStrikeActionToAnimationMapper.Map(afterStrikeAction).TriggerName);
-
-            bool resetPinDisplayer = afterStrikeAction == AfterStrikeAction.EndTurn || afterStrikeAction == AfterStrikeAction.Reset || afterStrikeAction == AfterStrikeAction.EndGame;
-            if (resetPinDisplayer) OnPinsReset();
-        }
 
         protected virtual void OnPinsReset()
         {
@@ -56,6 +50,17 @@ namespace Assets.Scripts
         {
             if (_ball == null) throw new ArgumentNullException(nameof(_ball));
             if (_pinSetter == null) throw new ArgumentNullException(nameof(_pinSetter));
+        }
+
+        private void TriggerAnimation(AfterStrikeAction afterStrikeAction)
+        {
+            _pinSetter.AnimateSwiper(afterStrikeAction);
+        }
+
+        private void TriggerPinsResetIfNeccessary(AfterStrikeAction afterStrikeAction)
+        {
+            bool resetPinDisplayer = afterStrikeAction == AfterStrikeAction.EndTurn || afterStrikeAction == AfterStrikeAction.Reset || afterStrikeAction == AfterStrikeAction.EndGame;
+            if (resetPinDisplayer) OnPinsReset();
         }
     }
 }

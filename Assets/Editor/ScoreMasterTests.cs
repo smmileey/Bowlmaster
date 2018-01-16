@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Assets.Editor
 {
     internal class ScoreMasterTests
-    {   
+    {
         [Test]
         public void T01_WhenArgumentNull_ThenArgumentNullExceptionIsThrown()
         {
@@ -103,6 +103,13 @@ namespace Assets.Editor
             Assert.AreEqual(testData.Score, systemUnderTest.GetFrameScores(lastFrameStartingScores).Last());
         }
 
+        [TestCaseSource(nameof(OrdinaryCases))]
+        public void T14_WhenOrdinaryCases_ThenScoreIsCorrectlyReturned(TestData testData)
+        {
+            ScoreMaster systemUnderTest = GetSystemUnderTest();
+            Assert.AreEqual(testData.Scores, systemUnderTest.GetFrameScores(testData.Throws));
+        }
+
         private ScoreMaster GetSystemUnderTest()
         {
             return new ScoreMaster();
@@ -184,10 +191,16 @@ namespace Assets.Editor
             yield return new TestData { Throws = new List<int> { 10, 10, 10 }, Score = 30 };
         }
 
+        private static IEnumerable<TestData> OrdinaryCases()
+        {
+            yield return new TestData { Throws = new List<int> { 9, 1, 3, 4 }, Scores = new List<int> { 13, 7 } };
+        }
+
         internal class TestData
         {
             public List<int> Throws { get; set; }
             public int Score { get; set; }
+            public List<int> Scores { get; set; }
         }
     }
 }

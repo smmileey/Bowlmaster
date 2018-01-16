@@ -15,7 +15,7 @@ namespace Assets.Scripts
 
         public const int MaxPinsCount = 10;
 
-        public AfterStrikeAction Bowl(List<int> throws)
+        public AfterStrikeAction NextAction(List<int> throws)
         {
             if (throws == null) throw new ArgumentNullException(nameof(throws));
             if (throws.Count < 1 || throws.Count > 21) throw new ArgumentOutOfRangeException(nameof(throws));
