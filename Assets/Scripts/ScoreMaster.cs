@@ -12,9 +12,6 @@ namespace Assets.Scripts
         private const int MaxScoresCount = 21;
         private const int MaxScoreValue = 10;
         private int _throwNumber;
-        private int _frameNumber;
-
-        private bool LastFrame => _frameNumber == Specification.MaxFrame;
 
         public List<int> GetFrameScores(List<int> throws)
         {
@@ -24,34 +21,31 @@ namespace Assets.Scripts
 
             var frameScores = new List<int>();
             _throwNumber = 1;
-            _frameNumber = 1;
 
-            while (_throwNumber <= throws.Count)
+            while (_throwNumber < throws.Count)
             {
-                if (throws.Count < _throwNumber + 1) return frameScores;
-
                 int firstThrow = throws[_throwNumber - 1];
                 int secondThrow = throws[_throwNumber];
+                bool isLastFrame = frameScores.Count == Specification.MaxPinsCount - 1;
                 bool strikeOrSpare = IsStrike(firstThrow) || IsSpare(firstThrow, secondThrow);
 
-                if (LastFrame && strikeOrSpare)
+                if (isLastFrame && strikeOrSpare)
                 {
-                    if (IsStrikeOrSpareCalculable(frameScores, throws)) frameScores.Add(ResolveStrikeOrSpare(throws, _throwNumber));
+                    if (IsStrikeOrSpareCalculable(throws)) frameScores.Add(ResolveStrikeOrSpareScore(throws, _throwNumber));
                     return frameScores;
                 }
 
                 if (strikeOrSpare)
                 {
-                    if (!IsStrikeOrSpareCalculable(frameScores, throws)) return frameScores;
-                    frameScores.Add(ResolveStrikeOrSpare(throws, _throwNumber));
+                    if (!IsStrikeOrSpareCalculable(throws)) return frameScores;
+                    frameScores.Add(ResolveStrikeOrSpareScore(throws, _throwNumber));
                     _throwNumber += IsStrike(firstThrow) ? 1 : 2;
                 }
                 else
                 {
-                    frameScores.Add(ValidateAndResolveScore(firstThrow, secondThrow));
+                    frameScores.Add(ValidateAndResolveOpenScore(firstThrow, secondThrow));
                     _throwNumber += 2;
                 }
-                _frameNumber++;
             }
             return frameScores;
         }
@@ -72,17 +66,17 @@ namespace Assets.Scripts
             return firstThrow + secondThrow == Specification.MaxPinsCount;
         }
 
-        private bool IsStrikeOrSpareCalculable(List<int> frameScores, List<int> throws)
+        private bool IsStrikeOrSpareCalculable(List<int> throws)
         {
             return throws.Count >= _throwNumber + 2;
         }
 
-        private int ResolveStrikeOrSpare(List<int> throws, int throwNumber)
+        private int ResolveStrikeOrSpareScore(List<int> throws, int throwNumber)
         {
             return throws[throwNumber - 1] + throws[throwNumber] + throws[throwNumber + 1];
         }
 
-        private int ValidateAndResolveScore(int firstThrow, int secondThrow)
+        private int ValidateAndResolveOpenScore(int firstThrow, int secondThrow)
         {
             if (firstThrow + secondThrow <= Specification.MaxPinsCount) return firstThrow + secondThrow;
             throw new ArgumentOutOfRangeException();
