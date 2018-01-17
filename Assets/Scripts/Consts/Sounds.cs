@@ -1,4 +1,7 @@
-public class Sounds
+namespace Assets.Scripts.Consts
 {
-    public const string RollingBall = "ball rolling";
+    public class Sounds
+    {
+        public const string RollingBall = "ball rolling";
+    }
 }

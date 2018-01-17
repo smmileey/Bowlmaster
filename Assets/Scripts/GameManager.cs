@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Assets.Scripts.Enums;
-using Assets.Scripts.Mappers;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -35,8 +33,6 @@ namespace Assets.Scripts
             TriggerPinsResetIfNeccessary(afterStrikeAction);
             //talk to ScoreMaster
             _ball.Reset();
-            string s = string.Join(",", _scoreMaster.GetFrameScores(_currentThrows).Select(n => n.ToString()).ToArray());
-            Debug.Log(s);
         }
 
 

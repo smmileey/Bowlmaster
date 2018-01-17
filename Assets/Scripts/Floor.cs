@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class Floor : MonoBehaviour
+namespace Assets.Scripts
 {
+    public class Floor : MonoBehaviour
+    {
+    }
 }

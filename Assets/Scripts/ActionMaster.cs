@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets.Scripts.Consts;
 using Assets.Scripts.Enums;
 using UnityEngine;
 
@@ -12,8 +13,6 @@ namespace Assets.Scripts
         private const int MaxThrowCount = 21;
 
         private int CurrentThrowNumber { get; set; }
-
-        public const int MaxPinsCount = 10;
 
         public AfterStrikeAction NextAction(List<int> throws)
         {
@@ -33,7 +32,7 @@ namespace Assets.Scripts
                     return ArePinsKnockedDown(throws) ? AfterStrikeAction.Reset : AfterStrikeAction.Tidy;
             }
 
-            if (throws[CurrentThrowNumber - 1] == MaxPinsCount)
+            if (throws[CurrentThrowNumber - 1] == Specification.MaxPinsCount)
             {
                 bool isLastFrameFirstThrow = CurrentThrowNumber == LastFrameFirstThrow;
                 return isLastFrameFirstThrow ? AfterStrikeAction.Reset : AfterStrikeAction.EndTurn;
@@ -46,28 +45,28 @@ namespace Assets.Scripts
 
         private void ValidateScoreInTurn(List<int> throws)
         {
-            bool strikeLastTurn = CurrentThrowNumber - 2 >= 0 && throws[CurrentThrowNumber - 2] == MaxPinsCount;
+            bool strikeLastTurn = CurrentThrowNumber - 2 >= 0 && throws[CurrentThrowNumber - 2] == Specification.MaxPinsCount;
             if (IsFirstThrowInFrame(throws) || strikeLastTurn) return;
 
-            bool maxPinCountExceededThisTurn = throws[CurrentThrowNumber - 2] + throws[CurrentThrowNumber - 1] > MaxPinsCount;
+            bool maxPinCountExceededThisTurn = throws[CurrentThrowNumber - 2] + throws[CurrentThrowNumber - 1] > Specification.MaxPinsCount;
             if (maxPinCountExceededThisTurn) throw new UnityException("Sum of last two throws exceeded 10!");
         }
 
         private bool IsAdditionalThrowAwarded(List<int> throws)
         {
-            return GetLastFrameScore(throws) >= MaxPinsCount;
+            return GetLastFrameScore(throws) >= Specification.MaxPinsCount;
         }
 
         private bool ArePinsKnockedDown(List<int> throws)
         {
-            bool strikeThisTurn = throws[CurrentThrowNumber - 1] == MaxPinsCount;
-            bool spareThisTurn = GetLastFrameScore(throws) == MaxPinsCount && throws[CurrentThrowNumber - 1] != 0;
+            bool strikeThisTurn = throws[CurrentThrowNumber - 1] == Specification.MaxPinsCount;
+            bool spareThisTurn = GetLastFrameScore(throws) == Specification.MaxPinsCount && throws[CurrentThrowNumber - 1] != 0;
             return strikeThisTurn || spareThisTurn;
         }
 
         private bool IsFirstThrowInFrame(List<int> throws)
         {
-            return throws.Count % 2 != 0 || throws[CurrentThrowNumber - 2] == MaxPinsCount;
+            return throws.Count % 2 != 0 || throws[CurrentThrowNumber - 2] == Specification.MaxPinsCount;
         }
 
         private int GetLastFrameScore(List<int> throws)

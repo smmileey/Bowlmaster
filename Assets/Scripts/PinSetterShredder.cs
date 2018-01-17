@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class PinSetterShredder : MonoBehaviour
+namespace Assets.Scripts
 {
-    void OnTriggerExit(Collider collider)
+    public class PinSetterShredder : MonoBehaviour
     {
-        if (collider.GetComponent<Pin>() != null) Destroy(collider.gameObject);
+        void OnTriggerExit(Collider collider)
+        {
+            if (collider.GetComponent<Pin>() != null) Destroy(collider.gameObject);
+        }
     }
 }

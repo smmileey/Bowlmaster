@@ -103,11 +103,17 @@ namespace Assets.Editor
             Assert.AreEqual(testData.Score, systemUnderTest.GetFrameScores(lastFrameStartingScores).Last());
         }
 
-        [TestCaseSource(nameof(OrdinaryCases))]
-        public void T14_WhenOrdinaryCases_ThenScoreIsCorrectlyReturned(TestData testData)
+        public void T14_WhenOrdinaryCases_ThenScoreIsCorrectlyReturned()
         {
             ScoreMaster systemUnderTest = GetSystemUnderTest();
-            Assert.AreEqual(testData.Scores, systemUnderTest.GetFrameScores(testData.Throws));
+            Assert.AreEqual(new List<int> { 13, 7 }, systemUnderTest.GetFrameScores(new List<int> { 9, 1, 3, 4 }));
+        }
+
+        [TestCaseSource(nameof(OrdinaryCases))]
+        public void T15_WhenOrdinaryCases_ThenScoreIsCorrectlyAccumulated(TestData testData)
+        {
+            ScoreMaster systemUnderTest = GetSystemUnderTest();
+            Assert.AreEqual(testData.Score, systemUnderTest.GetCurrentScore(testData.Throws));
         }
 
         private ScoreMaster GetSystemUnderTest()
@@ -193,14 +199,21 @@ namespace Assets.Editor
 
         private static IEnumerable<TestData> OrdinaryCases()
         {
-            yield return new TestData { Throws = new List<int> { 9, 1, 3, 4 }, Scores = new List<int> { 13, 7 } };
+            yield return new TestData { Throws = new List<int> { 9, 1, 3, 4 }, Score = 20 };
+            yield return new TestData { Throws = new List<int> { 10, 7, 3, 9, 0, 10, 0, 8, 8, 2, 0, 6, 10, 10, 10, 8, 1 }, Score = 167 };
+            yield return new TestData { Throws = new List<int> { 10, 9, 1, 9, 1, 9, 1, 9, 1, 7, 0, 9, 0, 10, 8, 2, 8, 2, 10 }, Score = 168 };
+            yield return new TestData { Throws = new List<int> { 8, 2, 8, 1, 9, 1, 7, 1, 8, 2, 9, 1, 9, 1, 10, 10, 7, 1 }, Score = 163 };
+            yield return new TestData { Throws = Enumerable.Repeat(10, 21).ToList(), Score = 300 };
         }
 
         internal class TestData
         {
             public List<int> Throws { get; set; }
             public int Score { get; set; }
-            public List<int> Scores { get; set; }
+            public override string ToString()
+            {
+                return $"Throws: {string.Join(",", Throws.Select(score => score.ToString()).ToArray())}";
+            }
         }
     }
 }

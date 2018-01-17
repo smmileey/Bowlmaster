@@ -1,21 +1,25 @@
+using Assets.Scripts.Consts;
 using UnityEngine;
 
-public class BallControl : MonoBehaviour
+namespace Assets.Scripts
 {
-    public Ball Ball;
-
-    private Vector3 _ballToCameraOffset;
-
-	void Start ()
+    public class BallControl : MonoBehaviour
     {
-		if (Ball == null) Debug.LogWarning("Ball not initialized!");
+        public Ball Ball;
 
-        _ballToCameraOffset = new Vector3(transform.position.x, transform.position.y, transform.position.z - Ball.transform.position.z);
-    }
+        private Vector3 _ballToCameraOffset;
+
+        void Start ()
+        {
+            if (Ball == null) Debug.LogWarning("Ball not initialized!");
+
+            _ballToCameraOffset = new Vector3(transform.position.x, transform.position.y, transform.position.z - Ball.transform.position.z);
+        }
 	
-	void Update ()
-	{
-	    var zPosition = Mathf.Clamp(Ball.transform.position.z + _ballToCameraOffset.z, -float.MaxValue, Specification.MaxCameraZ);
-	    transform.position = new Vector3(_ballToCameraOffset.x, _ballToCameraOffset.y, zPosition);
-	}
+        void Update ()
+        {
+            var zPosition = Mathf.Clamp(Ball.transform.position.z + _ballToCameraOffset.z, -float.MaxValue, Specification.MaxCameraZ);
+            transform.position = new Vector3(_ballToCameraOffset.x, _ballToCameraOffset.y, zPosition);
+        }
+    }
 }

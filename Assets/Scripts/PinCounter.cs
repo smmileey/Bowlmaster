@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Assets.Scripts.Consts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ namespace Assets.Scripts
         private const float TimeBeforeSetlementProcessIsOn = 2;
         private const float PinsFloatingMaxTimeThreshold = 3;
         private const float ResetPinDisplayAfterTime = 3;
-        private int _lastSettledPinsCount = ActionMaster.MaxPinsCount;
+        private int _lastSettledPinsCount = Specification.MaxPinsCount;
         private GameManager _gameManager;
         private readonly PinSettlementManager _pinSettlementManager = new PinSettlementManager(PinsFloatingMaxTimeThreshold);
 
@@ -39,6 +40,11 @@ namespace Assets.Scripts
             }
         }
 
+        void OnTriggerExit(Collider collider)
+        {
+            if (collider.GetComponent<Ball>() != null) UpdateScore = true;
+        }
+
         public int GetStadingPinsCount()
         {
             GameObject pinSetCopy = PinSetter.PinSetCopy;
@@ -59,9 +65,8 @@ namespace Assets.Scripts
         {
             if (_gameManager == null) throw new ArgumentNullException(nameof(_gameManager));
             if (StandingPinCountDisplayer == null) throw new ArgumentNullException(nameof(StandingPinCountDisplayer));
-
-
         }
+
         private void SetupTriggers()
         {
             _gameManager.PinDisplayReset += () => Invoke(nameof(ResetPinDisplay), ResetPinDisplayAfterTime);
@@ -97,16 +102,16 @@ namespace Assets.Scripts
         {
             UpdateScore = false;
             IsSettlementInProgress = false;
-            EstablishRotation();
+            EstablishPinsRotation();
         }
 
         private void ResetPinDisplay()
         {
-            _lastSettledPinsCount = ActionMaster.MaxPinsCount;
-            UpdatePinDisplayer(ActionMaster.MaxPinsCount, Color.black);
+            _lastSettledPinsCount = Specification.MaxPinsCount;
+            UpdatePinDisplayer(Specification.MaxPinsCount, Color.black);
         }
 
-        private void EstablishRotation()
+        private void EstablishPinsRotation()
         {
             foreach (Transform pinTransform in PinSetter.PinSetCopy.transform)
             {
