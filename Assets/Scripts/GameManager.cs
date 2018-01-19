@@ -1,15 +1,20 @@
 using System;
 using System.Collections.Generic;
 using Assets.Scripts.Enums;
+using Assets.Scripts.Managers;
+using Assets.Scripts.Wrappers;
 using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
+        private const string PlayerName = "RafaelloLollipop"; //TODO: Introduce score tracking for many players
+
         private readonly List<int> _currentThrows = new List<int>();
         private PinSetter _pinSetter;
         private Ball _ball;
+        private ScoreDisplay _scoreDisplay;
         private readonly ActionMaster _actionMaster = new ActionMaster();
         private readonly ScoreMaster _scoreMaster = new ScoreMaster();
 
@@ -20,6 +25,7 @@ namespace Assets.Scripts
         {
             _pinSetter = FindObjectOfType<PinSetter>();
             _ball = FindObjectOfType<Ball>();
+            _scoreDisplay = FindObjectOfType<ScoreDisplay>();
 
             Vaildate();
         }
@@ -27,14 +33,15 @@ namespace Assets.Scripts
         public void Score(int score)
         {
             _currentThrows.Add(score);
+            ScoreDisplayResolver currentScoreDisplay = _scoreDisplay.Get(PlayerName);
             AfterStrikeAction afterStrikeAction = _actionMaster.NextAction(_currentThrows);
+            List<int> frameScores = _scoreMaster.GetFrameScores(_currentThrows);
 
             TriggerAnimation(afterStrikeAction);
             TriggerPinsResetIfNeccessary(afterStrikeAction);
-            //talk to ScoreMaster
+            currentScoreDisplay.UpdateScore(score, frameScores, afterStrikeAction);
             _ball.Reset();
         }
-
 
         protected virtual void OnPinsReset()
         {
@@ -46,6 +53,7 @@ namespace Assets.Scripts
         {
             if (_ball == null) throw new ArgumentNullException(nameof(_ball));
             if (_pinSetter == null) throw new ArgumentNullException(nameof(_pinSetter));
+            if (_scoreDisplay == null) throw new ArgumentNullException(nameof(_scoreDisplay));
         }
 
         private void TriggerAnimation(AfterStrikeAction afterStrikeAction)

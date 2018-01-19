@@ -6,5 +6,6 @@ namespace Assets.Scripts.Consts
         public static string SecondScore = "SecondScore";
         public static string ThirdScore = "ThirdScore";
         public static string FrameScore = "FrameScore";
+        public static string PlayerName = "PlayerName";
     }
 }

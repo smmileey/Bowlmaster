@@ -1,3 +1,4 @@
+using Assets.Scripts.Enums;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Wrappers
@@ -12,6 +13,8 @@ namespace Assets.Scripts.Wrappers
 
         public Text ThirdScore { get; set; }
 
-        public bool Completed { get; set; }
+        public Text FrameScore { get; set; }
+
+        public ScoreDisplayStatus ScoreDisplayStatus { get; set; }
     }
 }
