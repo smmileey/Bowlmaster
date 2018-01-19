@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 0
-    y: 43
-    width: 1366
+    x: -1024
+    y: 46
+    width: 1024
     height: 725
   m_ShowMode: 4
   m_Title: 
@@ -41,7 +41,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1366
+    width: 1024
     height: 725
   m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -61,7 +61,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1366
+    width: 1024
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 705
-    width: 1366
+    width: 1024
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -103,12 +103,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1366
+    width: 1024
     height: 675
-  m_MinSize: {x: 506, y: 492}
+  m_MinSize: {x: 508, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
-  controlID: 4164
+  controlID: 77
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -127,12 +127,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1366
+    width: 1024
     height: 675
-  m_MinSize: {x: 506, y: 492}
+  m_MinSize: {x: 508, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 4165
+  controlID: 78
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -151,12 +151,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1030
+    width: 772
     height: 675
-  m_MinSize: {x: 404, y: 492}
+  m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 4166
+  controlID: 79
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -175,12 +175,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1030
+    width: 772
     height: 397
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 4167
+  controlID: 14
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,10 +197,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 205
+    width: 202
     height: 397
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -220,12 +220,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 205
+    x: 202
     y: 0
-    width: 825
+    width: 570
     height: 397
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 15}
@@ -249,7 +249,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 397
-    width: 1030
+    width: 772
     height: 278
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
@@ -274,12 +274,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1030
+    x: 772
     y: 0
-    width: 336
+    width: 252
     height: 675
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 20}
@@ -385,15 +385,15 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 92
-    width: 203
+    x: -1024
+    y: 95
+    width: 200
     height: 376
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fcb6fdff
-    m_LastClickedID: -149764
-    m_ExpandedIDs: 0493fdffaa9afdff82a0fdff9aa5fdff6eadfdffb4b4fdff0eb7fdff00b8fdffeabcfdff8af9ffff50fbffffbefbffffd0fbffffd2fbffffe2fbffff00000000
+    m_SelectedIDs: d0fbffff
+    m_LastClickedID: -1072
+    m_ExpandedIDs: b4daffffb0e0fffff8e6ffff88f9ffffd2fbffffe2fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -463,9 +463,9 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 207
-    y: 92
-    width: 821
+    x: -820
+    y: 95
+    width: 566
     height: 376
   m_SceneLighting: 1
   lastFramingTime: 1049.2671851651148
@@ -537,9 +537,9 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 489
-    width: 1028
+    x: -1024
+    y: 492
+    width: 770
     height: 257
   m_SearchFilter:
     m_NameFilter: 
@@ -552,19 +552,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Editor
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Editor
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\UnityRepos\Bowlmaster
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 132}
-    m_SelectedIDs: 4a250000
-    m_LastClickedID: 9546
-    m_ExpandedIDs: 00000000122500001e26000000ca9a3bffffff7f
+    m_SelectedIDs: c0250000
+    m_LastClickedID: 9664
+    m_ExpandedIDs: 00000000222500003026000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -592,7 +592,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: aafbffff
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000012250000b02500001e26000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000002225000030260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -804,9 +804,9 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1032
-    y: 92
-    width: 334
+    x: -250
+    y: 95
+    width: 250
     height: 654
   m_IsSceneBased: 0
   m_TestTypeToolbarIndex: 1
@@ -877,7 +877,7 @@ MonoBehaviour:
       name: Assembly-CSharp-Editor.dll
       fullName: E:/UnityRepos/Bowlmaster/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
       resultStatus: 1
-      duration: 43.212128
+      duration: 0.3545335
       messages: 
       output: 
       stacktrace: 
@@ -888,7 +888,7 @@ MonoBehaviour:
       name: Assets
       fullName: Assets
       resultStatus: 1
-      duration: 43.089058
+      duration: 0.3241962
       messages: 
       output: 
       stacktrace: 
@@ -899,7 +899,7 @@ MonoBehaviour:
       name: Editor
       fullName: Assets.Editor
       resultStatus: 1
-      duration: 42.969894
+      duration: 0.2934668
       messages: 
       output: 
       stacktrace: 
@@ -1335,22 +1335,88 @@ MonoBehaviour:
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
-    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayWrapperTests]'
-      name: ScoreDisplayWrapperTests
-      fullName: Assets.Editor.ScoreDisplayWrapperTests
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayManagerTests]'
+      name: ScoreDisplayManagerTests
+      fullName: Assets.Editor.ScoreDisplayManagerTests
       resultStatus: 1
-      duration: 42.939156
+      duration: 0.2686733
       messages: 
       output: 
       stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
-    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayWrapperTests][ScoreDisplayWrapperTestsSimplePasses]'
-      name: ScoreDisplayWrapperTestsSimplePasses
-      fullName: Assets.Editor.ScoreDisplayWrapperTests.ScoreDisplayWrapperTestsSimplePasses
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayManagerTests][T01_WhenArgumentNullArgumentNullExceptionIsThrown]'
+      name: T01_WhenArgumentNullArgumentNullExceptionIsThrown
+      fullName: Assets.Editor.ScoreDisplayManagerTests.T01_WhenArgumentNullArgumentNullExceptionIsThrown
       resultStatus: 1
-      duration: 42.346153
+      duration: 0.0220175
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayManagerTests][T02_WhenNoChildObjects_EmptyListReturned]'
+      name: T02_WhenNoChildObjects_EmptyListReturned
+      fullName: Assets.Editor.ScoreDisplayManagerTests.T02_WhenNoChildObjects_EmptyListReturned
+      resultStatus: 1
+      duration: 0.0147602
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayManagerTests][T03_WhenChildNameDoesNotMatchFramesEnum_ArgumentExceptionIsThrown]'
+      name: T03_WhenChildNameDoesNotMatchFramesEnum_ArgumentExceptionIsThrown
+      fullName: Assets.Editor.ScoreDisplayManagerTests.T03_WhenChildNameDoesNotMatchFramesEnum_ArgumentExceptionIsThrown
+      resultStatus: 1
+      duration: 0.0151551
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayManagerTests][T04_WhenConvertingObjectWithOneChild_ThatHasOneFirstScore_OnlyOneIsReturned]'
+      name: T04_WhenConvertingObjectWithOneChild_ThatHasOneFirstScore_OnlyOneIsReturned
+      fullName: Assets.Editor.ScoreDisplayManagerTests.T04_WhenConvertingObjectWithOneChild_ThatHasOneFirstScore_OnlyOneIsReturned
+      resultStatus: 1
+      duration: 0.023848
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayManagerTests][T05_WhenConvertingObjectWithThreeChilds_ThatHasFirstScoreAndSecondScoreAndThridScore_ThreeAreReturned]'
+      name: T05_WhenConvertingObjectWithThreeChilds_ThatHasFirstScoreAndSecondScoreAndThridScore_ThreeAreReturned
+      fullName: Assets.Editor.ScoreDisplayManagerTests.T05_WhenConvertingObjectWithThreeChilds_ThatHasFirstScoreAndSecondScoreAndThridScore_ThreeAreReturned
+      resultStatus: 1
+      duration: 0.0240743
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayManagerTests][T05_WhenConvertingObjectWithTwoChilds_ThatHasFirstScoreAndSecondScore_BothAreReturned]'
+      name: T05_WhenConvertingObjectWithTwoChilds_ThatHasFirstScoreAndSecondScore_BothAreReturned
+      fullName: Assets.Editor.ScoreDisplayManagerTests.T05_WhenConvertingObjectWithTwoChilds_ThatHasFirstScoreAndSecondScore_BothAreReturned
+      resultStatus: 1
+      duration: 0.0161158
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayManagerTests][T06_WhenConvertingObjectWithTwoChilds_ThreeAreReturned]'
+      name: T06_WhenConvertingObjectWithTwoChilds_ThreeAreReturned
+      fullName: Assets.Editor.ScoreDisplayManagerTests.T06_WhenConvertingObjectWithTwoChilds_ThreeAreReturned
+      resultStatus: 1
+      duration: 0.0144326
       messages: 
       output: 
       stacktrace: 
@@ -2067,12 +2133,12 @@ MonoBehaviour:
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
-    m_ResultText: ScoreDisplayWrapperTestsSimplePasses (42.346s)
+    m_ResultText: ScoreDisplayManagerTests (0.269s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 496c078e
-      m_LastClickedID: -1912116151
+      m_SelectedIDs: f0945031
+      m_LastClickedID: 827364592
       m_ExpandedIDs: 5dbc5b9dbb5124cdbe94dafb564553fc260e200012a777104f692c12fe11d5744b0cf976ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0

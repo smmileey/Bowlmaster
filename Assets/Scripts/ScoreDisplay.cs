@@ -13,6 +13,7 @@ namespace Assets.Scripts
 
         void Start()
         {
+            _scoreDisplays = _scoreDisplayManager.Convert(gameObject);
         }
     }
 }
