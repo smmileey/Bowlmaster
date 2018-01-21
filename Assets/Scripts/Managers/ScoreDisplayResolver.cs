@@ -77,7 +77,14 @@ namespace Assets.Scripts.Managers
                         nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.SecondRound;
                         break;
                     case AfterStrikeAction.EndTurn:
-                        nextScoreDisplay.SecondScore.text = IsStrike(pinsHitCount) ? "X" : IsSpare(frameScores, nextScoreDisplay.FrameIndex) ? "/" : pinsHitCount.ToString();
+                        if (IsStrike(pinsHitCount))
+                        {
+                            nextScoreDisplay.FirstScore.text = "X";
+                        }
+                        else
+                        {
+                            nextScoreDisplay.SecondScore.text = IsSpare(frameScores, nextScoreDisplay.FrameIndex) ? "/" : pinsHitCount.ToString();
+                        }
                         nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.Completed;
                         _frameScoreDisplays.Enqueue(_partialScoreDisplays.Dequeue());
                         break;

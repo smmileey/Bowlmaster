@@ -124,7 +124,7 @@ namespace Assets.Editor
         }
 
         [Test]
-        public void T06_WhenConvertingObjectWithTwoChilds_ThreeAreReturned()
+        public void T06_WhenConvertingObjectWithTwoChilds_TwoAreReturned()
         {
             GameObject scoreDisplay = new GameObject();
 
