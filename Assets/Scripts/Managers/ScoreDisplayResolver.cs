@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Wrappers;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Managers
 {
@@ -30,106 +31,72 @@ namespace Assets.Scripts.Managers
             if (_partialScoreDisplays.Count == 0) return;
 
             ScoreDisplayWrapper nextScoreDisplay = _partialScoreDisplays.Peek();
-            if (nextScoreDisplay.FrameIndex == 10)
+            int? firstRoundScore = GetFirstRoundScore(nextScoreDisplay);
+
+            if (nextScoreDisplay.FrameIndex == 10) { HandleLastFrameScore(nextScoreDisplay, pinsHitCount, firstRoundScore, action); }
+            else { HandleBaseRoundsScore(nextScoreDisplay, pinsHitCount, firstRoundScore, action); }
+
+            ProcessFrameScoreCalculation(frameScores);
+        }
+
+        private void HandleBaseRoundsScore(ScoreDisplayWrapper nextScoreDisplay, int pinsHitCount, int? firstRoundScore, AfterStrikeAction action)
+        {
+            switch (action)
             {
-                switch (action)
-                {
-                    case AfterStrikeAction.Tidy:
-                        nextScoreDisplay.FirstScore.text = pinsHitCount.ToString();
-                        nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.SecondRound;
-                        break;
-                    case AfterStrikeAction.Reset:
-                        if (nextScoreDisplay.ScoreDisplayStatus == ScoreDisplayStatus.FirstRound)
-                        {
-                            nextScoreDisplay.FirstScore.text = IsStrike(pinsHitCount) ? "X" : pinsHitCount.ToString();
-                            nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.SecondRound;
-                        }
-                        else if (nextScoreDisplay.ScoreDisplayStatus == ScoreDisplayStatus.SecondRound)
-                        {
-                            if (IsStrike(pinsHitCount))
-                            {
-                                nextScoreDisplay.SecondScore.text = "X";
-                                nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.ThirdRound;
-                            }
-                            else if (IsSpare(pinsHitCount, nextScoreDisplay.FirstScore.text))
-                            {
-                                nextScoreDisplay.SecondScore.text = "/";
-                                nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.ThirdRound;
-                            }
-                            else
-                            {
-                                nextScoreDisplay.SecondScore.text = pinsHitCount.ToString();
-                                nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.Completed;
-                                _frameScoreDisplays.Enqueue(_partialScoreDisplays.Dequeue());
-                                Reload();
-                            }
-                        }
-                        break;
-                    case AfterStrikeAction.EndGame:
-                        if (IsAdditionalRoundGranted(nextScoreDisplay)) nextScoreDisplay.ThirdScore.text = IsStrike(pinsHitCount) ? "X" : pinsHitCount.ToString();
-                        nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.Completed;
-                        _frameScoreDisplays.Enqueue(_partialScoreDisplays.Dequeue());
-                        break;
-                }
+                case AfterStrikeAction.Tidy:
+                    nextScoreDisplay.FirstScore.text = GetScore(pinsHitCount, firstRoundScore);
+                    nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.SecondRound;
+                    break;
+                case AfterStrikeAction.Reset:
+                    nextScoreDisplay.FirstScore.text = GetScore(pinsHitCount, firstRoundScore);
+                    nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.Completed;
+                    _frameScoreDisplays.Enqueue(_partialScoreDisplays.Dequeue());
+                    break;
+                case AfterStrikeAction.EndTurn:
+                    Text scoreText = pinsHitCount == 10 ? nextScoreDisplay.FirstScore : nextScoreDisplay.SecondScore;
+                    scoreText.text = GetScore(pinsHitCount, firstRoundScore);
+                    nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.Completed;
+                    _frameScoreDisplays.Enqueue(_partialScoreDisplays.Dequeue());
+                    break;
             }
-            else
+        }
+
+        private void HandleLastFrameScore(ScoreDisplayWrapper nextScoreDisplay, int pinsHitCount, int? firstRoundScore, AfterStrikeAction action)
+        {
+            switch (action)
             {
-                switch (action)
-                {
-                    case AfterStrikeAction.Tidy:
-                        nextScoreDisplay.FirstScore.text = pinsHitCount.ToString();
+                case AfterStrikeAction.Tidy:
+                    nextScoreDisplay.FirstScore.text = GetScore(pinsHitCount, firstRoundScore);
+                    nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.SecondRound;
+                    break;
+                case AfterStrikeAction.Reset:
+                    if (nextScoreDisplay.ScoreDisplayStatus == ScoreDisplayStatus.FirstRound)
+                    {
+                        nextScoreDisplay.FirstScore.text = GetScore(pinsHitCount, firstRoundScore);
                         nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.SecondRound;
-                        break;
-                    case AfterStrikeAction.EndTurn:
-                        if (IsStrike(pinsHitCount))
-                        {
-                            nextScoreDisplay.FirstScore.text = "X";
-                        }
+                    }
+                    else
+                    {
+                        nextScoreDisplay.SecondScore.text = GetScore(pinsHitCount, firstRoundScore);
+
+                        if (IsAdditionalRoundGranted(nextScoreDisplay)) { nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.ThirdRound; }
                         else
                         {
-                            nextScoreDisplay.SecondScore.text = IsSpare(pinsHitCount, nextScoreDisplay.FirstScore.text) ? "/" : pinsHitCount.ToString();
+                            nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.Completed;
+                            _frameScoreDisplays.Enqueue(_partialScoreDisplays.Dequeue());
+                            Reload();
                         }
-                        nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.Completed;
-                        _frameScoreDisplays.Enqueue(_partialScoreDisplays.Dequeue());
-                        break;
-                    case AfterStrikeAction.Reset:
-                        nextScoreDisplay.FirstScore.text = "X";
-                        nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.Completed;
-                        _frameScoreDisplays.Enqueue(_partialScoreDisplays.Dequeue());
-                        break;
-                }
+                    }
+                    break;
+                case AfterStrikeAction.EndGame:
+                    if (IsAdditionalRoundGranted(nextScoreDisplay)) { nextScoreDisplay.ThirdScore.text = GetScore(pinsHitCount, firstRoundScore); }
+                    nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.Completed;
+                    _frameScoreDisplays.Enqueue(_partialScoreDisplays.Dequeue());
+                    break;
             }
-            ProcessFrameCalculation(frameScores);
         }
 
-        private bool IsAdditionalRoundGranted(ScoreDisplayWrapper nextScoreDisplay)
-        {
-            var firstScoreText = nextScoreDisplay.FirstScore.text;
-            var secondScoreText = nextScoreDisplay.FirstScore.text;
-            int firstScore, secondScore;
-            return firstScoreText.Equals("X") || secondScoreText.Equals("/") 
-                || int.TryParse(firstScoreText, out firstScore)
-                   && int.TryParse(secondScoreText, out secondScore)
-                   && firstScore + secondScore >= 10;
-        }
-
-        private bool IsStrike(int pinsHitCount)
-        {
-            return pinsHitCount == 10;
-        }
-
-        private bool IsSpare(int score, string firstFrameScore)
-        {
-            int firstFrame;
-            return int.TryParse(firstFrameScore, out firstFrame) && score + firstFrame == 10;
-        }
-
-        private void Reload()
-        {
-            _partialScoreDisplays = new Queue<ScoreDisplayWrapper>(_scoreDisplaysCopy);
-        }
-
-        private void ProcessFrameCalculation(List<int> frameScores)
+        private void ProcessFrameScoreCalculation(List<int> frameScores)
         {
             if (_frameScoreDisplays.Count == 0) return;
 
@@ -139,6 +106,39 @@ namespace Assets.Scripts.Managers
                 nextScoreDisplay.FrameScore.text = frameScores[nextScoreDisplay.FrameIndex - 1].ToString();
                 _frameScoreDisplays.Dequeue();
             }
+        }
+
+        private int? GetFirstRoundScore(ScoreDisplayWrapper nextScoreDisplay)
+        {
+            if (nextScoreDisplay.FirstScore.text.Equals("X")) return 10;
+            if (string.IsNullOrEmpty(nextScoreDisplay.FirstScore.text)) return null;
+
+            return int.Parse(nextScoreDisplay.FirstScore.text);
+        }
+
+        private string GetScore(int throwScore, int? firstRoundScore)
+        {
+            bool isStrike = throwScore == 10;
+            if (!firstRoundScore.HasValue) return isStrike ? "X" : throwScore.ToString();
+            if (throwScore == 10) return "X";
+
+            return throwScore + firstRoundScore.Value == 10 ? "/" : throwScore.ToString();
+        }
+
+        private bool IsAdditionalRoundGranted(ScoreDisplayWrapper nextScoreDisplay)
+        {
+            var firstScoreText = nextScoreDisplay.FirstScore.text;
+            var secondScoreText = nextScoreDisplay.SecondScore.text;
+            int firstScore, secondScore;
+            return firstScoreText.Equals("X") || secondScoreText.Equals("/")
+                || int.TryParse(firstScoreText, out firstScore)
+                   && int.TryParse(secondScoreText, out secondScore)
+                   && firstScore + secondScore >= 10;
+        }
+
+        private void Reload()
+        {
+            _partialScoreDisplays = new Queue<ScoreDisplayWrapper>(_scoreDisplaysCopy);
         }
     }
 }
