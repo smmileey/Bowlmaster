@@ -13,44 +13,78 @@ namespace Assets.Scripts
         private const int LastFrameSecondThrow = 20;
         private const int MaxThrowCount = 21;
 
-        private int CurrentThrowNumber { get; set; }
+        private int ConsecutiveThrowNumber { get; set; }
 
         public AfterStrikeAction NextAction(List<int> throws)
         {
             if (throws == null) throw new ArgumentNullException(nameof(throws));
             if (throws.Count < 1 || throws.Count > 21) throw new ArgumentOutOfRangeException(nameof(throws));
 
-            CurrentThrowNumber = throws.Count;
+            ConsecutiveThrowNumber = throws.Count;
+            int throwNumberWithStrikesIncluded = CalculateThrowNumberWithStrikesIncluded(throws);
+
             ValidateScoreInTurn(throws);
 
-            switch (CurrentThrowNumber)
+            switch (throwNumberWithStrikesIncluded)
             {
                 case MaxThrowCount:
                     return AfterStrikeAction.EndGame;
                 case LastFrameSecondThrow:
                     if (!IsAdditionalThrowAwarded(throws)) return AfterStrikeAction.EndGame;
 
-                    return ArePinsKnockedDown(throws) ? AfterStrikeAction.Reset : AfterStrikeAction.Tidy;
+                    return ArePinsKnockedDownLastTurn(throws) ? AfterStrikeAction.Reset : AfterStrikeAction.Tidy;
             }
 
-            if (throws[CurrentThrowNumber - 1] == Specification.MaxPinsCount)
+            if (throws[ConsecutiveThrowNumber - 1] == Specification.MaxPinsCount)
             {
-                bool isLastFrameFirstThrow = CurrentThrowNumber == LastFrameFirstThrow;
+                bool isLastFrameFirstThrow = throwNumberWithStrikesIncluded == LastFrameFirstThrow;
                 return isLastFrameFirstThrow ? AfterStrikeAction.Reset : AfterStrikeAction.EndTurn;
             }
 
-            if (IsFirstThrowInFrame(throws)) return AfterStrikeAction.Tidy;
-
-            return AfterStrikeAction.EndTurn;
+            return IsFirstThrowInFrame(throws) ? AfterStrikeAction.Tidy : AfterStrikeAction.EndTurn;
         }
 
         private void ValidateScoreInTurn(List<int> throws)
         {
-            bool strikeLastTurn = CurrentThrowNumber - 2 >= 0 && throws[CurrentThrowNumber - 2] == Specification.MaxPinsCount;
+            bool strikeLastTurn = ConsecutiveThrowNumber - 2 >= 0 && throws[ConsecutiveThrowNumber - 2] == Specification.MaxPinsCount;
             if (IsFirstThrowInFrame(throws) || strikeLastTurn) return;
 
-            bool maxPinCountExceededThisTurn = throws[CurrentThrowNumber - 2] + throws[CurrentThrowNumber - 1] > Specification.MaxPinsCount;
+            bool maxPinCountExceededThisTurn = throws[ConsecutiveThrowNumber - 2] + throws[ConsecutiveThrowNumber - 1] > Specification.MaxPinsCount;
             if (maxPinCountExceededThisTurn) throw new UnityException("Sum of last two throws exceeded 10!");
+        }
+
+        private static int CalculateThrowNumberWithStrikesIncluded(List<int> throws)
+        {
+            int sum = 0;
+            for (int index = 0; index < throws.Count; index++)
+            {
+                bool isLastRound = sum + 1 >= LastFrameFirstThrow;
+                int element = throws[index];
+
+                if (element != Specification.MaxPinsCount || isLastRound)
+                {
+                    sum++;
+                    continue;
+                }
+
+                bool isLastThrow = index + 2 > throws.Count;
+                bool isOddPosition = index % 2 == 0;
+
+                if (isOddPosition && isLastThrow)
+                {
+                    sum++;
+                    continue;
+                }
+                if (!isOddPosition && throws[index - 1] == 0)
+                {
+                    sum++;
+                    continue;
+                }
+
+                sum += isLastThrow ? 1 : 2;
+            }
+
+            return sum;
         }
 
         private bool IsAdditionalThrowAwarded(List<int> throws)
@@ -58,38 +92,21 @@ namespace Assets.Scripts
             return GetLastFrameScore(throws) >= Specification.MaxPinsCount;
         }
 
-        private bool ArePinsKnockedDown(List<int> throws)
+        private bool ArePinsKnockedDownLastTurn(List<int> throws)
         {
-            bool strikeThisTurn = throws[CurrentThrowNumber - 1] == Specification.MaxPinsCount;
-            bool spareThisTurn = GetLastFrameScore(throws) == Specification.MaxPinsCount && throws[CurrentThrowNumber - 1] != 0;
-            return strikeThisTurn || spareThisTurn;
+            bool isStrike = throws[ConsecutiveThrowNumber - 1] == Specification.MaxPinsCount;
+            bool isSpare = GetLastFrameScore(throws) == Specification.MaxPinsCount && throws[ConsecutiveThrowNumber - 1] != 0;
+            return isStrike || isSpare;
         }
 
         private bool IsFirstThrowInFrame(List<int> throws)
         {
-            int sum = throws
-                .Select((element, index) => CalculateTotalThrowsNumber(throws, element, index))
-                .Sum();
-                
-            return sum % 2 != 0;
-        }
-
-        private static int CalculateTotalThrowsNumber(List<int> throws, int element, int index)
-        {
-            if (element != Specification.MaxPinsCount) return 1;
-
-            bool nextThrowExist = index + 2 > throws.Count;
-            bool isOddPosition = index % 2 == 0;
-
-            if (isOddPosition && nextThrowExist) return 1;
-            if (!isOddPosition && throws[index - 1] == 0) return 1;
-
-            return nextThrowExist ? 1 : 2;
+            return CalculateThrowNumberWithStrikesIncluded(throws) % 2 != 0;
         }
 
         private int GetLastFrameScore(List<int> throws)
         {
-            return throws[LastFrameFirstThrow - 1] + throws[LastFrameFirstThrow];
+            return throws.Skip(Math.Max(0, throws.Count() - 2)).Sum();
         }
     }
 }

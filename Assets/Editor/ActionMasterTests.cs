@@ -191,6 +191,20 @@ namespace Assets.Editor
             Assert.AreEqual(AfterStrikeAction.EndTurn, sut.NextAction(new List<int> { 5, 5, 4, 4, 9, 1, 10, 10, 9, 1, 10, 8, 2 }));
         }
 
+        [Test]
+        public void T22_WhenLastRoundSrikeInFirstThrow_ResetIsReturned()
+        {
+            var sut = GetSystemUnderTest();
+            Assert.AreEqual(AfterStrikeAction.Reset, sut.NextAction(new List<int> { 3, 7, 7, 3, 2, 8, 7, 1, 10, 7, 3, 8, 0, 4, 5, 8, 2, 10 }));
+        }
+
+        [Test]
+        public void T23_WhenLessThanTenInLastRoundAfterStrikeInPreviousOne_EndGameIsReturned()
+        {
+            var sut = GetSystemUnderTest();
+            Assert.AreEqual(AfterStrikeAction.EndGame, sut.NextAction(new List<int> { 3, 6, 7, 2, 6, 3, 9, 1, 9, 0, 10, 4, 5, 6, 1, 10, 8, 1 }));
+        }
+
         private ActionMaster GetSystemUnderTest()
         {
             return new ActionMaster();
