@@ -15,7 +15,7 @@ namespace Assets.Editor
         [Test]
         public void T01_FirstHitInFrame_FirstFrameUpdate()
         {
-            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers();
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1");
             ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
 
             sut.UpdateScore(3, new List<int>(), AfterStrikeAction.Tidy);
@@ -26,7 +26,7 @@ namespace Assets.Editor
         [Test]
         public void T02_SecondHitInFrame_SecondFrameUpdate()
         {
-            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers();
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1");
             ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
 
             sut.UpdateScore(3, new List<int>(), AfterStrikeAction.Tidy);
@@ -39,7 +39,7 @@ namespace Assets.Editor
         [Test]
         public void T03_Spare_FirstFrameUpdate_WithSpareSpecialSign()
         {
-            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers();
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1");
             ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
 
             sut.UpdateScore(4, new List<int>(), AfterStrikeAction.Tidy);
@@ -52,7 +52,7 @@ namespace Assets.Editor
         [Test]
         public void T04_Strike_FirstFrameUpdate_WithStrikeSpecialSign()
         {
-            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers();
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1");
             ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
 
             sut.UpdateScore(10, new List<int>(), AfterStrikeAction.EndTurn);
@@ -137,15 +137,53 @@ namespace Assets.Editor
             Assert.AreEqual(ScoreDisplayStatus.Completed, scoreDisplayWrappers.First().ScoreDisplayStatus);
         }
 
+        //test cases checked while play-testing defects discovered
+        [Test]
+        public void T11_WhenLesThanTen_AfterStrike_FirstScoreAndSecondScoreIsCorrectlyPopulated()
+        {
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1", "F2", "F3", "F4");
+            ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
+
+            //Frame 1
+            sut.UpdateScore(6, new List<int> { }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(2, new List<int> { 8 }, AfterStrikeAction.EndTurn);
+            //Frame 2
+            sut.UpdateScore(9, new List<int> { }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 8, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 3 (strike)
+            sut.UpdateScore(10, new List<int> { 8, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 4
+            sut.UpdateScore(7, new List<int> { 8, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(2, new List<int> { 8, 9, 19, 9 }, AfterStrikeAction.EndTurn);
+            Assert.AreEqual("X", scoreDisplayWrappers[2].FirstScore.text);
+            Assert.AreEqual("19", scoreDisplayWrappers[2].FrameScore.text);
+            Assert.AreEqual("7", scoreDisplayWrappers[3].FirstScore.text);
+            Assert.AreEqual("2", scoreDisplayWrappers[3].SecondScore.text);
+            Assert.AreEqual("9", scoreDisplayWrappers[3].FrameScore.text);
+            Assert.AreEqual(ScoreDisplayStatus.Completed, scoreDisplayWrappers[2].ScoreDisplayStatus);
+            Assert.AreEqual(ScoreDisplayStatus.Completed, scoreDisplayWrappers[3].ScoreDisplayStatus);
+        }
+
+
         /// <summary>
         /// Text is not mockable, and there is no possibility to create instance of it using ctor. Thus, I'm creating that with my ScoreDisplayResolver class that has its own unit tests implemented.
         /// </summary>
-        /// <param name="frameIndex"></param>
+        /// <param name="frameIndexes"></param>
         /// <returns></returns>
-        private List<ScoreDisplayWrapper> GetScoreDisplayWrappers(string frameIndex = "F1")
+        private List<ScoreDisplayWrapper> GetScoreDisplayWrappers(params string[] frameIndexes)
         {
             GameObject scoreDisplay = new GameObject();
+            foreach (var frameIndex in frameIndexes) { GetScoreDisplayWrapper(frameIndex, scoreDisplay); }
+            return new ScoreDisplayConverter().Convert(scoreDisplay);
+        }
 
+        private static void GetScoreDisplayWrapper(string frameIndex, GameObject scoreDisplay)
+        {
+            AddChild(frameIndex, scoreDisplay);
+        }
+
+        private static void AddChild(string frameIndex, GameObject scoreDisplay)
+        {
             GameObject f1 = new GameObject(frameIndex);
             f1.transform.SetParent(scoreDisplay.transform);
 
@@ -170,8 +208,6 @@ namespace Assets.Editor
             GameObject textSum = new GameObject("text");
             textSum.AddComponent(typeof(Text));
             textSum.transform.SetParent(sum.transform);
-
-            return new ScoreDisplayConverter().Convert(scoreDisplay);
         }
     }
 }

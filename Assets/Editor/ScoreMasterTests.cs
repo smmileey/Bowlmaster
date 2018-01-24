@@ -103,14 +103,8 @@ namespace Assets.Editor
             Assert.AreEqual(testData.Score, systemUnderTest.GetFrameScores(lastFrameStartingScores).Last());
         }
 
-        public void T14_WhenOrdinaryCases_ThenScoreIsCorrectlyReturned()
-        {
-            ScoreMaster systemUnderTest = GetSystemUnderTest();
-            Assert.AreEqual(new List<int> { 13, 7 }, systemUnderTest.GetFrameScores(new List<int> { 9, 1, 3, 4 }));
-        }
-
         [TestCaseSource(nameof(GoldenCopyTestingCases))]
-        public void T15_FullGameGoldenCopyCases_ThenScoreIsCorrectlyAccumulated(TestData testData)
+        public void T14_FullGameGoldenCopyCases_ThenScoreIsCorrectlyAccumulated(TestData testData)
         {
             ScoreMaster systemUnderTest = GetSystemUnderTest();
             Assert.AreEqual(testData.Score, systemUnderTest.GetCurrentScore(testData.Throws));

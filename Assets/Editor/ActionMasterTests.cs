@@ -135,24 +135,24 @@ namespace Assets.Editor
         public void T15_WhenKnockZeroPinsAndTenPins_ShouldBeInFirstFrameSecondThrow()
         {
             var sut = GetSystemUnderTest();
-            var lastFramewStartList = new List<int> { 0, 10, 3 };
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.NextAction(lastFramewStartList));
+            var lastFrameStartList = new List<int> { 0, 10, 3 };
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
         public void T16_WhenKnockZeroPinsAndTenPins_NextTwoThrowWithSumBelowTenReturnEndTurn()
         {
             var sut = GetSystemUnderTest();
-            var lastFramewStartList = new List<int> { 0, 10, 2, 7 };
-            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.NextAction(lastFramewStartList));
+            var lastFrameStartList = new List<int> { 0, 10, 2, 7 };
+            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
         public void T17_WhenKnockZeroPinsAndTenPins_ThreeTimes_ShouldBeInFirstFrameFourthThrow()
         {
             var sut = GetSystemUnderTest();
-            var lastFramewStartList = new List<int> { 0, 10, 0, 10, 0, 10, 2 };
-            Assert.AreEqual(AfterStrikeAction.Tidy, sut.NextAction(lastFramewStartList));
+            var lastFrameStartList = new List<int> { 0, 10, 0, 10, 0, 10, 2 };
+            Assert.AreEqual(AfterStrikeAction.Tidy, sut.NextAction(lastFrameStartList));
         }
 
         [Test]
@@ -173,14 +173,22 @@ namespace Assets.Editor
         public void T19_WhenTwoHitsUnderTen_ThatExceedsSumOfTen_ThrowsException()
         {
             var sut = GetSystemUnderTest();
-            var lastFramewStartList = new List<int> { 3, 8 };
-            Assert.Throws<UnityException>(() => sut.NextAction(lastFramewStartList));
+            var lastFrameStartList = new List<int> { 3, 8 };
+            Assert.Throws<UnityException>(() => sut.NextAction(lastFrameStartList));
         }
 
         [TestCaseSource(nameof(InvalidThrowsCases))]
         public void T20_WhenIncorrectArgument_ArgumentOutOfRangeIsThrown(List<int> throws)
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => GetSystemUnderTest().NextAction(throws));
+        }
+
+        //test cases checked while play-testing defects discovered
+        [Test]
+        public void T21_WhenStrikeAndThenSpare_EndTurnIsReturned()
+        {
+            var sut = GetSystemUnderTest();
+            Assert.AreEqual(AfterStrikeAction.EndTurn, sut.NextAction(new List<int> { 5, 5, 4, 4, 9, 1, 10, 10, 9, 1, 10, 8, 2 }));
         }
 
         private ActionMaster GetSystemUnderTest()

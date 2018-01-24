@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
 using Assets.Scripts.Wrappers;
@@ -41,6 +42,8 @@ namespace Assets.Scripts
             TriggerPinsResetIfNeccessary(afterStrikeAction);
             currentScoreDisplay.UpdateScore(score, frameScores, afterStrikeAction);
             _ball.Reset();
+
+            Debug.Log($"Score: {score}, frames:{string.Join(",", frameScores.Select(fs => fs.ToString()).ToArray())} , action: {afterStrikeAction}");
         }
 
         protected virtual void OnPinsReset()

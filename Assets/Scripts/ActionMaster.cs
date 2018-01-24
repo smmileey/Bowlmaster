@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Consts;
 using Assets.Scripts.Enums;
 using UnityEngine;
@@ -66,7 +67,24 @@ namespace Assets.Scripts
 
         private bool IsFirstThrowInFrame(List<int> throws)
         {
-            return throws.Count % 2 != 0 || throws[CurrentThrowNumber - 2] == Specification.MaxPinsCount;
+            int sum = throws
+                .Select((element, index) => CalculateTotalThrowsNumber(throws, element, index))
+                .Sum();
+                
+            return sum % 2 != 0;
+        }
+
+        private static int CalculateTotalThrowsNumber(List<int> throws, int element, int index)
+        {
+            if (element != Specification.MaxPinsCount) return 1;
+
+            bool nextThrowExist = index + 2 > throws.Count;
+            bool isOddPosition = index % 2 == 0;
+
+            if (isOddPosition && nextThrowExist) return 1;
+            if (!isOddPosition && throws[index - 1] == 0) return 1;
+
+            return nextThrowExist ? 1 : 2;
         }
 
         private int GetLastFrameScore(List<int> throws)

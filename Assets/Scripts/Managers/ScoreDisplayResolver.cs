@@ -98,13 +98,18 @@ namespace Assets.Scripts.Managers
 
         private void ProcessFrameScoreCalculation(List<int> frameScores)
         {
-            if (_frameScoreDisplays.Count == 0) return;
-
-            var nextScoreDisplay = _frameScoreDisplays.Peek();
-            if (frameScores.Count >= nextScoreDisplay.FrameIndex)
+            while (true)
             {
-                nextScoreDisplay.FrameScore.text = frameScores[nextScoreDisplay.FrameIndex - 1].ToString();
-                _frameScoreDisplays.Dequeue();
+                if (_frameScoreDisplays.Count == 0) return;
+
+                ScoreDisplayWrapper nextScoreDisplay = _frameScoreDisplays.Peek();
+                if (frameScores.Count >= nextScoreDisplay.FrameIndex)
+                {
+                    nextScoreDisplay.FrameScore.text = frameScores[nextScoreDisplay.FrameIndex - 1].ToString();
+                    _frameScoreDisplays.Dequeue();
+                    continue;
+                }
+                break;
             }
         }
 
