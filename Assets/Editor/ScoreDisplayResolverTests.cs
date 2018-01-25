@@ -164,6 +164,267 @@ namespace Assets.Editor
             Assert.AreEqual(ScoreDisplayStatus.Completed, scoreDisplayWrappers[3].ScoreDisplayStatus);
         }
 
+        [Test]
+        public void T12_LastRound_LessThanThen_SecondScoreShouldBePopulated()
+        {
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10");
+            ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
+
+            //Frame 1
+            sut.UpdateScore(9, new List<int> { }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9 }, AfterStrikeAction.EndTurn);
+            //Frame 2
+            sut.UpdateScore(9, new List<int> { 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 3 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 4
+            sut.UpdateScore(7, new List<int> { 9, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(2, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 5 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 6 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.EndTurn);
+            //Frame 7 (strike)
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.EndTurn);
+            //Frame 8
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 9
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 10
+            sut.UpdateScore(9, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8, 9 }, AfterStrikeAction.EndGame);
+
+            Assert.AreEqual("9", scoreDisplayWrappers[9].FirstScore.text);
+            Assert.AreEqual("0", scoreDisplayWrappers[9].SecondScore.text);
+            Assert.AreEqual("9", scoreDisplayWrappers[9].FrameScore.text);
+            Assert.AreEqual(ScoreDisplayStatus.Completed, scoreDisplayWrappers[9].ScoreDisplayStatus);
+        }
+
+        [Test]
+        public void T13_LastRound_AdditionalThrowGrantedBySpare_ThenLessThanTen_ThirdScoreShouldBePopulated()
+        {
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10");
+            ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
+
+            //Frame 1
+            sut.UpdateScore(9, new List<int> { }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9 }, AfterStrikeAction.EndTurn);
+            //Frame 2
+            sut.UpdateScore(9, new List<int> { 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 3 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 4
+            sut.UpdateScore(7, new List<int> { 9, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(2, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 5 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 6 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.EndTurn);
+            //Frame 7 (strike)
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.EndTurn);
+            //Frame 8
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 9
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 10 (spare + bonus throw)
+            sut.UpdateScore(9, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(1, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Reset);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8, 13 }, AfterStrikeAction.EndGame);
+
+            Assert.AreEqual("9", scoreDisplayWrappers[9].FirstScore.text);
+            Assert.AreEqual("/", scoreDisplayWrappers[9].SecondScore.text);
+            Assert.AreEqual("3", scoreDisplayWrappers[9].ThirdScore.text);
+            Assert.AreEqual("13", scoreDisplayWrappers[9].FrameScore.text);
+            Assert.AreEqual(ScoreDisplayStatus.Completed, scoreDisplayWrappers[9].ScoreDisplayStatus);
+        }
+
+        [Test]
+        public void T14_LastRound_AdditionalThrowGrantedBySpare_ThenStrike_ThirdScoreShouldBePopulated()
+        {
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10");
+            ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
+
+            //Frame 1
+            sut.UpdateScore(9, new List<int> { }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9 }, AfterStrikeAction.EndTurn);
+            //Frame 2
+            sut.UpdateScore(9, new List<int> { 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 3 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 4
+            sut.UpdateScore(7, new List<int> { 9, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(2, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 5 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 6 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.EndTurn);
+            //Frame 7 (strike)
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.EndTurn);
+            //Frame 8
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 9
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 10 (spare + bonus throw)
+            sut.UpdateScore(9, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(1, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Reset);
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8, 20 }, AfterStrikeAction.EndGame);
+
+            Assert.AreEqual("9", scoreDisplayWrappers[9].FirstScore.text);
+            Assert.AreEqual("/", scoreDisplayWrappers[9].SecondScore.text);
+            Assert.AreEqual("X", scoreDisplayWrappers[9].ThirdScore.text);
+            Assert.AreEqual("20", scoreDisplayWrappers[9].FrameScore.text);
+            Assert.AreEqual(ScoreDisplayStatus.Completed, scoreDisplayWrappers[9].ScoreDisplayStatus);
+        }
+
+        [Test]
+        public void T15_LastRound_AdditionalThrowGrantedByStrikeAndLessThanTen_ThirdScoreShouldBePopulated()
+        {
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10");
+            ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
+
+            //Frame 1
+            sut.UpdateScore(9, new List<int> { }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9 }, AfterStrikeAction.EndTurn);
+            //Frame 2
+            sut.UpdateScore(9, new List<int> { 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 3 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 4
+            sut.UpdateScore(7, new List<int> { 9, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(2, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 5 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 6 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.EndTurn);
+            //Frame 7 (strike)
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.EndTurn);
+            //Frame 8
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 9
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 10 (strike + less than ten + bonus throw)
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Reset);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Reset);
+            sut.UpdateScore(2, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8, 15 }, AfterStrikeAction.EndGame);
+
+            Assert.AreEqual("X", scoreDisplayWrappers[9].FirstScore.text);
+            Assert.AreEqual("3", scoreDisplayWrappers[9].SecondScore.text);
+            Assert.AreEqual("2", scoreDisplayWrappers[9].ThirdScore.text);
+            Assert.AreEqual("15", scoreDisplayWrappers[9].FrameScore.text);
+            Assert.AreEqual(ScoreDisplayStatus.Completed, scoreDisplayWrappers[9].ScoreDisplayStatus);
+        }
+
+        [Test]
+        public void T16_LastRound_AdditionalThrowGrantedByDoubleStrike_AndBonusThrowLessThanTen_ThirdScoreShouldBePopulated()
+        {
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10");
+            ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
+
+            //Frame 1
+            sut.UpdateScore(9, new List<int> { }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9 }, AfterStrikeAction.EndTurn);
+            //Frame 2
+            sut.UpdateScore(9, new List<int> { 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 3 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 4
+            sut.UpdateScore(7, new List<int> { 9, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(2, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 5 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 6 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.EndTurn);
+            //Frame 7 (strike)
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.EndTurn);
+            //Frame 8
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 9
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 10 (strike + strike + bonus throw)
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Reset);
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Reset);
+            sut.UpdateScore(2, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8, 22 }, AfterStrikeAction.EndGame);
+
+            Assert.AreEqual("X", scoreDisplayWrappers[9].FirstScore.text);
+            Assert.AreEqual("X", scoreDisplayWrappers[9].SecondScore.text);
+            Assert.AreEqual("2", scoreDisplayWrappers[9].ThirdScore.text);
+            Assert.AreEqual("22", scoreDisplayWrappers[9].FrameScore.text);
+            Assert.AreEqual(ScoreDisplayStatus.Completed, scoreDisplayWrappers[9].ScoreDisplayStatus);
+        }
+
+        [Test]
+        public void T17_LastRound_Turkey_ThirdScoreShouldBePopulated()
+        {
+            List<ScoreDisplayWrapper> scoreDisplayWrappers = GetScoreDisplayWrappers("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10");
+            ScoreDisplayResolver sut = new ScoreDisplayResolver(scoreDisplayWrappers);
+
+            //Frame 1
+            sut.UpdateScore(9, new List<int> { }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9 }, AfterStrikeAction.EndTurn);
+            //Frame 2
+            sut.UpdateScore(9, new List<int> { 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 3 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 4
+            sut.UpdateScore(7, new List<int> { 9, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(2, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 5 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9 }, AfterStrikeAction.EndTurn);
+            //Frame 6 (spare)
+            sut.UpdateScore(7, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(3, new List<int> { 9, 9, 17, 9, 17 }, AfterStrikeAction.EndTurn);
+            //Frame 7 (strike)
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.EndTurn);
+            //Frame 8
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 9
+            sut.UpdateScore(8, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8 }, AfterStrikeAction.Tidy);
+            sut.UpdateScore(0, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.EndTurn);
+            //Frame 10 (turkey)
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Reset);
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8 }, AfterStrikeAction.Reset);
+            sut.UpdateScore(10, new List<int> { 9, 9, 17, 9, 17, 20, 18, 8, 8, 30 }, AfterStrikeAction.EndGame);
+
+            Assert.AreEqual("X", scoreDisplayWrappers[9].FirstScore.text);
+            Assert.AreEqual("X", scoreDisplayWrappers[9].SecondScore.text);
+            Assert.AreEqual("X", scoreDisplayWrappers[9].ThirdScore.text);
+            Assert.AreEqual("30", scoreDisplayWrappers[9].FrameScore.text);
+            Assert.AreEqual(ScoreDisplayStatus.Completed, scoreDisplayWrappers[9].ScoreDisplayStatus);
+        }
 
         /// <summary>
         /// Text is not mockable, and there is no possibility to create instance of it using ctor. Thus, I'm creating that with my ScoreDisplayResolver class that has its own unit tests implemented.

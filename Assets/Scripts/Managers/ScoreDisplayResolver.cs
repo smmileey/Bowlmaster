@@ -89,7 +89,9 @@ namespace Assets.Scripts.Managers
                     }
                     break;
                 case AfterStrikeAction.EndGame:
-                    if (IsAdditionalRoundGranted(nextScoreDisplay)) { nextScoreDisplay.ThirdScore.text = GetScore(pinsHitCount, firstRoundScore); }
+                    string score = GetScore(pinsHitCount, firstRoundScore);
+                    if (IsAdditionalRoundGranted(nextScoreDisplay)) { nextScoreDisplay.ThirdScore.text = score; }
+                    else { nextScoreDisplay.SecondScore.text = score; }
                     nextScoreDisplay.ScoreDisplayStatus = ScoreDisplayStatus.Completed;
                     _frameScoreDisplays.Enqueue(_partialScoreDisplays.Dequeue());
                     break;

@@ -22,7 +22,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 450}
   m_MaxSize: {x: 14000, y: 14021}
   vertical: 1
-  controlID: 1909
+  controlID: 2106
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 450}
   m_MaxSize: {x: 14000, y: 14021}
   vertical: 0
-  controlID: 1910
+  controlID: 2107
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 304, y: 450}
   m_MaxSize: {x: 10000, y: 14021}
   vertical: 1
-  controlID: 1884
+  controlID: 2108
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 304, y: 200}
   m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
-  controlID: 1885
+  controlID: 2082
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +226,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 08070000
     m_LastClickedID: 0
-    m_ExpandedIDs: 6a04fcff7a05fcff2e0dfcffc213fcffcc1afcff481ffcff8425fcff242cfcff3e35fcff6c39fcff9042fcffba49fcffbc51fcffa057fcffb65ffcffa463fcffd268fcffd46dfcff6871fcff2c75fcffa679fcff0a82fcff4685fcff688bfcff108ffcff8092fcff48a9fcff56affcff0eb4fcff04bcfcfff6befcff06c4fcffbac8fcffa4e0fcff20e6fcffdaebfcff52eefcff20f2fcff5ef9fcffda01fdff3608fdffee0efdff4617fdff2c1afdff0c1ffdfff022fdff3a26fdff102afdffc430fdff1636fdff263afdffae3efdfff642fdff9a49fdffee4cfdff8e50fdff9055fdffe85bfdff1661fdfffe63fdff126afdff786ffdff9673fdfff276fdffc47efdffe082fdff208dfdff4092fdff1496fdff6a99fdffea9dfdffcea4fdff06a8fdff54abfdff1cb3fdff2cbafdff38c3fdffc0c8fdff2cccfdffeccffdffe2d2fdff86d6fdff3cdbfdffecdefdfffce3fdff56ebfdffa0f2fdffe0f5fdffb4fbfdff4401feffb004feff1210feff4217feff522cfeffe42ffeffb433feff6e40feff9a4bfeff9059feff365efeffd463feff566afeff446efeffb472feff267bfeffc484feffdc89feff6290feff1e94feff9297feff4a9cfeffea9ffeff7aa6feff52acfeffccb3feff30c8feff36d0feff14d9feff60e0feffa6e3feffeae6feff0aedfeff94f3feff5efcfeffa2fffeff3005ffff120dffff7a17ffffc41fffff2a27ffff222cffffb830ffff3637ffffa63fffffd64affff4253ffff6c5dffff5a68ffff006effffa872ffff067affffb47fffffa282ffffb688ffff9695ffff969bffff14a0ffff4aa7ffff8eb2ffffacb6ffff7ac0ffff8ec6ffff58cdffffc0d3ffff8addffff96e5ffff1eeaffffe2fbffff00000000
+    m_ExpandedIDs: cc7ffbffdc89fbff888efbff3493fbffe097fbffb89dfbff50a4fbff7caafbff3cb3fbff9cb8fbff60bdfbffb2c2fbffe0cafbff14d2fbff5cd8fbfff4defbff66e5fbff6a04fcff7a05fcff2e0dfcffc213fcffcc1afcff481ffcff8425fcff242cfcff3e35fcff6c39fcff9042fcffba49fcffbc51fcffa057fcffb65ffcffa463fcffd268fcffd46dfcff6871fcff2c75fcffa679fcff0a82fcff4685fcff688bfcff108ffcff8092fcff48a9fcff56affcff0eb4fcff04bcfcfff6befcff06c4fcffbac8fcffa4e0fcff20e6fcffdaebfcff52eefcff20f2fcff5ef9fcffda01fdff3608fdffee0efdff4617fdff2c1afdff0c1ffdfff022fdff3a26fdff102afdffc430fdff1636fdff263afdffae3efdfff642fdff9a49fdffee4cfdff8e50fdff9055fdffe85bfdff1661fdfffe63fdff126afdff786ffdff9673fdfff276fdffc47efdffe082fdff208dfdff4092fdff1496fdff6a99fdffea9dfdffcea4fdff06a8fdff54abfdff1cb3fdff2cbafdff38c3fdffc0c8fdff2cccfdffeccffdffe2d2fdff86d6fdff3cdbfdffecdefdfffce3fdff56ebfdffa0f2fdffe0f5fdffb4fbfdff4401feffb004feff1210feff4217feff522cfeffe42ffeffb433feff6e40feff9a4bfeff9059feff365efeffd463feff566afeff446efeffb472feff267bfeffc484feffdc89feff6290feff1e94feff9297feff4a9cfeffea9ffeff7aa6feff52acfeffccb3feff30c8feff36d0feff14d9feff60e0feffa6e3feffeae6feff0aedfeff94f3feff5efcfeffa2fffeff3005ffff120dffff7a17ffffc41fffff2a27ffff222cffffb830ffff3637ffffa63fffffd64affff4253ffff6c5dffff5a68ffff006effffa872ffff067affffb47fffffa282ffffb688ffff9695ffff969bffff14a0ffff4aa7ffff8eb2ffffacb6ffff7ac0ffff8ec6ffff58cdffffc0d3ffff8addffff96e5ffff1eeaffffe2fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 08070000
     m_LastClickedInstanceID: 1800
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c623000012250000e4c600001006ffff8e95f8ff0426000026260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -632,13 +632,13 @@ MonoBehaviour:
     height: 675
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
   - {fileID: 18}
-  m_Selected: 1
-  m_LastSelected: 2
+  m_Selected: 2
+  m_LastSelected: 0
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -792,7 +792,7 @@ MonoBehaviour:
       name: Assembly-CSharp-Editor.dll
       fullName: E:/UnityRepos/Bowlmaster/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
       resultStatus: 1
-      duration: 1.1337421
+      duration: 0.464391
       messages: 
       output: 
       stacktrace: 
@@ -803,7 +803,7 @@ MonoBehaviour:
       name: Assets
       fullName: Assets
       resultStatus: 1
-      duration: 1.1110563
+      duration: 0.4534191
       messages: 
       output: 
       stacktrace: 
@@ -814,7 +814,7 @@ MonoBehaviour:
       name: Editor
       fullName: Assets.Editor
       resultStatus: 1
-      duration: 1.089306
+      duration: 0.4419781
       messages: 
       output: 
       stacktrace: 
@@ -1463,7 +1463,7 @@ MonoBehaviour:
       name: ScoreDisplayResolverTests
       fullName: Assets.Editor.ScoreDisplayResolverTests
       resultStatus: 1
-      duration: 0.3657027
+      duration: 0.4312457
       messages: 
       output: 
       stacktrace: 
@@ -1474,7 +1474,7 @@ MonoBehaviour:
       name: T01_FirstHitInFrame_FirstFrameUpdate
       fullName: Assets.Editor.ScoreDisplayResolverTests.T01_FirstHitInFrame_FirstFrameUpdate
       resultStatus: 1
-      duration: 0.0193067
+      duration: 0.0234293
       messages: 
       output: 
       stacktrace: 
@@ -1485,7 +1485,7 @@ MonoBehaviour:
       name: T02_SecondHitInFrame_SecondFrameUpdate
       fullName: Assets.Editor.ScoreDisplayResolverTests.T02_SecondHitInFrame_SecondFrameUpdate
       resultStatus: 1
-      duration: 0.013031
+      duration: 0.0053553
       messages: 
       output: 
       stacktrace: 
@@ -1496,7 +1496,7 @@ MonoBehaviour:
       name: T03_Spare_FirstFrameUpdate_WithSpareSpecialSign
       fullName: Assets.Editor.ScoreDisplayResolverTests.T03_Spare_FirstFrameUpdate_WithSpareSpecialSign
       resultStatus: 1
-      duration: 0.007924
+      duration: 0.0160344
       messages: 
       output: 
       stacktrace: 
@@ -1507,7 +1507,7 @@ MonoBehaviour:
       name: T04_Strike_FirstFrameUpdate_WithStrikeSpecialSign
       fullName: Assets.Editor.ScoreDisplayResolverTests.T04_Strike_FirstFrameUpdate_WithStrikeSpecialSign
       resultStatus: 1
-      duration: 0.0163891
+      duration: 0.0051251
       messages: 
       output: 
       stacktrace: 
@@ -1518,7 +1518,7 @@ MonoBehaviour:
       name: T05_LastRound_FirstHitInFrame_FirstFrameUpdate
       fullName: Assets.Editor.ScoreDisplayResolverTests.T05_LastRound_FirstHitInFrame_FirstFrameUpdate
       resultStatus: 1
-      duration: 0.016734
+      duration: 0.00622
       messages: 
       output: 
       stacktrace: 
@@ -1529,7 +1529,7 @@ MonoBehaviour:
       name: T06_LastRound_TwoHitsUnderTen_FrameScoreUpdated_AndGameIsCompleted
       fullName: Assets.Editor.ScoreDisplayResolverTests.T06_LastRound_TwoHitsUnderTen_FrameScoreUpdated_AndGameIsCompleted
       resultStatus: 1
-      duration: 0.016837
+      duration: 0.0062967
       messages: 
       output: 
       stacktrace: 
@@ -1540,7 +1540,7 @@ MonoBehaviour:
       name: T07_LastRound_StrikeInFirstFrame_FirstFrameUpdatedWithStrikeSpecialSign_AndGameNotCompleted
       fullName: Assets.Editor.ScoreDisplayResolverTests.T07_LastRound_StrikeInFirstFrame_FirstFrameUpdatedWithStrikeSpecialSign_AndGameNotCompleted
       resultStatus: 1
-      duration: 0.0161071
+      duration: 0.0058631
       messages: 
       output: 
       stacktrace: 
@@ -1551,7 +1551,7 @@ MonoBehaviour:
       name: T08_LastRound_StrikeInSecondFrame_SecondFrameUpdatedWithStrikeSpecialSign_AndGameNotCompleted
       fullName: Assets.Editor.ScoreDisplayResolverTests.T08_LastRound_StrikeInSecondFrame_SecondFrameUpdatedWithStrikeSpecialSign_AndGameNotCompleted
       resultStatus: 1
-      duration: 0.0096441
+      duration: 0.0060434
       messages: 
       output: 
       stacktrace: 
@@ -1562,7 +1562,7 @@ MonoBehaviour:
       name: T09_LastRound_AdditionalRoundBySpare_ThirdScoreUpdate_AndGameNotCompleted
       fullName: Assets.Editor.ScoreDisplayResolverTests.T09_LastRound_AdditionalRoundBySpare_ThirdScoreUpdate_AndGameNotCompleted
       resultStatus: 1
-      duration: 0.016013
+      duration: 0.0058898
       messages: 
       output: 
       stacktrace: 
@@ -1573,7 +1573,7 @@ MonoBehaviour:
       name: T10_LastRound_AdditionalRoundByStrike_ThirdScoreUpdate_AndGameNotCompleted
       fullName: Assets.Editor.ScoreDisplayResolverTests.T10_LastRound_AdditionalRoundByStrike_ThirdScoreUpdate_AndGameNotCompleted
       resultStatus: 1
-      duration: 0.0166305
+      duration: 0.0058669
       messages: 
       output: 
       stacktrace: 
@@ -1584,7 +1584,73 @@ MonoBehaviour:
       name: T11_WhenLesThanTen_AfterStrike_FirstScoreAndSecondScoreIsCorrectlyPopulated
       fullName: Assets.Editor.ScoreDisplayResolverTests.T11_WhenLesThanTen_AfterStrike_FirstScoreAndSecondScoreIsCorrectlyPopulated
       resultStatus: 1
-      duration: 0.0218299
+      duration: 0.0085074
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayResolverTests][T12_LastRound_LessThanThen_SecondScoreShouldBePopulated]'
+      name: T12_LastRound_LessThanThen_SecondScoreShouldBePopulated
+      fullName: Assets.Editor.ScoreDisplayResolverTests.T12_LastRound_LessThanThen_SecondScoreShouldBePopulated
+      resultStatus: 1
+      duration: 0.0163251
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayResolverTests][T13_LastRound_AdditionalThrowGrantedBySpare_ThenLessThanTen_ThirdScoreShouldBePopulated]'
+      name: T13_LastRound_AdditionalThrowGrantedBySpare_ThenLessThanTen_ThirdScoreShouldBePopulated
+      fullName: Assets.Editor.ScoreDisplayResolverTests.T13_LastRound_AdditionalThrowGrantedBySpare_ThenLessThanTen_ThirdScoreShouldBePopulated
+      resultStatus: 1
+      duration: 0.0155689
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayResolverTests][T14_LastRound_AdditionalThrowGrantedBySpare_ThenStrike_ThirdScoreShouldBePopulated]'
+      name: T14_LastRound_AdditionalThrowGrantedBySpare_ThenStrike_ThirdScoreShouldBePopulated
+      fullName: Assets.Editor.ScoreDisplayResolverTests.T14_LastRound_AdditionalThrowGrantedBySpare_ThenStrike_ThirdScoreShouldBePopulated
+      resultStatus: 1
+      duration: 0.0153525
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayResolverTests][T15_LastRound_AdditionalThrowGrantedByStrikeAndLessThanTen_ThirdScoreShouldBePopulated]'
+      name: T15_LastRound_AdditionalThrowGrantedByStrikeAndLessThanTen_ThirdScoreShouldBePopulated
+      fullName: Assets.Editor.ScoreDisplayResolverTests.T15_LastRound_AdditionalThrowGrantedByStrikeAndLessThanTen_ThirdScoreShouldBePopulated
+      resultStatus: 1
+      duration: 0.015844
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayResolverTests][T16_LastRound_AdditionalThrowGrantedByDoubleStrike_AndBonusThrowLessThanTen_ThirdScoreShouldBePopulated]'
+      name: T16_LastRound_AdditionalThrowGrantedByDoubleStrike_AndBonusThrowLessThanTen_ThirdScoreShouldBePopulated
+      fullName: Assets.Editor.ScoreDisplayResolverTests.T16_LastRound_AdditionalThrowGrantedByDoubleStrike_AndBonusThrowLessThanTen_ThirdScoreShouldBePopulated
+      resultStatus: 1
+      duration: 0.0261014
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+    - id: '[Bowlmaster][Assembly-CSharp-Editor.dll][Assets][Editor][ScoreDisplayResolverTests][T17_LastRound_Turkey_ThirdScoreShouldBePopulated]'
+      name: T17_LastRound_Turkey_ThirdScoreShouldBePopulated
+      fullName: Assets.Editor.ScoreDisplayResolverTests.T17_LastRound_Turkey_ThirdScoreShouldBePopulated
+      resultStatus: 1
+      duration: 0.0153587
       messages: 
       output: 
       stacktrace: 
@@ -2301,12 +2367,12 @@ MonoBehaviour:
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
-    m_ResultText: ActionMasterTests (1.066s)
+    m_ResultText: ScoreDisplayResolverTests (0.431s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 1d74cceb
-      m_LastClickedID: -338922467
+      m_SelectedIDs: 5b3adbd3
+      m_LastClickedID: -740607397
       m_ExpandedIDs: 5dbc5b9dbb5124cdbe94dafb564553fc260e200012a777104f692c12fe11d5744b0cf976ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
