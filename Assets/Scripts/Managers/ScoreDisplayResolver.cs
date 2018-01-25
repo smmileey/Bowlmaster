@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Wrappers;
+using JetBrains.Annotations;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Managers
@@ -10,14 +12,19 @@ namespace Assets.Scripts.Managers
     {
         private readonly Queue<ScoreDisplayWrapper> _frameScoreDisplays = new Queue<ScoreDisplayWrapper>();
         private readonly List<ScoreDisplayWrapper> _scoreDisplaysCopy;
+        private readonly Text _finalScore;
         private Queue<ScoreDisplayWrapper> _partialScoreDisplays;
 
-        public ScoreDisplayResolver(List<ScoreDisplayWrapper> partialScoreDisplays)
+        public ScoreDisplayResolver(List<ScoreDisplayWrapper> partialScoreDisplays, Text finalScore)
         {
             if (partialScoreDisplays == null) throw new ArgumentNullException(nameof(partialScoreDisplays));
+            if (finalScore == null) throw new ArgumentNullException(nameof(finalScore));
 
             _scoreDisplaysCopy = partialScoreDisplays;
+            _finalScore = finalScore;
             _partialScoreDisplays = new Queue<ScoreDisplayWrapper>(partialScoreDisplays);
+
+            _finalScore.text = "0";
         }
 
         /// <summary>
@@ -26,7 +33,7 @@ namespace Assets.Scripts.Managers
         /// <param name="pinsHitCount">Pins hit in last throw.</param>
         /// <param name="frameScores">Current frame scores (including current throw).</param>
         /// <param name="action">Last action performed (after current throw). </param>
-        public void UpdateScore(int pinsHitCount, List<int> frameScores, AfterStrikeAction action)
+        public void UpdatFrameScores(int pinsHitCount, List<int> frameScores, AfterStrikeAction action)
         {
             if (_partialScoreDisplays.Count == 0) return;
 
@@ -36,6 +43,7 @@ namespace Assets.Scripts.Managers
             if (nextScoreDisplay.FrameIndex == 10) { HandleLastFrameScore(nextScoreDisplay, pinsHitCount, firstRoundScore, action); }
             else { HandleBaseRoundsScore(nextScoreDisplay, pinsHitCount, firstRoundScore, action); }
 
+            _finalScore.text = frameScores.Sum().ToString();
             ProcessFrameScoreCalculation(frameScores);
         }
 
@@ -146,6 +154,7 @@ namespace Assets.Scripts.Managers
         private void Reload()
         {
             _partialScoreDisplays = new Queue<ScoreDisplayWrapper>(_scoreDisplaysCopy);
+            _finalScore.text = "0";
         }
     }
 }

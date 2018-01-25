@@ -40,7 +40,7 @@ namespace Assets.Scripts
 
             TriggerAnimation(afterStrikeAction);
             TriggerPinsResetIfNeccessary(afterStrikeAction);
-            currentScoreDisplay.UpdateScore(score, frameScores, afterStrikeAction);
+            currentScoreDisplay.UpdatFrameScores(score, frameScores, afterStrikeAction);
             _ball.Reset();
 
             Debug.Log($"Score: {score}, frames:{string.Join(",", frameScores.Select(fs => fs.ToString()).ToArray())} , action: {afterStrikeAction}");

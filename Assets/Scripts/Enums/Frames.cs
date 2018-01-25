@@ -11,6 +11,7 @@ namespace Assets.Scripts.Enums
         F7,
         F8,
         F9,
-        F10
+        F10,
+        Total
     }
 }

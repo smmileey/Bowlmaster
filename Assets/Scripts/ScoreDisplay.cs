@@ -42,7 +42,8 @@ namespace Assets.Scripts
             GameObject newDisplay = Instantiate(ScoreDisplayPrefab, transform);
             newDisplay.name = player;
             newDisplay.FindChildWithTag(Tags.PlayerName).GetComponent<Text>().text = player;
-            _scoreDisplays.Add(player, new ScoreDisplayResolver(_scoreDisplayConverter.Convert(newDisplay)));
+            Text totalScore = newDisplay.FindChildWithTag(Tags.TotalScore).GetComponentInChildren<Text>();
+            _scoreDisplays.Add(player, new ScoreDisplayResolver(_scoreDisplayConverter.Convert(newDisplay), totalScore));
         }
     }
 }

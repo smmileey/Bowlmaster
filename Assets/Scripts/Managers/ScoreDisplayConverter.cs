@@ -19,7 +19,7 @@ namespace Assets.Scripts.Managers
             var scoreDisplays = new List<ScoreDisplayWrapper>();
             foreach (Transform frameScoreDisplay in scoreDisplay.transform)
             {
-                if (frameScoreDisplay.tag.Equals(Tags.PlayerName)) continue;
+                if (frameScoreDisplay.tag.Equals(Tags.PlayerName) || frameScoreDisplay.tag.Equals(Tags.TotalScore)) continue;
                 FillScoreDisplays(scoreDisplays, frameScoreDisplay);
             }
 
