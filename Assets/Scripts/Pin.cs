@@ -8,7 +8,7 @@ namespace Assets.Scripts
 
         void Awake()
         {
-            this.GetComponent<Rigidbody>().solverVelocityIterations = 20;
+            GetComponent<Rigidbody>().solverVelocityIterations = 20;
         }
 
         /// <summary>
@@ -16,8 +16,6 @@ namespace Assets.Scripts
         /// Thus, it's design rotation against X axis is set to value of 270. 
         /// Now, all the deviation oscilates against that number, not the 270.
         /// </summary>
-        /// <param name="angleInDegrees"></param>
-        /// <returns></returns>
         public bool IsStanding()
         {
             Vector3 eulerAngles = transform.eulerAngles;

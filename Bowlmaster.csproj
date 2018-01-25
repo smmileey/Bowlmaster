@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\Interfaces\IPinBehavior.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IPinsWobbling.cs" />
     <Compile Include="Assets\Scripts\LaneBox.cs" />
+    <Compile Include="Assets\Scripts\Logs\LogHandler.cs" />
     <Compile Include="Assets\Scripts\Managers\PinBehaviorManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ScoreDisplayConverter.cs" />
     <Compile Include="Assets\Scripts\Managers\ScoreDisplayManager.cs" />
